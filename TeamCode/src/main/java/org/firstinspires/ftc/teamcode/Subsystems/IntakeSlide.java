@@ -14,24 +14,19 @@ public class intakeSlide {
     double power = .7;
 
     public intakeSlide(HardwareMap hardwareMap) {
-
         intakeSlideMotor = hardwareMap.get(DcMotorEx.class, "intakeSlideMotor");
 
         intakeSlideMotor.setMode(DcMotorEx.RunMode.STOP_AND_RESET_ENCODER);
         intakeSlideMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         intakeSlideMotor.setTargetPositionTolerance(5);
 
-
-        //Stop and reset encoders doesnt work?
         intakeSlideMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-
-
     }
+
     public void setPosition(extensionState extensionState, intakeSlidesState inExtendState)
     {
         switch(extensionState){
             case retracted:
-
                 break;
             case extending:
                 switch(inExtendState){
@@ -40,40 +35,22 @@ public class intakeSlide {
                         intakeSlideMotor.setTargetPositionTolerance(5);
                         intakeSlideMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
-
-
                         intakeSlideMotor.setPower(power);
-                        // setPIDMotorPower(robotConstants.IntakeSlide.fullExtension);
-
-                        extensionState = extensionState.extended;
                         break;
                     case MEDIUMIN:
                         intakeSlideMotor.setTargetPosition(robotConstants.intakeSlide.mediumExtension);
                         intakeSlideMotor.setTargetPositionTolerance(5);
                         intakeSlideMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
-
                         intakeSlideMotor.setPower(power);
-
-                        //setPIDMotorPower(robotConstants.IntakeSlide.mediumExtension);
-                        extensionState = extensionState.extended;
-
                         break;
                     case STATION:
-
-
                         intakeSlideMotor.setTargetPosition(robotConstants.intakeSlide.retracted);
                         intakeSlideMotor.setTargetPositionTolerance(5);
                         intakeSlideMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
                         intakeSlideMotor.setPower(power);
-                        //PIDMotorPower(robotConstants.IntakeSlide.retracted);
-
-
-                        extensionState = extensionState.retracted;
                         break;
-
-
                 }
             case extended:
                 break;
@@ -85,4 +62,21 @@ public class intakeSlide {
         return position;
     }
 
+    public void setMaxPower()
+    {
+        power = 1;
+    }
+
+    public void setNormalPower()
+    {
+        power = .7;
+    }
+
+    public void forceThatJawn()
+    {
+        intakeSlideMotor.setTargetPosition(100);
+        setMaxPower();
+        intakeSlideMotor.setTargetPosition(-4);
+        setNormalPower();
+    }
 }
