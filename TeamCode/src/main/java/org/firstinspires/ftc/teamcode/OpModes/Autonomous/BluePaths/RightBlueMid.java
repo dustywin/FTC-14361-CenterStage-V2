@@ -17,14 +17,16 @@ import org.firstinspires.ftc.teamcode.OpModes.Autonomous.drive.SampleMecanumDriv
 public class RightBlueMid
 {
     Robot bot;
-    Pose2d myPose = new Pose2d(-36, 63, Math.toRadians(90));
+    Pose2d myPose;
 
     HardwareMap hardwareMap;
     Telemetry telemetry;
-    public Trajectory pushPixel, backUp, behindGate,  moveFromTape, moveFromBackBoard, park, passThroughGate, toBackBoard, towardsPark;
-    SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap);
-    public void runOpMode()
+    public void rightBlueMidExecute(HardwareMap hardwareMap)
     {
+        this.hardwareMap = hardwareMap;
+        SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap);
+
+        myPose = new Pose2d(-36, 63, Math.toRadians(90));
 
         bot = new Robot(hardwareMap, telemetry);
         bot.setInBrake();
@@ -87,10 +89,6 @@ public class RightBlueMid
                 .back(16)
                 .build();
 
-
-    }
-
-    public void rightBlueMidExecute(){
         drive.followTrajectory(pushPixel);
         drive.followTrajectory(backUp);
         drive.followTrajectory(moveFromTape);
@@ -100,6 +98,7 @@ public class RightBlueMid
         drive.followTrajectory(moveFromBackBoard);
         drive.followTrajectory(towardsPark);
         drive.followTrajectory(park);
+
     }
 
 }

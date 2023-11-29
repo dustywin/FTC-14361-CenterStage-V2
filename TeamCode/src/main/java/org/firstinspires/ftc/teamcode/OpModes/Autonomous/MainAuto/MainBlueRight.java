@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.OpModes.Autonomous.MainAuto;
 
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
@@ -9,18 +10,18 @@ import org.firstinspires.ftc.teamcode.OpModes.Autonomous.BluePaths.RightBlueMid;
 import org.openftc.easyopencv.OpenCvCamera;
 import org.openftc.easyopencv.OpenCvCameraFactory;
 import org.openftc.easyopencv.OpenCvCameraRotation;
+@Autonomous(name = "MainRightBlue")
 
 public class MainBlueRight extends LinearOpMode {
     OpenCvCamera camera;
     BlueDetection blueDetection;
     String webcamName;
 
-    RightBlueLeft leftPath;
-    RightBlueMid midPath;
 
 
     @Override
     public void runOpMode() throws InterruptedException {
+
 
         initCam();
 
@@ -31,21 +32,21 @@ public class MainBlueRight extends LinearOpMode {
         }
 
 
+        /*
         switch (blueDetection.getLocation()) {
 
             case LEFT:
-                camera.stopStreaming();
-                leftPath.rightBlueLeftExecute();
+               ong just throw all the code here
                 break;
 
             case RIGHT:
-                camera.stopStreaming();
                 break;
 
             case MIDDLE:
-                camera.stopStreaming();
                 midPath.rightBlueMidExecute();
         }
+
+         */
 
 
     }
