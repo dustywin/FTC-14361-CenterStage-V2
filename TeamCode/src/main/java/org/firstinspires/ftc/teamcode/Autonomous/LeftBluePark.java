@@ -45,10 +45,13 @@ public class LeftBluePark extends LinearOpMode {
         Trajectory toCenterTape = drive.trajectoryBuilder(start)
                 .lineToConstantHeading(new Vector2d(-32, -72))
 
-                .addDisplacementMarker(18, () -> {
-                    bot.setVirtualFourBarPosition(virtualFourBarState.init,virtualFourBarExtensionState.extending);
-                    bot.setVirtualFourBarState(virtualFourBarState.init);
+                .addDisplacementMarker(0, () -> {
 
+                    bot.setVirtualFourBarPosition(virtualFourBarState.intaking,virtualFourBarExtensionState.extending);
+                    bot.setVirtualFourBarState(virtualFourBarState.intaking);
+
+                    bot.setClawPosition(clawState.close);
+                    bot.setClawState(clawState.close);
                 })
 //                .addTemporalMarker(1, () -> {
 //                    bot.setIntakeSlidePosition(intakeSlidesState.STATION, extensionState.extending);
@@ -77,6 +80,8 @@ Trajectory dropOnCenterTape = drive.trajectoryBuilder(toCenterTape.end())
 
 
                 .addDisplacementMarker(0, () -> {
+                    bot.setVirtualFourBarPosition(virtualFourBarState.init,virtualFourBarExtensionState.extending);
+                    bot.setVirtualFourBarState(virtualFourBarState.init);
                      bot.setWristPosition(wristState.sideways);
                     bot.setWristState(wristState.sideways);
 
@@ -140,19 +145,28 @@ Trajectory dropOnCenterTape = drive.trajectoryBuilder(toCenterTape.end())
 
         if(isStopRequested()) return;
 
-        bot.setVirtualFourBarPosition(virtualFourBarState.intaking,virtualFourBarExtensionState.extending);
-        bot.setVirtualFourBarState(virtualFourBarState.intaking);
 
-        bot.setClawPosition(clawState.close);
-        bot.setClawState(clawState.close);
-        drive.followTrajectory(toCenterTape);
+        switch (blueDetection.getLocation()) {
+            case LEFT:
+                drive.followTrajectory(toCenterTape);
 
-        //drive.followTrajectory(dropOnCenterTape);
+                //drive.followTrajectory(dropOnCenterTape);
 
-        drive.followTrajectory(toBackBoard);
+                drive.followTrajectory(toBackBoard);
 
 
-        drive.followTrajectory(leaveBackBoard);
+                drive.followTrajectory(leaveBackBoard);
+                break;
+            case RIGHT:
+
+                break;
+            case MIDDLE:
+
+        }
+
+
+        // to save battery
+
     }
 
 

@@ -31,14 +31,14 @@ public class RightRedPark extends LinearOpMode {
     public void runOpMode() throws InterruptedException {
         bot = new Robot(hardwareMap, telemetry);
         SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap);
-        Pose2d start = new Pose2d(10,72,0);
+        Pose2d start = new Pose2d(10,72,180);
 
         initCam();
 
         drive.setPoseEstimate(start);
 
-        Trajectory toCenterTape = drive.trajectoryBuilder(start)
-                .lineToConstantHeading(new Vector2d(32, 72))
+        Trajectory toMiddleOfTape = drive.trajectoryBuilder(start)
+                .lineToConstantHeading(new Vector2d(26, 96))
 //                .addDisplacementMarker(0, () -> {
 //
 //                  
@@ -63,20 +63,20 @@ public class RightRedPark extends LinearOpMode {
 //            bot.setClawState(clawState.close);
 //                })
                 .build();
-        Trajectory dropOnCenterTape = drive.trajectoryBuilder(toCenterTape.end())
+        Trajectory dropOnCenterTape = drive.trajectoryBuilder(toMiddleOfTape.end())
                 .lineToConstantHeading(new Vector2d(-40, -72))
                 .build();
-        Trajectory toRightTape = drive.trajectoryBuilder(toCenterTape.end())
+        Trajectory dropOnRightTape = drive.trajectoryBuilder(toMiddleOfTape.end())
                 .lineToConstantHeading(new Vector2d(-5,-36))
                 .build();
 
-        Trajectory toLeftTape= drive.trajectoryBuilder(toCenterTape.end())
+        Trajectory toLeftTape= drive.trajectoryBuilder(toMiddleOfTape.end())
                 .lineToConstantHeading(new Vector2d(-15, -36))
                 .build();
 
-        Trajectory toBackBoard = drive.trajectoryBuilder(toCenterTape.end())
+        Trajectory toBackBoard = drive.trajectoryBuilder(toMiddleOfTape.end())
 
-                .lineToLinearHeading(new Pose2d(-30, -113 , Math.toRadians(90)))
+                .lineToLinearHeading(new Pose2d(50, 85 , Math.toRadians(270)))
 
 
                 .addDisplacementMarker(0, () -> {
@@ -143,16 +143,12 @@ public class RightRedPark extends LinearOpMode {
 
         if(isStopRequested()) return;
 
-        bot.setIntakeSlidePosition(intakeSlidesState.STATION, extensionState.extending);
-        bot.setIntakeSlideState(intakeSlidesState.STATION);
 
-        bot.setClawPosition(clawState.close);
-        bot.setClawState(clawState.close);
-        drive.followTrajectory(toCenterTape);
+        drive.followTrajectory(toMiddleOfTape);
 
         //drive.followTrajectory(dropOnCenterTape);
 
-        //drive.followTrajectory(toBackBoard);
+        drive.followTrajectory(toBackBoard);
 
 
         //drive.followTrajectory(leaveBackBoard);

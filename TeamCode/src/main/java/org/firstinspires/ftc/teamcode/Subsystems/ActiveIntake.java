@@ -20,12 +20,16 @@ public class ActiveIntake
         {
             case active:
                 activeIntake.setPower(robotConstants.activeIntake.active);
+                activeIntake.setVelocity(5);
                 break;
             case activeReverse:
                 activeIntake.setPower(robotConstants.activeIntake.reverseActive);
+                activeIntake.setVelocity(-5);
                 break;
             case inactive:
+                activeIntake.setVelocity(0);
                 activeIntake.setPower(0);
+
         }
     }
 }

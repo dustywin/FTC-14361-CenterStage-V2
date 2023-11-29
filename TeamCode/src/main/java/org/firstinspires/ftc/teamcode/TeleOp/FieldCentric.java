@@ -218,11 +218,7 @@ public class FieldCentric extends OpMode {
                 bot.setOuttakeSlidePosition(outtakeSlidesState.HIGHOUT, extensionState.extending);
                 bot.setOuttakeSlideState(outtakeSlidesState.HIGHOUT);
             }
-            else
-            {
-                bot.setOuttakeSlidePosition(outtakeSlidesState.MEDIUMOUT, extensionState.extending);
-                bot.setOuttakeSlideState(outtakeSlidesState.MEDIUMOUT);
-            }
+
         }
 
         if(operator.wasJustPressed(GamepadKeys.Button.DPAD_LEFT))
@@ -239,8 +235,10 @@ public class FieldCentric extends OpMode {
 
         if (operator.wasJustPressed(GamepadKeys.Button.DPAD_RIGHT))
         {
-            count -= 5;
-            bot.intakeSlide.setPosition(intakeSlide.retracted + count);
+
+                bot.setOuttakeSlidePosition(outtakeSlidesState.MEDIUMOUT, extensionState.extending);
+                bot.setOuttakeSlideState(outtakeSlidesState.MEDIUMOUT);
+
         }
 
         if(operator.wasJustPressed(GamepadKeys.Button.B)) {
@@ -260,6 +258,10 @@ public class FieldCentric extends OpMode {
                 bot.setOuttakeSlideState(outtakeSlidesState.MEDIUMOUT);
             }
 
+        }
+        if(operator.getRightY() > 0 || operator.getRightY() < 0){
+            bot.outtakeSlide.setPosition((int)(Math.abs(operator.getRightY() * 1600)));
+            bot.setOuttakeSlideState(outtakeSlidesState.MEDIUMOUT);
         }
 
           /*  if (bot.virtualFourBarState != null && bot.getvirtualFourBarState().equals(virtualFourBarState.outtaking))
@@ -339,8 +341,10 @@ public class FieldCentric extends OpMode {
 
         if(operator.wasJustPressed(GamepadKeys.Button.A))
         {
-            bot.setWristState(wristState.normal);
-            bot.setWristPosition(wristState.normal);
+            if((bot.getvirtualFourBarState() != null && bot.getvirtualFourBarState().equals(virtualFourBarState.init))) {
+                bot.setWristState(wristState.normal);
+                bot.setWristPosition(wristState.normal);
+            }
 
             bot.setVirtualFourBarPosition(virtualFourBarState.intaking, virtualFourBarExtensionState.extending);
             bot.setVirtualFourBarState(virtualFourBarState.intaking);
