@@ -12,8 +12,8 @@ public class robotConstants
         public static double ticksPerRevolution = 0.0;
 
 
-        public static int HIGHLEFT = -1200;
-        public static int HIGHRIGHT = 1200;
+        public static int HIGHLEFT = -1400;
+        public static int HIGHRIGHT = 1400;
         //sometimes the encoder values go negative so you might have to change those
 
         public static int MEDIUMLEFT = -900;
@@ -57,9 +57,11 @@ public class robotConstants
         public static double intakeTeleOp = 0.0;
 
         public static double leftClose = .7;
-        public static double rightClose = .3;
-        public static double leftOpen = .53;
-        public static double rightOpen = .58;
+        public static double rightClose = .58;
+        public static double leftOpen = .9;
+        public static double rightOpen = .33;
+
+        public static double rightCloseOnePixel = .58;
 
         public static double outWristRotation = 0.0;
         public static double sideWristRotation = 0.0;
@@ -74,8 +76,8 @@ public class robotConstants
     public static class activeIntake
     {
 
-        public static double active = -0.3;
-        public static double reverseActive = 0.3;
+        public static double active = -0.2;
+        public static double reverseActive = 0.2;
 
     }
 
@@ -86,8 +88,8 @@ public class robotConstants
 
     public static class Wrist
     {
-        public static double wristSideways = 1;
-        public static double wristNormal = 0.67;
+        public static double wristSideways = 0.67;
+        public static double wristNormal = 1;
 
         // scale is from .33 (0) to .67 (1) so there no overshoot at all
 
@@ -97,33 +99,23 @@ public class robotConstants
 
     public static class virtualFourBar
     {
-        public static double intakingLeft = 0.65;
-        //.486
-        //.588
-        public static double intakingRight = .61;
+        public static double intakingLeft = .84;
 
-        public static double outtakingLeft = 0.26;
-        public static double outtakingRight = 0.22;
+        public static double intakingRight = .44;
 
-        public static double initLeft = .54;
-        //.45
-        //.55
-        public static double initRight = .5;
+        public static double outtakingLeft = .45;
 
-        public static double intakingLeftAuton = 0.5;
-        public static double intakingRightAuton = 0.6;
+        public static double outtakingRight = .05;
 
+        public static double initLeft = .75;
 
-
-
-        // right: .58
-        // left: .41
+        public static double initRight = .35;
 
         /*
         Robot is EVEN at both sides at:
 
         L: .64
         R: .45
-         */
+        */
     }
 }

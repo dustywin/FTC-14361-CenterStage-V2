@@ -47,11 +47,11 @@ public class RightBlueMid extends LinearOpMode
                 .build();
 
         Trajectory behindGate = drive.trajectoryBuilder(moveFromTape.end())
-                .back(27)
+                .lineToLinearHeading(new Pose2d(-36, 15, Math.toRadians(180)))
                 .build();
 
         Trajectory passThroughGate = drive.trajectoryBuilder(behindGate.end())
-                .strafeRight(70)
+                .forward(70)
                 //lineToLinearHeading strafe dist. = 80
                 .build();
 
@@ -68,9 +68,9 @@ public class RightBlueMid extends LinearOpMode
                 .build();
 
         Trajectory moveFromBackBoard = drive.trajectoryBuilder(toBackBoard.end())
-                .addTemporalMarker(0.5,() -> {
-                    bot.setVirtualFourBarPosition(virtualFourBarState.init, virtualFourBarExtensionState.extending);
-                })
+//                .addTemporalMarker(0.5,() -> {
+//                    bot.setVirtualFourBarPosition(virtualFourBarState.init, virtualFourBarExtensionState.extending);
+//                })
                 .forward(5)
                 .build();
 
