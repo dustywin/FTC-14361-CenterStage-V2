@@ -42,6 +42,7 @@ public class LeftBluePark extends LinearOpMode {
 
         drive.setPoseEstimate(start);
 
+
         Trajectory toCenterTape = drive.trajectoryBuilder(start)
                 .lineToConstantHeading(new Vector2d(-32, -72))
 
@@ -63,9 +64,10 @@ public class LeftBluePark extends LinearOpMode {
 //                })
                 .build();
 
-Trajectory dropOnCenterTape = drive.trajectoryBuilder(toCenterTape.end())
-        .lineToConstantHeading(new Vector2d(-40, -72))
-        .build();
+        Trajectory dropOnCenterTape = drive.trajectoryBuilder(toCenterTape.end())
+                .lineToConstantHeading(new Vector2d(-40, -72))
+                .build();
+
         Trajectory toRightTape = drive.trajectoryBuilder(toCenterTape.end())
                 .lineToConstantHeading(new Vector2d(-5,-36))
                 .build();
@@ -148,26 +150,18 @@ Trajectory dropOnCenterTape = drive.trajectoryBuilder(toCenterTape.end())
 
         switch (blueDetection.getLocation()) {
             case LEFT:
-                drive.followTrajectory(toCenterTape);
+                drive.followTrajectory(toLeftTape);
 
-                //drive.followTrajectory(dropOnCenterTape);
-
-                drive.followTrajectory(toBackBoard);
-
-
-                drive.followTrajectory(leaveBackBoard);
                 break;
+
             case RIGHT:
-                drive.followTrajectory(toCenterTape);
+                drive.followTrajectory(toRightTape);
 
-                //drive.followTrajectory(dropOnCenterTape);
-
-                drive.followTrajectory(toBackBoard);
-
-
-                drive.followTrajectory(leaveBackBoard);
                 break;
             case MIDDLE:
+                drive.followTrajectory(toCenterTape);
+
+                break;
 
         }
 
