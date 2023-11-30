@@ -158,7 +158,14 @@ Trajectory dropOnCenterTape = drive.trajectoryBuilder(toCenterTape.end())
                 drive.followTrajectory(leaveBackBoard);
                 break;
             case RIGHT:
+                drive.followTrajectory(toCenterTape);
 
+                //drive.followTrajectory(dropOnCenterTape);
+
+                drive.followTrajectory(toBackBoard);
+
+
+                drive.followTrajectory(leaveBackBoard);
                 break;
             case MIDDLE:
 
