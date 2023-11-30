@@ -31,11 +31,7 @@ public class RightBlueMid extends LinearOpMode
                     bot.setClawPosition(clawState.close);
                     bot.setClawState(clawState.close);
                 })
-                .addDisplacementMarker(5, () -> {
-                    bot.setVirtualFourBarPosition(virtualFourBarState.init,virtualFourBarExtensionState.extending);
-                    bot.setVirtualFourBarState(virtualFourBarState.init);
-                })
-                .back(32)
+                .back(31)
                 .build();
 
         Trajectory backUp = drive.trajectoryBuilder(pushPixel.end())
@@ -47,16 +43,16 @@ public class RightBlueMid extends LinearOpMode
                 .build();
 
         Trajectory behindGate = drive.trajectoryBuilder(moveFromTape.end())
-                .lineToLinearHeading(new Pose2d(-36, 15, Math.toRadians(180)))
+                .lineToLinearHeading(new Pose2d(-36, 6, Math.toRadians(180)))
                 .build();
 
         Trajectory passThroughGate = drive.trajectoryBuilder(behindGate.end())
-                .forward(70)
+                .back(60)
                 //lineToLinearHeading strafe dist. = 80
                 .build();
 
         Trajectory toBackBoard = drive.trajectoryBuilder(passThroughGate.end())
-                .lineToLinearHeading(new Pose2d(54, 30, Math.toRadians(180)))
+                .lineToLinearHeading(new Pose2d(57, 29, Math.toRadians(180)))
                 .addTemporalMarker(0.5, () -> {
                     bot.setWristPosition(wristState.sideways);
                     bot.setVirtualFourBarPosition(virtualFourBarState.outtaking, virtualFourBarExtensionState.extending);

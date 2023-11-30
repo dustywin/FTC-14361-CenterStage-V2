@@ -12,7 +12,7 @@ public class robotConstants
         public static double ticksPerRevolution = 0.0;
 
 
-        public static int HIGHLEFT = -1400;
+        public static int HIGHLEFT = -1403;
         public static int HIGHRIGHT = 1400;
         //sometimes the encoder values go negative so you might have to change those
 
@@ -76,8 +76,8 @@ public class robotConstants
     public static class activeIntake
     {
 
-        public static double active = -0.2;
-        public static double reverseActive = 0.2;
+        public static double active = 0.4;
+        public static double reverseActive = -0.4;
 
     }
 
