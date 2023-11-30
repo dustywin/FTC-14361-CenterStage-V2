@@ -76,7 +76,7 @@ public class RightBlueMid extends LinearOpMode
 //                .addTemporalMarker(0.5,() -> {
 //                    bot.setVirtualFourBarPosition(virtualFourBarState.init, virtualFourBarExtensionState.extending);
 //                })
-                .forward(5)
+                .forward(10)
                 .build();
 
         Trajectory towardsPark = drive.trajectoryBuilder(moveFromBackBoard.end())
@@ -84,7 +84,7 @@ public class RightBlueMid extends LinearOpMode
                 .build();
 
         Trajectory park = drive.trajectoryBuilder(towardsPark.end())
-                .back(16)
+                .back(20)
                 .build();
 
         waitForStart();
