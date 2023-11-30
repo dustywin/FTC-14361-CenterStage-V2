@@ -39,11 +39,11 @@ public class BlueDetection extends OpenCvPipeline {
 
      */
     static final Rect LEFT_ROI = new Rect(
-            new Point(45, 40),
-            new Point(90, 90));
+            new Point(45, 150),
+            new Point(90, 200));
     static final Rect MIDDLE_ROI = new Rect(
-            new Point(215, 40),
-            new Point(255, 90));
+            new Point(215, 150),
+            new Point(255, 200));
     static double PERCENT_COLOR_THRESHOLD = 0.4;
 
     public BlueDetection(Telemetry t) { telemetry = t; }
