@@ -7,6 +7,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
+import org.firstinspires.ftc.teamcode.Commands.activeIntakeState;
 import org.firstinspires.ftc.teamcode.Commands.clawState;
 import org.firstinspires.ftc.teamcode.Commands.extensionState;
 import org.firstinspires.ftc.teamcode.Commands.intakeSlidesState;
@@ -17,123 +18,154 @@ import org.firstinspires.ftc.teamcode.Commands.wristState;
 import org.firstinspires.ftc.teamcode.Subsystems.HSVBlueDetection;
 import org.firstinspires.ftc.teamcode.Subsystems.Robot;
 import org.firstinspires.ftc.teamcode.drive.SampleMecanumDrive;
+import org.firstinspires.ftc.teamcode.util.robotConstants;
 import org.openftc.easyopencv.OpenCvCamera;
 import org.openftc.easyopencv.OpenCvCameraFactory;
 import org.openftc.easyopencv.OpenCvCameraRotation;
 
 @Autonomous(name = "RightRedPark")
+
 public class RightRedPark extends LinearOpMode {
+
     Robot bot;
     OpenCvCamera camera;
     HSVBlueDetection blueDetection;
     String webcamName;
     @Override
-    public void runOpMode() throws InterruptedException {
+    public void runOpMode() {
+
         bot = new Robot(hardwareMap, telemetry);
         SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap);
-        Pose2d start = new Pose2d(10,72,180);
+        Pose2d start = new Pose2d(-10,-72,0);
+        //old start
+        Pose2d newStart = new Pose2d(25,-50,180);
 
         initCam();
 
-        drive.setPoseEstimate(start);
 
-        Trajectory toMiddleOfTape = drive.trajectoryBuilder(start)
-                .lineToConstantHeading(new Vector2d(26, 96))
-//                .addDisplacementMarker(0, () -> {
-//
-//                  
-//
-//                    bot.setClawPosition(clawState.close);
-//                    bot.setClawState(clawState.close);
-//
-//
-//
-//                })
-                .addDisplacementMarker(10, () -> {
+        drive.setPoseEstimate(newStart);
+
+
+
+
+        Trajectory newToCenterTape = drive.trajectoryBuilder(newStart)
+                .lineToConstantHeading(new Vector2d(25, -27))
+
+                .addDisplacementMarker(0, () -> {
+
+                    bot.setVirtualFourBarPosition(virtualFourBarState.intaking,virtualFourBarExtensionState.extending);
+                    bot.setVirtualFourBarState(virtualFourBarState.intaking);
+
+                    bot.setClawPosition(clawState.close);
+                    bot.setClawState(clawState.close);
+                })
+             .addDisplacementMarker(21, () -> {
                     bot.setVirtualFourBarPosition(virtualFourBarState.init, virtualFourBarExtensionState.extending);
                     bot.setVirtualFourBarState(virtualFourBarState.init);
 
-                })
-//                .addTemporalMarker(1, () -> {
-//                    bot.setIntakeSlidePosition(intakeSlidesState.STATION, extensionState.extending);
-//            bot.setIntakeSlideState(intakeSlidesState.STATION);
-//            bot.setVirtualFourBarPosition(virtualFourBarState.intaking, virtualFourBarExtensionState.extending);
-//            bot.setVirtualFourBarState(virtualFourBarState.intaking);
-//            bot.setClawPosition(clawState.close);
-//            bot.setClawState(clawState.close);
-//                })
-                .build();
-        Trajectory dropOnCenterTape = drive.trajectoryBuilder(toMiddleOfTape.end())
-                .lineToConstantHeading(new Vector2d(-40, -72))
-                .build();
-        Trajectory dropOnRightTape = drive.trajectoryBuilder(toMiddleOfTape.end())
-                .lineToConstantHeading(new Vector2d(-5,-36))
-                .build();
+                    bot.activeIntake.setActiveIntakePower(.2);
 
-        Trajectory toLeftTape= drive.trajectoryBuilder(toMiddleOfTape.end())
-                .lineToConstantHeading(new Vector2d(-15, -36))
-                .build();
-
-        Trajectory toBackBoard = drive.trajectoryBuilder(toMiddleOfTape.end())
-
-                .lineToLinearHeading(new Pose2d(50, 85 , Math.toRadians(270)))
-
-
-                .addDisplacementMarker(0, () -> {
                     bot.setWristPosition(wristState.sideways);
                     bot.setWristState(wristState.sideways);
-
-
-
-
                 })
-
-                .addDisplacementMarker(10, () -> {
-
-                    bot.setVirtualFourBarPosition(virtualFourBarState.outtaking,virtualFourBarExtensionState.extending);
-                    bot.setVirtualFourBarState(virtualFourBarState.outtaking);
-
-                    bot.setOuttakeSlideState(outtakeSlidesState.AUTOLOWOUT);
-                    bot.setOuttakeSlidePosition(outtakeSlidesState.AUTOLOWOUT, extensionState.extending);
-
-
-
-
-
-                })
-//            //    .addDisplacementMarker(35, () -> {
-//                    bot.setClawPosition(clawState.open);
-//                    bot.setClawState(clawState.open);
-//
-//
-//
-//
-//                })
-
                 .build();
-        Trajectory leaveBackBoard = drive.trajectoryBuilder(toBackBoard.end())
-                .lineToConstantHeading(new Vector2d(-32,-100))
+
+
+
+
+
+
+        Trajectory toBackboardFromCenter = drive.trajectoryBuilder(newToCenterTape.end())
+                .lineToLinearHeading(new Pose2d(62, -25.5, Math.toRadians(180)))
                 .addDisplacementMarker(0, () -> {
 
-                    bot.setClawPosition(clawState.open);
-                    bot.setClawState(clawState.open);
+                    bot.setVirtualFourBarPosition(virtualFourBarState.outtaking, virtualFourBarExtensionState.extending);
+                    bot.setVirtualFourBarState(virtualFourBarState.outtaking);
+
+
 
 
 
                 })
                 .build();
+
+
+
+        Trajectory leaveBackBoardfromCenter = drive.trajectoryBuilder(toBackboardFromCenter.end())
+                .lineToLinearHeading(new Pose2d(60, -25.5, Math.toRadians(180)))
+                .addDisplacementMarker(0, () -> {
+
+
+                    bot.setClawState(clawState.open);
+                    bot.setClawPosition(clawState.open);
+
+
+                })
+                .build();
+
+        Trajectory toRightTape = drive.trajectoryBuilder(newStart)
+                // .lineToConstantHeading(new Vector2d(25, 20))
+                .lineToLinearHeading(new Pose2d(22, -24, Math.toRadians(180)))
+
+                .addDisplacementMarker(0, () -> {
+
+                    bot.setVirtualFourBarPosition(virtualFourBarState.intaking, virtualFourBarExtensionState.extending);
+                    bot.setVirtualFourBarState(virtualFourBarState.intaking);
+
+                    bot.setClawPosition(clawState.close);
+                    bot.setClawState(clawState.close);
+
+
+                })
+                .addDisplacementMarker(22, () -> {
+                    bot.setVirtualFourBarPosition(virtualFourBarState.init, virtualFourBarExtensionState.extending);
+                    bot.setVirtualFourBarState(virtualFourBarState.init);
+
+                    bot.activeIntake.setActiveIntakePower(.2);
+
+                    bot.setWristPosition(wristState.sideways);
+                    bot.setWristState(wristState.sideways);
+                })
+                .build();
+
+        Trajectory toBackboardFromRight = drive.trajectoryBuilder(toRightTape.end())
+
+                .lineToConstantHeading(new Vector2d(62,-18))
+                .addDisplacementMarker(0, () -> {
+
+                    bot.setVirtualFourBarPosition(virtualFourBarState.outtaking, virtualFourBarExtensionState.extending);
+                    bot.setVirtualFourBarState(virtualFourBarState.outtaking);
+
+                })
+                .build();
+
+        Trajectory leaveBackboardFromRight = drive.trajectoryBuilder(toBackboardFromRight.end())
+
+                .lineToConstantHeading(new Vector2d(60,-18))
+                .addDisplacementMarker(0, () -> {
+
+
+                    bot.setClawState(clawState.open);
+                    bot.setClawPosition(clawState.open);
+
+
+                })
+                .build();
+
+
+
         waitForStart();
 
-/* to get detection
+    /* to get detection
         switch (blueDetection.getLocation()) {
             case LEFT:
                 // ...
                 break;
             case RIGHT:
-                // ...
+
                 break;
             case MIDDLE:
-                // ...
+
         }
          */
 
@@ -143,16 +175,35 @@ public class RightRedPark extends LinearOpMode {
 
         if(isStopRequested()) return;
 
+        bot.setIntakeSlideState(intakeSlidesState.STATION);
+        bot.setIntakeSlidePosition(intakeSlidesState.STATION, extensionState.extending);
 
-        drive.followTrajectory(toMiddleOfTape);
+        switch (blueDetection.getLocation()) {
+            case LEFT:
 
-        //drive.followTrajectory(dropOnCenterTape);
+                break;
 
-        drive.followTrajectory(toBackBoard);
+            case RIGHT:
+
+                drive.followTrajectory(toRightTape);
+                drive.followTrajectory(toBackboardFromRight);
+                drive.followTrajectory(leaveBackboardFromRight);
+
+                break;
+            case MIDDLE:
+                drive.followTrajectory(newToCenterTape);
+                drive.followTrajectory(toBackboardFromCenter);
+                drive.followTrajectory(leaveBackBoardfromCenter);
+
+                break;
+
+        }
 
 
-        //drive.followTrajectory(leaveBackBoard);
+        // to save battery
+
     }
+
 
     private void initCam() {
 
@@ -193,6 +244,27 @@ public class RightRedPark extends LinearOpMode {
             }
         });
     }
+/*
+OpenCvCamera camera;
+    HSVBlueDetection blueDetection;
+    String webcamName;
 
-    }
+    /* to get detection
+        switch (blueDetection.getLocation()) {
+            case LEFT:
+                // ...
+                break;
+            case RIGHT:
+                // ...
+                break;
+            case MIDDLE:
+                // ...
+        }
 
+        camera.stopStreaming();
+
+    // to save battery
+
+ */
+
+}

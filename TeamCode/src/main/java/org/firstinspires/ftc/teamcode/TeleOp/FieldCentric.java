@@ -213,11 +213,10 @@ public class FieldCentric extends OpMode {
 
         if(operator.wasJustPressed(GamepadKeys.Button.DPAD_UP))
         {
-            if (bot.getOuttakeState() != null && bot.getOuttakeState().equals(outtakeSlidesState.MEDIUMOUT))
-            {
+
                 bot.setOuttakeSlidePosition(outtakeSlidesState.HIGHOUT, extensionState.extending);
                 bot.setOuttakeSlideState(outtakeSlidesState.HIGHOUT);
-            }
+
 
         }
 
@@ -259,7 +258,7 @@ public class FieldCentric extends OpMode {
             }
 
         }
-        if(operator.getRightY() > 0 || operator.getRightY() < 0){
+        if(operator.getRightY() > .1 || operator.getRightY() < -.1){
             bot.outtakeSlide.setPosition((int)(Math.abs(operator.getRightY() * 1600)));
             bot.setOuttakeSlideState(outtakeSlidesState.MEDIUMOUT);
         }

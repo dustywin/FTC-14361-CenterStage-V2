@@ -91,6 +91,11 @@ public class robotConstants
         public static double active = 0.2;
         public static double reverseActive = -0.2;
 
+        public static double autoActive = 0.2;
+        public static double autoReverseActive = -0.2;
+
+
+
     }
 
     public static class Climb

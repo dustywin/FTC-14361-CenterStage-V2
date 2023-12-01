@@ -28,6 +28,8 @@ public class OuttakeSlide
         rightouttakeSlide.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         leftouttakeSlide.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
+
+
         rightouttakeSlide.setTargetPositionTolerance(5);
         leftouttakeSlide.setTargetPositionTolerance(5);
     }
