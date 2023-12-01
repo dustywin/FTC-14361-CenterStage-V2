@@ -7,6 +7,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
+import org.firstinspires.ftc.teamcode.Commands.activeIntakeState;
 import org.firstinspires.ftc.teamcode.Commands.clawState;
 import org.firstinspires.ftc.teamcode.Commands.extensionState;
 import org.firstinspires.ftc.teamcode.Commands.intakeSlidesState;
@@ -41,6 +42,20 @@ public class LeftBluePark extends LinearOpMode {
 
 
         drive.setPoseEstimate(start);
+
+
+        Trajectory ejectPixel = drive.trajectoryBuilder(start)
+                .addDisplacementMarker(0, () -> {
+                    bot.setClawPosition(clawState.close);
+                    bot.setClawState(clawState.close);
+                    bot.setVirtualFourBarPosition(virtualFourBarState.init,virtualFourBarExtensionState.extending);
+                    bot.setVirtualFourBarState(virtualFourBarState.init);
+                })
+                .addDisplacementMarker(39, () -> {
+                    bot.setActiveIntakePosition(activeIntakeState.activeReverse);
+                })
+                .lineToLinearHeading(new Pose2d(-39, 36, Math.toRadians(0)))
+                .build();
 
 
         Trajectory toCenterTape = drive.trajectoryBuilder(start)
@@ -79,6 +94,7 @@ public class LeftBluePark extends LinearOpMode {
         Trajectory toBackBoard = drive.trajectoryBuilder(toCenterTape.end())
 
                 .lineToLinearHeading(new Pose2d(-30, -113 , Math.toRadians(90)))
+
 
 
                 .addDisplacementMarker(0, () -> {
