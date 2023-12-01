@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.OpModes.Autonomous.BluePaths;
+package org.firstinspires.ftc.teamcode.OpModes.Autonomous.RedPaths;
 import com.acmerobotics.roadrunner.geometry.Pose2d;
 import com.acmerobotics.roadrunner.trajectory.Trajectory;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
