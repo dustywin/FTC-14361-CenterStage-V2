@@ -18,6 +18,7 @@ import org.firstinspires.ftc.teamcode.Commands.wristState;
 import org.firstinspires.ftc.teamcode.Subsystems.HSVBlueDetection;
 import org.firstinspires.ftc.teamcode.Subsystems.Robot;
 import org.firstinspires.ftc.teamcode.OpModes.Autonomous.drive.SampleMecanumDrive;
+import org.firstinspires.ftc.teamcode.OpModes.Autonomous.trajectorysequence.TrajectorySequence;
 import org.firstinspires.ftc.teamcode.util.robotConstants;
 import org.openftc.easyopencv.OpenCvCamera;
 import org.openftc.easyopencv.OpenCvCameraFactory;
@@ -39,6 +40,7 @@ public class LeftBluePark extends LinearOpMode {
 
         //old start
         Pose2d newStart = new Pose2d(25, 50, Math.toRadians(90));
+        Pose2d leftStart = new Pose2d(25, 50, Math.toRadians(180));
 
 
         initCam();
@@ -49,6 +51,17 @@ public class LeftBluePark extends LinearOpMode {
 
 
 
+        TrajectorySequence toLeftTape = drive.trajectorySequenceBuilder(leftStart)
+                .lineToLinearHeading(new Pose2d(25, 40))
+                .waitSeconds(.25)
+                .lineToLinearHeading(new Pose2d(45, 40, Math.toRadians(270)))
+                .waitSeconds(.25)
+                .lineToLinearHeading(new Pose2d(45, 22))
+                .waitSeconds(.25)
+                // add outtake here, then another wait .25s
+                .lineToLinearHeading(new Pose2d(60, 28))
+
+                .build();
 
         Trajectory newToCenterTape = drive.trajectoryBuilder(newStart)
                 // .lineToConstantHeading(new Vector2d(25, 20))
@@ -64,6 +77,7 @@ public class LeftBluePark extends LinearOpMode {
 
 
                 })
+
                 .addDisplacementMarker(21, () -> {
                     bot.setVirtualFourBarPosition(virtualFourBarState.init, virtualFourBarExtensionState.extending);
                     bot.setVirtualFourBarState(virtualFourBarState.init);
@@ -128,32 +142,32 @@ public class LeftBluePark extends LinearOpMode {
 
 
         Trajectory toBackboardFromCenter = drive.trajectoryBuilder(newToCenterTape.end())
-                        .lineToLinearHeading(new Pose2d(62, 25.5, Math.toRadians(180)))
-                        .addDisplacementMarker(0, () -> {
+                .lineToLinearHeading(new Pose2d(62, 25.5, Math.toRadians(180)))
+                .addDisplacementMarker(0, () -> {
 
-                            bot.setVirtualFourBarPosition(virtualFourBarState.outtaking, virtualFourBarExtensionState.extending);
-                            bot.setVirtualFourBarState(virtualFourBarState.outtaking);
-
-
+                    bot.setVirtualFourBarPosition(virtualFourBarState.outtaking, virtualFourBarExtensionState.extending);
+                    bot.setVirtualFourBarState(virtualFourBarState.outtaking);
 
 
 
-                        })
-                        .build();
+
+
+                })
+                .build();
 
 
 
-                Trajectory leaveBackBoardfromCenter = drive.trajectoryBuilder(toBackboardFromCenter.end())
-                        .lineToLinearHeading(new Pose2d(60, 25.5, Math.toRadians(180)))
-                        .addDisplacementMarker(0, () -> {
+        Trajectory leaveBackBoardfromCenter = drive.trajectoryBuilder(toBackboardFromCenter.end())
+                .lineToLinearHeading(new Pose2d(60, 25.5, Math.toRadians(180)))
+                .addDisplacementMarker(0, () -> {
 
 
-                            bot.setClawState(clawState.open);
-                            bot.setClawPosition(clawState.open);
+                    bot.setClawState(clawState.open);
+                    bot.setClawPosition(clawState.open);
 
 
-                        })
-                        .build();
+                })
+                .build();
 
 //                .addTemporalMarker(1, () -> {
 //                    bot.setIntakeSlidePosition(intakeSlidesState.STATION, extensionState.extending);
@@ -195,12 +209,14 @@ public class LeftBluePark extends LinearOpMode {
         switch (blueDetection.getLocation()) {
             case LEFT:
 
+                drive.followTrajectorySequence(toLeftTape);
+
                 break;
 
             case RIGHT:
-          drive.followTrajectory(toRightTape);
-          drive.followTrajectory(toBackboardFromRight);
-          drive.followTrajectory(leaveBackboardFromRight);
+                drive.followTrajectory(toRightTape);
+                drive.followTrajectory(toBackboardFromRight);
+                drive.followTrajectory(leaveBackboardFromRight);
 
                 break;
             case MIDDLE:
