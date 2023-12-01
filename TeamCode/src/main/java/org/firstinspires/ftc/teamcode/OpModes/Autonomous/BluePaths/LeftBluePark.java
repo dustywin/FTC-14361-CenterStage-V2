@@ -40,7 +40,7 @@ public class LeftBluePark extends LinearOpMode {
 
         //old start
         Pose2d newStart = new Pose2d(25, 50, Math.toRadians(90));
-        Pose2d leftStart = new Pose2d(25, 50, Math.toRadians(180));
+        Pose2d backStart = new Pose2d(25, 50, Math.toRadians(180));
 
 
         initCam();
@@ -51,7 +51,7 @@ public class LeftBluePark extends LinearOpMode {
 
 
 
-        TrajectorySequence toLeftTape = drive.trajectorySequenceBuilder(leftStart)
+        TrajectorySequence toLeftTape = drive.trajectorySequenceBuilder(backStart)
                 .lineToLinearHeading(new Pose2d(25, 40))
                 .waitSeconds(.25)
                 .lineToLinearHeading(new Pose2d(45, 40, Math.toRadians(270)))
@@ -61,6 +61,13 @@ public class LeftBluePark extends LinearOpMode {
                 // add outtake here, then another wait .25s
                 .lineToLinearHeading(new Pose2d(60, 28))
 
+                .build();
+
+        TrajectorySequence toCenterTape = drive.trajectorySequenceBuilder(backStart)
+                .lineToLinearHeading(new Pose2d(28, 45))
+                .waitSeconds(.25)
+                .lineToLinearHeading(new Pose2d(28, 20))
+                .waitSeconds(.25) // add outtake here, then another wait .25
                 .build();
 
         Trajectory newToCenterTape = drive.trajectoryBuilder(newStart)
@@ -141,7 +148,7 @@ public class LeftBluePark extends LinearOpMode {
 
 
 
-        Trajectory toBackboardFromCenter = drive.trajectoryBuilder(newToCenterTape.end())
+        Trajectory toBackboardFromCenter = drive.trajectoryBuilder(toCenterTape.end())
                 .lineToLinearHeading(new Pose2d(62, 25.5, Math.toRadians(180)))
                 .addDisplacementMarker(0, () -> {
 
@@ -209,8 +216,8 @@ public class LeftBluePark extends LinearOpMode {
         switch (blueDetection.getLocation()) {
             case LEFT:
 
-                drive.followTrajectorySequence(toLeftTape);
-
+                drive.followTrajectorySequence(toCenterTape);
+                drive.followTrajectory(toBackboardFromCenter);
                 break;
 
             case RIGHT:
