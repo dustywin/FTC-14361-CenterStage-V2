@@ -173,7 +173,7 @@ public class RightRedPark extends LinearOpMode {
         camera.stopStreaming();
 
 
-        if(isStopRequested()) return;
+
 
         bot.setIntakeSlideState(intakeSlidesState.STATION);
         bot.setIntakeSlidePosition(intakeSlidesState.STATION, extensionState.extending);
