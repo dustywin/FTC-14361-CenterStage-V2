@@ -3,7 +3,7 @@ package org.firstinspires.ftc.teamcode.OpModes.Autonomous.MainAuto;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
-import org.firstinspires.ftc.teamcode.OpModes.Autonomous.BlueDetection;
+import org.firstinspires.ftc.teamcode.Subsystems.HSVBlueDetection;
 import org.firstinspires.ftc.teamcode.OpModes.Autonomous.RedPaths.LeftRedLeft;
 import org.firstinspires.ftc.teamcode.OpModes.Autonomous.RedPaths.LeftRedMid;
 import org.openftc.easyopencv.OpenCvCamera;
@@ -12,7 +12,7 @@ import org.openftc.easyopencv.OpenCvCameraRotation;
 
 public class MainRedLeft extends LinearOpMode  {
     OpenCvCamera camera;
-    BlueDetection blueDetection;
+    HSVBlueDetection blueDetection;
     String webcamName;
 
     LeftRedLeft leftPath;
@@ -59,7 +59,7 @@ public class MainRedLeft extends LinearOpMode  {
         camera = OpenCvCameraFactory.getInstance().createWebcam(hardwareMap.get(WebcamName.class, webcamName), cameraMonitorViewId);
 
         // initializing our Detection class (details on how it works at the top)
-        blueDetection = new BlueDetection(telemetry);
+        blueDetection = new HSVBlueDetection(telemetry);
 
         // yeah what this does is it gets the thing which uses the thing so we can get the thing
         /*

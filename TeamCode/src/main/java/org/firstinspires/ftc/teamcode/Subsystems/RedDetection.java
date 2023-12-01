@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.OpModes.Autonomous;
+package org.firstinspires.ftc.teamcode.Subsystems;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 import org.opencv.core.Core;
@@ -20,7 +20,7 @@ https://www.youtube.com/watch?v=JO7dqzJi8lw&ab_channel=FTCteamWolfCorpRobotics12
 
 I've added some comments abt stuff- Good luck!
  */
-public class RedDetetction extends OpenCvPipeline {
+public class RedDetection extends OpenCvPipeline {
     Telemetry telemetry;
     Mat mat = new Mat();
     public enum Location {
@@ -46,7 +46,7 @@ public class RedDetetction extends OpenCvPipeline {
             new Point(200, 75));
     static double PERCENT_COLOR_THRESHOLD = 0.4;
 
-    public RedDetetction(Telemetry t) { telemetry = t; }
+    public RedDetection(Telemetry t) { telemetry = t; }
 
     @Override
     public Mat processFrame(Mat input) {
