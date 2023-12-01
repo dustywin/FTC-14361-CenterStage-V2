@@ -239,12 +239,16 @@ public class Robot {
     {
         drone.resetDrone();
     }
+
     public void launchDrone()
     {
         drone.launch();
     }
 
-
+    public void setInBrake()
+    {
+        intakeSlide.setBrakeMode();
+    }
 }
 
 

@@ -74,19 +74,4 @@ public class Mecanum
     {
         imu.initialize(parameters);
     }
-
-    public double get_LF_Vel(){
-        return leftFront.getVelocity();
-    }
-
-    public double get_LR_Vel(){
-        return leftFront.getVelocity();
-    }
-    public double get_RF_Vel(){
-        return leftFront.getVelocity();
-    }
-    public double get_RR_Vel(){
-        return leftFront.getVelocity();
-    }
-
 }

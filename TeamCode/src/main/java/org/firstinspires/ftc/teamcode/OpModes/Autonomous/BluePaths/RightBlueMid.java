@@ -1,11 +1,15 @@
 package org.firstinspires.ftc.teamcode.OpModes.Autonomous.BluePaths;
 import com.acmerobotics.roadrunner.geometry.Pose2d;
-import com.acmerobotics.roadrunner.geometry.Vector2d;
 import com.acmerobotics.roadrunner.trajectory.Trajectory;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.hardware.HardwareMap;
+
 
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
+
+import org.firstinspires.ftc.robotcore.external.Telemetry;
+
 import org.firstinspires.ftc.teamcode.Commands.clawState;
 import org.firstinspires.ftc.teamcode.Commands.virtualFourBarExtensionState;
 import org.firstinspires.ftc.teamcode.Commands.virtualFourBarState;
@@ -21,27 +25,41 @@ import org.firstinspires.ftc.teamcode.OpModes.Autonomous.drive.SampleMecanumDriv
 
 
 @Autonomous(name = "RightBlueMid")
-public class RightBlueMid extends LinearOpMode
+public class RightBlueMid
 {
+
     public Robot bot;
     OpenCvCamera camera;
     HSVBlueDetection blueDetection;
     String webcamName;
     Pose2d myPose = new Pose2d(-36, 63, Math.toRadians(90));
-    @Override
-    public void runOpMode()
+
+
+    HardwareMap hardwareMap;
+    Telemetry telemetry;
+    public void rightBlueMidExecute(HardwareMap hardwareMap)
+
     {
+        this.hardwareMap = hardwareMap;
         SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap);
+
+        myPose = new Pose2d(-36, 63, Math.toRadians(90));
+
+        bot = new Robot(hardwareMap, telemetry);
+        bot.setInBrake();
 
         drive.setPoseEstimate(myPose);
 
         initCam();
 
         Trajectory pushPixel = drive.trajectoryBuilder(myPose)
-                .addTemporalMarker(0.1, () -> {
+                .addDisplacementMarker(0, () -> {
                     bot.setClawPosition(clawState.close);
-                    bot.setWristPosition(wristState.normal);
-                    bot.setVirtualFourBarPosition(virtualFourBarState.intaking, virtualFourBarExtensionState.extending);
+                    bot.setClawState(clawState.close);
+                })
+                .addDisplacementMarker(5, () -> {
+                    bot.setVirtualFourBarPosition(virtualFourBarState.init,virtualFourBarExtensionState.extending);
+                    bot.setVirtualFourBarState(virtualFourBarState.init);
                 })
                 .back(32)
                 .build();
@@ -64,8 +82,7 @@ public class RightBlueMid extends LinearOpMode
                 .build();
 
         Trajectory toBackBoard = drive.trajectoryBuilder(passThroughGate.end())
-                .splineTo(new Vector2d(48, 36), Math.toRadians(180))
-                //.lineToLinearHeading(new Pose2d(48, 36, Math.toRadians(180)))
+                .lineToLinearHeading(new Pose2d(54, 30, Math.toRadians(180)))
                 .addTemporalMarker(0.5, () -> {
                     bot.setWristPosition(wristState.sideways);
                     bot.setVirtualFourBarPosition(virtualFourBarState.outtaking, virtualFourBarExtensionState.extending);
@@ -84,14 +101,14 @@ public class RightBlueMid extends LinearOpMode
                 .build();
 
         Trajectory towardsPark = drive.trajectoryBuilder(moveFromBackBoard.end())
-                .strafeLeft(10)
+                .strafeLeft(24)
                 .build();
 
         Trajectory park = drive.trajectoryBuilder(towardsPark.end())
-                .back(15)
+                .back(16)
                 .build();
 
-        waitForStart();
+
 
         /* to get detection
         switch (blueDetection.getLocation()) {
@@ -110,11 +127,6 @@ public class RightBlueMid extends LinearOpMode
         camera.stopStreaming();
 
 
-        if(isStopRequested())
-        {
-            return;
-        }
-
         drive.followTrajectory(pushPixel);
         drive.followTrajectory(backUp);
         drive.followTrajectory(moveFromTape);
@@ -126,6 +138,7 @@ public class RightBlueMid extends LinearOpMode
         drive.followTrajectory(park);
 
     }
+
 
     private void initCam() {
 
@@ -166,4 +179,6 @@ public class RightBlueMid extends LinearOpMode
             }
         });
     }
+
+
 }

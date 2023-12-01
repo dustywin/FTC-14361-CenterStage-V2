@@ -15,8 +15,8 @@ public class IntakeSlide {
     int retractedVal = robotConstants.intakeSlide.retracted;
     int timer = 0;
 
-    public IntakeSlide(HardwareMap hardwareMap) {
-
+    public IntakeSlide(HardwareMap hardwareMap)
+    {
         intakeSlideMotor = hardwareMap.get(DcMotorEx.class, "intakeSlideMotor");
 
         intakeSlideMotor.setMode(DcMotorEx.RunMode.STOP_AND_RESET_ENCODER);
@@ -62,7 +62,8 @@ public class IntakeSlide {
         }
     }
 
-    public void setPosition(int pos) {
+    public void setPosition(int pos)
+    {
         intakeSlideMotor.setTargetPosition(pos);
 
         intakeSlideMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
@@ -70,15 +71,22 @@ public class IntakeSlide {
         intakeSlideMotor.setPower(power);
     }
 
-    public double getIntakeSlidePosition() {
+    public double getIntakeSlidePosition()
+    {
         double position = intakeSlideMotor.getCurrentPosition();
         return position;
     }
 
-    public void forceThatJawn() {
+    public void forceThatJawn()
+    {
         intakeSlideMotor.setTargetPosition(-8);
         intakeSlideMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
         intakeSlideMotor.setPower(1);
+    }
+
+    public void setBrakeMode()
+    {
+        intakeSlideMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
     }
 }

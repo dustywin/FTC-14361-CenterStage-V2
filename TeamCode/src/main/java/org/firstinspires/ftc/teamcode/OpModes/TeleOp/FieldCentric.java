@@ -74,11 +74,6 @@ public class FieldCentric extends OpMode {
         telemetry.addLine("State of V4B: init / " + bot.virtualFourBar.getvirtualFourBarExtensionState());
         telemetry.addLine("Right Claw Position: " + bot.claw.getRightClawPosition());
         telemetry.addLine("Left Claw Position: " + bot.claw.getLeftClawPosition());
-        telemetry.addLine("Servo Power" + bot.drone.getInfo());
-        telemetry.addLine("Drivetrain LF Velocity: " + bot.driveTrain.get_LF_Vel());
-        telemetry.addLine("Drivetrain LR Velocity: " + bot.driveTrain.get_LR_Vel());
-        telemetry.addLine("Drivetrain RF Velocity: " + bot.driveTrain.get_RF_Vel());
-        telemetry.addLine("Drivetrain RR Velocity: " + bot.driveTrain.get_RR_Vel());
 
 
         telemetry.addLine("Intake Slide Encoder Tick Count " + count);
