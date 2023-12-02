@@ -90,8 +90,18 @@ public class LeftBluePark extends LinearOpMode {
 
                 })
 
+                .lineToConstantHeading(new Vector2d(60, 25.5))
+                .addDisplacementMarker(0, () -> {
 
+
+                    bot.setClawState(clawState.open);
+                    bot.setClawPosition(clawState.open);
+
+
+                })
                 .build();
+
+                
 
 
 //        TrajectorySequence toLeftTape = drive.trajectorySequenceBuilder(leftStart)
