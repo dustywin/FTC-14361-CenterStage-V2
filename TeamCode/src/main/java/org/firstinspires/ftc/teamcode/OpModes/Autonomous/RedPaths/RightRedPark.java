@@ -35,10 +35,11 @@ public class RightRedPark extends LinearOpMode {
     String webcamName;
     @Override
     public void runOpMode() {
+        int rOffset = -10;
 
         bot = new Robot(hardwareMap, telemetry);
         SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap);
-        Pose2d myPose = new Pose2d(16, -63, Math.toRadians(90));
+        Pose2d myPose = new Pose2d(8, -63, Math.toRadians(270));
 
 
         Pose2d newStart = new Pose2d(25,-50,270);
@@ -110,17 +111,17 @@ public class RightRedPark extends LinearOpMode {
                     bot.setClawPosition(clawState.close);
                 })
 
-                .lineToLinearHeading(new Pose2d(12, -31, Math.toRadians(0)))
+                .lineToLinearHeading(new Pose2d(12, -31, Math.toRadians(0 + rOffset)))
                 .waitSeconds(1)
-                .lineToLinearHeading(new Pose2d(10, -31, Math.toRadians(0)))
+                .lineToLinearHeading(new Pose2d(10, -31, Math.toRadians(0 + rOffset)))
                 .waitSeconds(1)
-                .lineToLinearHeading(new Pose2d(55, -36, Math.toRadians(180)))
+                .lineToLinearHeading(new Pose2d(52, -50, Math.toRadians(180 + rOffset)))
                 .waitSeconds(1)
-                .lineToLinearHeading(new Pose2d(47, -36, Math.toRadians(180)))
+                .lineToLinearHeading(new Pose2d(47, -50, Math.toRadians(180 + rOffset)))
                 .waitSeconds(1)
-                .lineToLinearHeading(new Pose2d(47, -66, Math.toRadians(180)))
-                .lineToLinearHeading(new Pose2d(62, -66, Math.toRadians(180)))
-
+                .lineToLinearHeading(new Pose2d(47, -78, Math.toRadians(180 + rOffset)))
+                .waitSeconds(1)
+                .lineToLinearHeading(new Pose2d(57, -78, Math.toRadians(180 + rOffset)))
 
                 .addTemporalMarker(3,() -> {
                     bot.setVirtualFourBarPosition(virtualFourBarState.init, virtualFourBarExtensionState.extending);
@@ -141,7 +142,6 @@ public class RightRedPark extends LinearOpMode {
                     bot.setVirtualFourBarPosition(virtualFourBarState.init, virtualFourBarExtensionState.extending);
                 })
                 .build();
-
 
         TrajectorySequence toRightTape = drive.trajectorySequenceBuilder(newStart)
                 .lineToConstantHeading(new Vector2d(25, -25.5))
