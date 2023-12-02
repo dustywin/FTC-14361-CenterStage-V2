@@ -40,7 +40,7 @@ public class RightRedPark extends LinearOpMode {
         SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap);
 
 
-        Pose2d newStart = new Pose2d(25,-50,90);
+        Pose2d newStart = new Pose2d(25,-50,270);
 
         initCam();
 
@@ -48,7 +48,7 @@ public class RightRedPark extends LinearOpMode {
         drive.setPoseEstimate(newStart);
 
         TrajectorySequence toCenterTape = drive.trajectorySequenceBuilder(newStart)
-                .lineToConstantHeading(new Vector2d(25, -23))
+                .lineToConstantHeading(new Vector2d(25, -21))
 
                 .addTemporalMarker(0, () -> {
 
@@ -58,7 +58,8 @@ public class RightRedPark extends LinearOpMode {
                     bot.setClawPosition(clawState.close);
                     bot.setClawState(clawState.close);
                 })
-                .addTemporalMarker(1, () -> {
+                .waitSeconds(1)
+                .addTemporalMarker(3, () -> {
                     bot.setVirtualFourBarPosition(virtualFourBarState.init, virtualFourBarExtensionState.extending);
                     bot.setVirtualFourBarState(virtualFourBarState.init);
 
@@ -66,25 +67,27 @@ public class RightRedPark extends LinearOpMode {
                     bot.setWristPosition(wristState.sideways);
                     bot.setWristState(wristState.sideways);
                 })
-                .lineToConstantHeading(new Vector2d(25, -27))
-                .addTemporalMarker(2, () -> {
+                .waitSeconds(1)
+                .lineToConstantHeading(new Vector2d(25, -30))
+                .addTemporalMarker(5, () -> {
 
                     bot.setWristPosition(wristState.sideways);
                     bot.setWristState(wristState.sideways);
                 })
+                .waitSeconds(1)
 
-                .lineToLinearHeading(new Pose2d(62, -25.5, Math.toRadians(180)))
-                .addTemporalMarker(3, () -> {
+                .lineToLinearHeading(new Pose2d(61, -25.5, Math.toRadians(180)))
+                .addTemporalMarker(8, () -> {
 
                     bot.setVirtualFourBarPosition(virtualFourBarState.outtaking, virtualFourBarExtensionState.extending);
                     bot.setVirtualFourBarState(virtualFourBarState.outtaking);
 
-                    bot.outtakeSlide.setPosition(150);
+                    bot.setOuttakeSlidePosition(outtakeSlidesState.LOWOUT, extensionState.extending);
 
                 })
-
+                .waitSeconds(.25)
                 .lineToConstantHeading(new Vector2d(60, -25.5))
-                .addTemporalMarker(3.5, () -> {
+                .addTemporalMarker(8.5, () -> {
 
 
                     bot.setClawState(clawState.open);
@@ -92,11 +95,150 @@ public class RightRedPark extends LinearOpMode {
 
 
                 })
+                .waitSeconds(.25)
+                .lineToConstantHeading(new Vector2d(55, -25.5))
+
+                .lineToConstantHeading(new Vector2d(60, -52))
+
+                .lineToConstantHeading(new Vector2d(68, -52))
+
+                .addTemporalMarker(8.9,() -> {
+                    bot.setOuttakeSlidePosition(outtakeSlidesState.STATION, extensionState.extending);
+                    bot.setVirtualFourBarPosition(virtualFourBarState.init, virtualFourBarExtensionState.extending);
+                })
                 .waitSeconds(1)
-                .lineToConstantHeading(new Vector2d(60, -48))
-                .waitSeconds(1)
-                .lineToConstantHeading(new Vector2d(65, -48))
+
                 .build();
+
+        TrajectorySequence toRightTape = drive.trajectorySequenceBuilder(newStart)
+                .lineToConstantHeading(new Vector2d(25, -25.5))
+
+                .addTemporalMarker(0, () -> {
+
+                    bot.setVirtualFourBarPosition(virtualFourBarState.intaking,virtualFourBarExtensionState.extending);
+                    bot.setVirtualFourBarState(virtualFourBarState.intaking);
+
+                    bot.setClawPosition(clawState.close);
+                    bot.setClawState(clawState.close);
+                })
+                .addTemporalMarker(3, () -> {
+                    bot.setVirtualFourBarPosition(virtualFourBarState.init, virtualFourBarExtensionState.extending);
+                    bot.setVirtualFourBarState(virtualFourBarState.init);
+
+
+                    bot.setWristPosition(wristState.sideways);
+                    bot.setWristState(wristState.sideways);
+                })
+                .lineToLinearHeading(new Pose2d(20, -25.5, Math.toRadians(0)))
+                .addTemporalMarker(5, () -> {
+
+                    bot.setWristPosition(wristState.sideways);
+                    bot.setWristState(wristState.sideways);
+                })
+
+                .lineToLinearHeading(new Pose2d(61, -24, Math.toRadians(180)))
+                .addTemporalMarker(8, () -> {
+
+                    bot.setVirtualFourBarPosition(virtualFourBarState.outtaking, virtualFourBarExtensionState.extending);
+                    bot.setVirtualFourBarState(virtualFourBarState.outtaking);
+
+                    bot.setOuttakeSlidePosition(outtakeSlidesState.LOWOUT, extensionState.extending);
+
+                })
+                .waitSeconds(.25)
+
+                .lineToConstantHeading(new Vector2d(60, -24))
+                .addTemporalMarker(8.4, () -> {
+
+
+                    bot.setClawState(clawState.open);
+                    bot.setClawPosition(clawState.open);
+
+
+                })
+                .waitSeconds(.25)
+                .lineToConstantHeading(new Vector2d(55, -24))
+
+                .lineToConstantHeading(new Vector2d(60, -52))
+
+                .lineToConstantHeading(new Vector2d(68, -52))
+
+                .addTemporalMarker(9,() -> {
+                    bot.setOuttakeSlidePosition(outtakeSlidesState.STATION, extensionState.extending);
+                    bot.setVirtualFourBarPosition(virtualFourBarState.init, virtualFourBarExtensionState.extending);
+                })
+                .waitSeconds(1)
+
+                .build();
+
+        TrajectorySequence toLeftTape = drive.trajectorySequenceBuilder(newStart)
+                .lineToConstantHeading(new Vector2d(25, -25.5))
+
+                .addTemporalMarker(0, () -> {
+
+                    bot.setVirtualFourBarPosition(virtualFourBarState.intaking,virtualFourBarExtensionState.extending);
+                    bot.setVirtualFourBarState(virtualFourBarState.intaking);
+
+                    bot.setClawPosition(clawState.close);
+                    bot.setClawState(clawState.close);
+                })
+                .addTemporalMarker(3.5, () -> {
+                    bot.setVirtualFourBarPosition(virtualFourBarState.init, virtualFourBarExtensionState.extending);
+                    bot.setVirtualFourBarState(virtualFourBarState.init);
+
+
+                    bot.setWristPosition(wristState.sideways);
+                    bot.setWristState(wristState.sideways);
+                })
+                .lineToLinearHeading(new Pose2d(30, -25.5, Math.toRadians(270)))
+                .addTemporalMarker(5.5, () -> {
+
+                    bot.setWristPosition(wristState.sideways);
+                    bot.setWristState(wristState.sideways);
+                })
+
+                .lineToConstantHeading(new Vector2d(25, -25.5))
+
+                .lineToConstantHeading(new Vector2d(35, -25.5))
+
+                .lineToLinearHeading(new Pose2d(35, -61, Math.toRadians(270)))
+                .lineToConstantHeading(new Vector2d(35, -60))
+
+                .addTemporalMarker(8.25, () -> {
+
+                    bot.setVirtualFourBarPosition(virtualFourBarState.outtaking, virtualFourBarExtensionState.extending);
+                    bot.setVirtualFourBarState(virtualFourBarState.outtaking);
+
+                    bot.setOuttakeSlidePosition(outtakeSlidesState.LOWOUT, extensionState.extending);
+
+                })
+                .waitSeconds(.25)
+
+                .lineToConstantHeading(new Vector2d(60, -20))
+                .addTemporalMarker(8.6, () -> {
+
+
+                    bot.setClawState(clawState.open);
+                    bot.setClawPosition(clawState.open);
+
+
+                })
+                .waitSeconds(.25)
+                .lineToConstantHeading(new Vector2d(55, -20))
+
+                .lineToConstantHeading(new Vector2d(60, -52))
+
+                .lineToConstantHeading(new Vector2d(68, -52))
+
+                .addTemporalMarker(9,() -> {
+                    bot.setOuttakeSlidePosition(outtakeSlidesState.STATION, extensionState.extending);
+                    bot.setVirtualFourBarPosition(virtualFourBarState.init, virtualFourBarExtensionState.extending);
+                })
+                .waitSeconds(1)
+
+                .build();
+
+
 
 
 
