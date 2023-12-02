@@ -212,7 +212,11 @@ public class LeftBluePark extends LinearOpMode {
         bot.setIntakeSlideState(intakeSlidesState.STATION);
         bot.setIntakeSlidePosition(intakeSlidesState.STATION, extensionState.extending);
 
+        drive.followTrajectory(newToCenterTape);
+        drive.followTrajectory(toBackboardFromCenter);
+        drive.followTrajectory(leaveBackBoardfromCenter);
 
+        /*
         switch (blueDetection.getLocation()) {
             case LEFT:
 
@@ -234,6 +238,8 @@ public class LeftBluePark extends LinearOpMode {
                 break;
 
         }
+
+         */
 
 
         // to save battery
