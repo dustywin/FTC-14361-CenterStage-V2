@@ -66,7 +66,7 @@ public class RedDetection extends OpenCvPipeline {
         // *** don't forget to divide the values by 2 if you use Imgproc.COLOR_RBG2HSV
 
         // in this case, we using dark blue to light blue
-        Scalar lowHSV = new Scalar(175, 150, 81);
+        Scalar lowHSV = new Scalar(170, 125, 81);
         Scalar highHSV = new Scalar(179, 255, 255);
 
 
