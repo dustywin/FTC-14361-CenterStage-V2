@@ -191,12 +191,14 @@ public class LeftBluePark extends LinearOpMode {
 
         TrajectorySequence leftTapeSpline = drive.trajectorySequenceBuilder(newStart)
                 // spline
-                .lineToLinearHeading(new Pose2d(30, 30, Math.toRadians(90)))
+                .lineToLinearHeading(new Pose2d(32, 30, Math.toRadians(120)))
+                .waitSeconds(.25)
+                .lineToLinearHeading(new Pose2d(20, 40, Math.toRadians(180)))
                 .waitSeconds(.25)
                 .lineToLinearHeading(new Pose2d(45, 40, Math.toRadians(180)))
                 .waitSeconds(.25)
                 // add outtake here, then another wait .25s
-                .lineToLinearHeading(new Pose2d(62, 32, Math.toRadians(180)))
+                .lineToLinearHeading(new Pose2d(61, 28, Math.toRadians(180)))
                 // output on board
                 .build();
 
