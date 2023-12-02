@@ -62,10 +62,68 @@ public class LeftBluePark extends LinearOpMode {
 
                 .build();
 
+        TrajectorySequence toCenterTape = drive.trajectorySequenceBuilder(newStart)
+                .lineToLinearHeading(new Pose2d(25, 25, Math.toRadians(0)))
+                .addDisplacementMarker(0, () -> {
+
+                    bot.setVirtualFourBarPosition(virtualFourBarState.intaking, virtualFourBarExtensionState.extending);
+                    bot.setVirtualFourBarState(virtualFourBarState.intaking);
+
+                    bot.setClawPosition(clawState.close);
+                    bot.setClawState(clawState.close);
+
+                })
+                .waitSeconds(.25)
+
+
+                .addDisplacementMarker(20, () -> {
+                    bot.setVirtualFourBarPosition(virtualFourBarState.init, virtualFourBarExtensionState.extending);
+                    bot.setVirtualFourBarState(virtualFourBarState.init);
+                })
+                .waitSeconds(.25)
+                .lineToLinearHeading(new Pose2d(25, 27, Math.toRadians(270)))
+                .addDisplacementMarker(0, () -> {
+
+                    bot.activeIntake.setActiveIntakePower(.2);
+
+                    bot.setWristPosition(wristState.sideways);
+                    bot.setWristState(wristState.sideways);
+                })
+                .waitSeconds(.3)
+                .lineToLinearHeading(new Pose2d(62, 25.5, Math.toRadians(180)))
+                .addDisplacementMarker(0, () -> {
+
+                    bot.setVirtualFourBarPosition(virtualFourBarState.outtaking, virtualFourBarExtensionState.extending);
+                    bot.setVirtualFourBarState(virtualFourBarState.outtaking);
+
+
+                })
+                .addDisplacementMarker(1, () -> {
+
+
+                    bot.outtakeSlide.setPosition(100);
+
+
+                })
+                .waitSeconds(.25)
+
+
+                .lineToLinearHeading(new Pose2d(60, 25.5, Math.toRadians(180)))
+                .addDisplacementMarker(0, () -> {
+
+
+                    bot.setClawState(clawState.open);
+                    bot.setClawPosition(clawState.open);
+
+
+                })
+                .build();
+
+
 
         Trajectory newToCenterTape = drive.trajectoryBuilder(newStart)
                 // .lineToConstantHeading(new Vector2d(25, 20))
-                .lineToLinearHeading(new Pose2d(25, 25, Math.toRadians(179)))
+                .lineToLinearHeading(new Pose2d(25, 25, Math.toRadians(0)))
 
                 .addDisplacementMarker(0, () -> {
 
@@ -87,15 +145,17 @@ public class LeftBluePark extends LinearOpMode {
 
         Trajectory toCenterTapePathTwo = drive.trajectoryBuilder(newToCenterTape.end())
                 // .lineToConstantHeading(new Vector2d(25, 20))
-                .lineToLinearHeading(new Pose2d(25, 27, Math.toRadians(270)))
+                .lineToLinearHeading(new Pose2d(25, 27, Math.toRadians(90)))
                 .addDisplacementMarker(0, () -> {
 
 
                     bot.activeIntake.setActiveIntakePower(-.2);
 
+
                     bot.setWristPosition(wristState.sideways);
                     bot.setWristState(wristState.sideways);
                 })
+
                 .build();
 
 
@@ -163,7 +223,7 @@ public class LeftBluePark extends LinearOpMode {
 
 
 
-        Trajectory toBackboardFromCenter = drive.trajectoryBuilder(newToCenterTape.end())
+        Trajectory toBackboardFromCenter = drive.trajectoryBuilder(toCenterTapePathTwo.end())
                 .lineToLinearHeading(new Pose2d(62, 25.5, Math.toRadians(180)))
                 .addDisplacementMarker(0, () -> {
 
@@ -244,9 +304,7 @@ public class LeftBluePark extends LinearOpMode {
                 break;
 
             case RIGHT:
-                drive.followTrajectory(toRightTape);
-                drive.followTrajectory(toBackboardFromRight);
-                drive.followTrajectory(leaveBackboardFromRight);
+                drive.followTrajectorySequence(toCenterTape);
 
                 break;
             case MIDDLE:

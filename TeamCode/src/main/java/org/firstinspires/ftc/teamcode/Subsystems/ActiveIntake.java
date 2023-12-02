@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.Subsystems;
 
+import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
@@ -12,6 +13,7 @@ public class ActiveIntake
     public ActiveIntake(HardwareMap hardwareMap)
     {
         activeIntake = hardwareMap.get(DcMotorEx.class, "activeIntake");
+        activeIntake.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
     }
 
     public void setActiveIntakePosition(activeIntakeState activeIntakeState)
