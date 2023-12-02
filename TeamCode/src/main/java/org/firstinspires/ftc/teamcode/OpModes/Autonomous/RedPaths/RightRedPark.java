@@ -233,17 +233,19 @@ public class RightRedPark extends LinearOpMode {
 
         switch (redDetection.getLocation()) {
             case LEFT:
-
+                drive.setPoseEstimate(myPose);
+                drive.followTrajectorySequence(toLeftTape);
                 break;
 
             case RIGHT:
-
-               drive.followTrajectorySequence(toCenterTape);
+                drive.setPoseEstimate(newStart);
+               drive.followTrajectorySequence(toRightTape);
 
                 break;
             case MIDDLE:
 
-
+                drive.setPoseEstimate(newStart);
+                drive.followTrajectorySequence(toCenterTape);
                 break;
 
         }
