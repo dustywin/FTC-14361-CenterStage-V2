@@ -447,7 +447,17 @@ public class LeftBluePark extends LinearOpMode {
                 })
                 .build();
 
+        TrajectorySequence toLeftTape = drive.trajectorySequenceBuilder(newStart)
+                .lineToLinearHeading(new Pose2d(25, 40, Math.toRadians(90)))
+                .waitSeconds(.25)
+                .lineToLinearHeading(new Pose2d(45, 40, Math.toRadians(90)))
+                .waitSeconds(.25)
+                .lineToLinearHeading(new Pose2d(45, 22, Math.toRadians(180)))
+                .waitSeconds(.25)
+                // add outtake here, then another wait .25s
+                .lineToLinearHeading(new Pose2d(61, 358, Math.toRadians(180)))
 
+                .build();
 
 
         waitForStart();
@@ -492,7 +502,7 @@ public class LeftBluePark extends LinearOpMode {
         switch (blueDetection.getLocation()) {
             case LEFT:
 
-              //  drive.followTrajectorySequence(toLeftTape);
+                drive.followTrajectorySequence(toLeftTape);
 
                 break;
 
