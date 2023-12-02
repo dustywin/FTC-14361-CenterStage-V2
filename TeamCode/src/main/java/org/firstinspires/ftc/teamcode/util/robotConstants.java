@@ -72,6 +72,9 @@ public class robotConstants
         public static double rightClose = .58;
         public static double leftOpen = .9;
         public static double rightOpen = .33;
+        public static double autoLeftClose = .65;
+        public static double autoRightClose = .63;
+
 
         public static double rightCloseOnePixel = .58;
 

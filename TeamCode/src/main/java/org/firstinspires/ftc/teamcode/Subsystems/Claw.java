@@ -54,6 +54,11 @@ public class Claw
         rightHand.setPosition(robotConstants.Claw.rightClose);
     }
 
+    public void autoClose(){
+        leftHand.setPosition(robotConstants.Claw.autoLeftClose);
+        rightHand.setPosition(robotConstants.Claw.autoRightClose);
+    }
+
     public double getLeftHandPosition()
     {
         return leftHand.getPosition();
