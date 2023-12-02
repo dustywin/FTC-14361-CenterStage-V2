@@ -103,23 +103,23 @@ public class RightRedPark extends LinearOpMode {
 
                 .build();
 
-        TrajectorySequence toRightTape = drive.trajectorySequenceBuilder(myPose)
+        TrajectorySequence toLeftTape = drive.trajectorySequenceBuilder(myPose)
                 .addTemporalMarker(0, () -> {
                     bot.setWristPosition(wristState.normal);
                     bot.setVirtualFourBarPosition(virtualFourBarState.intaking, virtualFourBarExtensionState.extending);
                     bot.setClawPosition(clawState.close);
                 })
 
-                .lineToLinearHeading(new Pose2d(12, 31, Math.toRadians(0)))
+                .lineToLinearHeading(new Pose2d(12, -31, Math.toRadians(0)))
                 .waitSeconds(1)
-                .lineToLinearHeading(new Pose2d(10, 31, Math.toRadians(0)))
+                .lineToLinearHeading(new Pose2d(10, -31, Math.toRadians(0)))
                 .waitSeconds(1)
-                .lineToLinearHeading(new Pose2d(55, 36, Math.toRadians(180)))
+                .lineToLinearHeading(new Pose2d(55, -36, Math.toRadians(180)))
                 .waitSeconds(1)
-                .lineToLinearHeading(new Pose2d(47, 36, Math.toRadians(180)))
+                .lineToLinearHeading(new Pose2d(47, -36, Math.toRadians(180)))
                 .waitSeconds(1)
-                .lineToLinearHeading(new Pose2d(47, 66, Math.toRadians(180)))
-                .lineToLinearHeading(new Pose2d(62, 66, Math.toRadians(180)))
+                .lineToLinearHeading(new Pose2d(47, -66, Math.toRadians(180)))
+                .lineToLinearHeading(new Pose2d(62, -66, Math.toRadians(180)))
 
 
                 .addTemporalMarker(3,() -> {
@@ -143,7 +143,7 @@ public class RightRedPark extends LinearOpMode {
                 .build();
 
 
-        TrajectorySequence toLeftTape = drive.trajectorySequenceBuilder(newStart)
+        TrajectorySequence toRightTape = drive.trajectorySequenceBuilder(newStart)
                 .lineToConstantHeading(new Vector2d(25, -25.5))
 
 
