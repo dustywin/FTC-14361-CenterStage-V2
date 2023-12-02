@@ -82,21 +82,21 @@ public class LeftRedRight extends LinearOpMode
                 .back(16)
                 .build();
 
-        waitForStart();
+                waitForStart();
 
-        if(isStopRequested())
-        {
-            return;
+                if(isStopRequested())
+                {
+                    return;
+                }
+
+                drive.followTrajectory(ejectPixel);
+                drive.followTrajectory(backUp);
+                drive.followTrajectory(behindGate);
+                drive.followTrajectory(passThroughGate);
+                drive.followTrajectory(toBackBoard);
+                drive.followTrajectory(moveFromBackBoard);
+                drive.followTrajectory(towardsPark);
+                drive.followTrajectory(park);
+
+            }
         }
-
-        drive.followTrajectory(ejectPixel);
-        drive.followTrajectory(backUp);
-        drive.followTrajectory(behindGate);
-        drive.followTrajectory(passThroughGate);
-        drive.followTrajectory(toBackBoard);
-        drive.followTrajectory(moveFromBackBoard);
-        drive.followTrajectory(towardsPark);
-        drive.followTrajectory(park);
-
-    }
-}

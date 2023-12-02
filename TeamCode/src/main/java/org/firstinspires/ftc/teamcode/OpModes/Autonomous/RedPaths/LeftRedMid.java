@@ -17,12 +17,10 @@ public class LeftRedMid extends LinearOpMode
     Robot bot;
     Pose2d myPose = new Pose2d(-36, -63, Math.toRadians(-90));
 
-    public SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap);
-    public Trajectory backUp, behindGate, passThroughGate, toBackBoard, moveFromBackBoard, towardsPark, park, moveFromTape, pushPixel;
-
     @Override
     public void runOpMode()
     {
+        SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap);
         bot = new Robot(hardwareMap, telemetry);
         bot.setInBrake();
 
@@ -33,11 +31,7 @@ public class LeftRedMid extends LinearOpMode
                     bot.setClawPosition(clawState.close);
                     bot.setClawState(clawState.close);
                 })
-                .addDisplacementMarker(5, () -> {
-                    bot.setVirtualFourBarPosition(virtualFourBarState.init,virtualFourBarExtensionState.extending);
-                    bot.setVirtualFourBarState(virtualFourBarState.init);
-                })
-                .back(32)
+                .back(31)
                 .build();
 
         Trajectory backUp = drive.trajectoryBuilder(pushPixel.end())
@@ -48,17 +42,25 @@ public class LeftRedMid extends LinearOpMode
                 .strafeRight(20)
                 .build();
 
-        Trajectory behindGate = drive.trajectoryBuilder(moveFromTape.end())
-                .back(27)
+        Trajectory behindGate1 = drive.trajectoryBuilder(moveFromTape.end())
+                .back(30)
                 .build();
 
-        Trajectory passThroughGate = drive.trajectoryBuilder(behindGate.end())
-                .strafeLeft(70)
+        Trajectory behindGate2 = drive.trajectoryBuilder(behindGate1.end())
+                .lineToLinearHeading(new Pose2d(-36, -6, Math.toRadians(-180)))
+                .build();
+
+        Trajectory passThroughGate1 = drive.trajectoryBuilder(behindGate2.end())
+                .back(60)
                 //lineToLinearHeading strafe dist. = 80
                 .build();
 
-        Trajectory toBackBoard = drive.trajectoryBuilder(passThroughGate.end())
-                .lineToLinearHeading(new Pose2d(54, -30, Math.toRadians(180)))
+        Trajectory passThroughGate2 = drive.trajectoryBuilder(behindGate2.end())
+                .strafeRight(29)
+                .build();
+
+        Trajectory toBackBoard = drive.trajectoryBuilder(passThroughGate2.end())
+                .lineToLinearHeading(new Pose2d(57, -29, Math.toRadians(-180)))
                 .addTemporalMarker(0.5, () -> {
                     bot.setWristPosition(wristState.sideways);
                     bot.setVirtualFourBarPosition(virtualFourBarState.outtaking, virtualFourBarExtensionState.extending);
@@ -69,11 +71,12 @@ public class LeftRedMid extends LinearOpMode
                 })
                 .build();
 
+
         Trajectory moveFromBackBoard = drive.trajectoryBuilder(toBackBoard.end())
-                .addTemporalMarker(0.5,() -> {
-                    bot.setVirtualFourBarPosition(virtualFourBarState.init, virtualFourBarExtensionState.extending);
-                })
-                .forward(5)
+//                .addTemporalMarker(0.5,() -> {
+//                    bot.setVirtualFourBarPosition(virtualFourBarState.init, virtualFourBarExtensionState.extending);
+//                })
+                .forward(10)
                 .build();
 
         Trajectory towardsPark = drive.trajectoryBuilder(moveFromBackBoard.end())
@@ -81,7 +84,7 @@ public class LeftRedMid extends LinearOpMode
                 .build();
 
         Trajectory park = drive.trajectoryBuilder(towardsPark.end())
-                .back(16)
+                .back(20)
                 .build();
 
         waitForStart();
@@ -91,17 +94,13 @@ public class LeftRedMid extends LinearOpMode
             return;
         }
 
-
-
-    }
-
-    public void leftRedMidExecute(){
-
         drive.followTrajectory(pushPixel);
         drive.followTrajectory(backUp);
         drive.followTrajectory(moveFromTape);
-        drive.followTrajectory(behindGate);
-        drive.followTrajectory(passThroughGate);
+        drive.followTrajectory(behindGate1);
+        drive.followTrajectory(behindGate2);
+        drive.followTrajectory(passThroughGate1);
+        drive.followTrajectory(passThroughGate2);
         drive.followTrajectory(toBackBoard);
         drive.followTrajectory(moveFromBackBoard);
         drive.followTrajectory(towardsPark);
