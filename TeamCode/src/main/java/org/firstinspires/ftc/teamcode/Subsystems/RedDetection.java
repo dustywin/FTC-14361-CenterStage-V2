@@ -44,7 +44,7 @@ public class RedDetection extends OpenCvPipeline {
     static final Rect MIDDLE_ROI = new Rect(
             new Point(140, 35),
             new Point(200, 75));
-    static double PERCENT_COLOR_THRESHOLD = 0.4;
+    static double PERCENT_COLOR_THRESHOLD = 0.3;
 
     public RedDetection(Telemetry t) { telemetry = t; }
 
@@ -66,8 +66,8 @@ public class RedDetection extends OpenCvPipeline {
         // *** don't forget to divide the values by 2 if you use Imgproc.COLOR_RBG2HSV
 
         // in this case, we using dark blue to light blue
-        Scalar lowHSV = new Scalar(5.5, 209, 132);
-        Scalar highHSV = new Scalar(5.5, 255, 255);
+        Scalar lowHSV = new Scalar(175, 150, 81);
+        Scalar highHSV = new Scalar(179, 255, 255);
 
 
         // this shows us the stuff in our range (in this case blue)
@@ -83,9 +83,9 @@ public class RedDetection extends OpenCvPipeline {
         right.release();
         middle.release();
 
-        telemetry.addData("Left raw value", (int) Core.sumElems(right).val[0]);
+        telemetry.addData("Right raw value", (int) Core.sumElems(right).val[0]);
         telemetry.addData("Middle raw value", (int) Core.sumElems(middle).val[0]);
-        telemetry.addData("Left percentage", Math.round(rightValue * 100) + "%");
+        telemetry.addData("Right percentage", Math.round(rightValue * 100) + "%");
         telemetry.addData("Middle percentage", Math.round(middleValue * 100) + "%");
 
         boolean tseRight = rightValue > PERCENT_COLOR_THRESHOLD;
@@ -126,7 +126,7 @@ public class RedDetection extends OpenCvPipeline {
         Scalar tseDetected = new Scalar(0, 255, 0);
 
         // depending on where the TSEe is, or where it isn't, the color of the rectangle will change
-        Imgproc.rectangle(mat, RIGHT_ROI, location == Location.LEFT? tseDetected:noTSE);
+        Imgproc.rectangle(mat, RIGHT_ROI, location == Location.RIGHT? tseDetected:noTSE);
         Imgproc.rectangle(mat, MIDDLE_ROI, location == Location.MIDDLE? tseDetected:noTSE);
 
         return mat;
