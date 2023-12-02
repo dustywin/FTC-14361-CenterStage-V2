@@ -51,24 +51,16 @@ public class LeftBluePark extends LinearOpMode {
 
 
 
-        TrajectorySequence toLeftTape = drive.trajectorySequenceBuilder(backStart)
-                .lineToLinearHeading(new Pose2d(25, 40))
-                .waitSeconds(.25)
-                .lineToLinearHeading(new Pose2d(45, 40, Math.toRadians(270)))
-                .waitSeconds(.25)
-                .lineToLinearHeading(new Pose2d(45, 22))
-                .waitSeconds(.25)
-                // add outtake here, then another wait .25s
-                .lineToLinearHeading(new Pose2d(60, 28))
 
-                .build();
-
-        TrajectorySequence toCenterTape = drive.trajectorySequenceBuilder(backStart)
-                .lineToLinearHeading(new Pose2d(28, 45))
+        TrajectorySequence toCenterTape = drive.trajectorySequenceBuilder(newStart)
+                .lineToLinearHeading(new Pose2d(28, 45, Math.toRadians(270)))
                 .waitSeconds(.25)
-                .lineToLinearHeading(new Pose2d(28, 20))
+                .lineToLinearHeading(new Pose2d(28, 20, Math.toRadians(270)))
                 .waitSeconds(.25) // add outtake here, then another wait .25
+                .lineToLinearHeading(new Pose2d(60, 35, Math.toRadians(180)))
+
                 .build();
+
 
         Trajectory newToCenterTape = drive.trajectoryBuilder(newStart)
                 // .lineToConstantHeading(new Vector2d(25, 20))
@@ -185,23 +177,20 @@ public class LeftBluePark extends LinearOpMode {
 //            bot.setClawState(clawState.close);
 //                })
 
+        TrajectorySequence toLeftTape = drive.trajectorySequenceBuilder(newStart)
+                .lineToLinearHeading(new Pose2d(25, 40, Math.toRadians(90)))
+                .waitSeconds(.25)
+                .lineToLinearHeading(new Pose2d(45, 40, Math.toRadians(90)))
+                .waitSeconds(.25)
+                .lineToLinearHeading(new Pose2d(45, 22, Math.toRadians(180)))
+                .waitSeconds(.25)
+                // add outtake here, then another wait .25s
+                .lineToLinearHeading(new Pose2d(61, 358, Math.toRadians(180)))
 
+                .build();
 
 
         waitForStart();
-
-    /* to get detection
-        switch (blueDetection.getLocation()) {
-            case LEFT:
-                // ...
-                break;
-            case RIGHT:
-
-                break;
-            case MIDDLE:
-
-        }
-         */
 
         // to save battery
         camera.stopStreaming();
@@ -212,9 +201,8 @@ public class LeftBluePark extends LinearOpMode {
         bot.setIntakeSlideState(intakeSlidesState.STATION);
         bot.setIntakeSlidePosition(intakeSlidesState.STATION, extensionState.extending);
 
-        drive.followTrajectory(newToCenterTape);
-        drive.followTrajectory(toBackboardFromCenter);
-        drive.followTrajectory(leaveBackBoardfromCenter);
+        drive.followTrajectorySequence(toLeftTape);
+
 
         /*
         switch (blueDetection.getLocation()) {

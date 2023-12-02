@@ -25,7 +25,7 @@ import org.firstinspires.ftc.teamcode.OpModes.Autonomous.drive.SampleMecanumDriv
 
 
 @Autonomous(name = "RightBlueMid")
-public class RightBlueMid
+public class RightBlueMid extends LinearOpMode
 {
 
     public Robot bot;
@@ -181,4 +181,8 @@ public class RightBlueMid
     }
 
 
+    @Override
+    public void runOpMode() throws InterruptedException {
+
+    }
 }
