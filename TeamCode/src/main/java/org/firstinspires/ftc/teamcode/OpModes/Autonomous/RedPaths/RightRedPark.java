@@ -133,10 +133,11 @@ public class RightRedPark extends LinearOpMode {
                     bot.setVirtualFourBarPosition(virtualFourBarState.outtaking, virtualFourBarExtensionState.extending);
                     bot.setOuttakeSlidePosition(outtakeSlidesState.LOWOUT, extensionState.extending);
                 })
-
-                .addTemporalMarker(6,() -> {
+                .waitSeconds(.5)
+                .addTemporalMarker(6.5,() -> {
                     bot.setClawPosition(clawState.open);
                 })
+               
 
                 .addTemporalMarker(7,() -> {
                     bot.setOuttakeSlidePosition(outtakeSlidesState.STATION, extensionState.extending);
@@ -190,10 +191,10 @@ public class RightRedPark extends LinearOpMode {
                     bot.setOuttakeSlidePosition(outtakeSlidesState.LOWOUT, extensionState.extending);
 
                 })
-                .waitSeconds(.25)
+                .waitSeconds(.5)
 
 
-                .addTemporalMarker(8.5, () -> {
+                .addTemporalMarker(8.9, () -> {
 
 
                     bot.setClawState(clawState.open);
