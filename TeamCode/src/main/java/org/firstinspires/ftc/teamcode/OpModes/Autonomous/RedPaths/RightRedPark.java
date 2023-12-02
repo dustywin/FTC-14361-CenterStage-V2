@@ -15,6 +15,7 @@ import org.firstinspires.ftc.teamcode.Commands.outtakeSlidesState;
 import org.firstinspires.ftc.teamcode.Commands.virtualFourBarExtensionState;
 import org.firstinspires.ftc.teamcode.Commands.virtualFourBarState;
 import org.firstinspires.ftc.teamcode.Commands.wristState;
+import org.firstinspires.ftc.teamcode.OpModes.Autonomous.trajectorysequence.TrajectorySequence;
 import org.firstinspires.ftc.teamcode.Subsystems.HSVBlueDetection;
 import org.firstinspires.ftc.teamcode.Subsystems.Robot;
 import org.firstinspires.ftc.teamcode.OpModes.Autonomous.drive.SampleMecanumDrive;
@@ -44,6 +45,53 @@ public class RightRedPark extends LinearOpMode {
 
 
         drive.setPoseEstimate(newStart);
+
+        TrajectorySequence toCenterTape = drive.trajectorySequenceBuilder(newStart)
+                .lineToConstantHeading(new Vector2d(25, 23))
+
+                .addTemporalMarker(0, () -> {
+
+                    bot.setVirtualFourBarPosition(virtualFourBarState.intaking,virtualFourBarExtensionState.extending);
+                    bot.setVirtualFourBarState(virtualFourBarState.intaking);
+
+                    bot.setClawPosition(clawState.close);
+                    bot.setClawState(clawState.close);
+                })
+                .addTemporalMarker(1, () -> {
+                    bot.setVirtualFourBarPosition(virtualFourBarState.init, virtualFourBarExtensionState.extending);
+                    bot.setVirtualFourBarState(virtualFourBarState.init);
+
+
+                    bot.setWristPosition(wristState.sideways);
+                    bot.setWristState(wristState.sideways);
+                })
+                .lineToConstantHeading(new Vector2d(25, 27))
+                .addTemporalMarker(2, () -> {
+
+                    bot.setWristPosition(wristState.sideways);
+                    bot.setWristState(wristState.sideways);
+                })
+
+                .lineToLinearHeading(new Pose2d(62, 25.5, Math.toRadians(180)))
+                .addTemporalMarker(3, () -> {
+
+                    bot.setVirtualFourBarPosition(virtualFourBarState.outtaking, virtualFourBarExtensionState.extending);
+                    bot.setVirtualFourBarState(virtualFourBarState.outtaking);
+
+                    bot.outtakeSlide.setPosition(150);
+
+                })
+
+                .lineToConstantHeading(new Vector2d(60, 25.5))
+                .addTemporalMarker(3.5, () -> {
+
+
+                    bot.setClawState(clawState.open);
+                    bot.setClawPosition(clawState.open);
+
+
+                })
+                .build();
 
 
 
@@ -185,9 +233,7 @@ public class RightRedPark extends LinearOpMode {
 
             case RIGHT:
 
-                drive.followTrajectory(toRightTape);
-                drive.followTrajectory(toBackboardFromRight);
-                drive.followTrajectory(leaveBackboardFromRight);
+               drive.followTrajectorySequence(toCenterTape);
 
                 break;
             case MIDDLE:
