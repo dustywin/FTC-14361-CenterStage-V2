@@ -17,6 +17,7 @@ import org.firstinspires.ftc.teamcode.Commands.virtualFourBarState;
 import org.firstinspires.ftc.teamcode.Commands.wristState;
 import org.firstinspires.ftc.teamcode.OpModes.Autonomous.trajectorysequence.TrajectorySequence;
 import org.firstinspires.ftc.teamcode.Subsystems.HSVBlueDetection;
+import org.firstinspires.ftc.teamcode.Subsystems.RedDetection;
 import org.firstinspires.ftc.teamcode.Subsystems.Robot;
 import org.firstinspires.ftc.teamcode.OpModes.Autonomous.drive.SampleMecanumDrive;
 import org.firstinspires.ftc.teamcode.util.robotConstants;
@@ -30,16 +31,16 @@ public class RightRedPark extends LinearOpMode {
 
     Robot bot;
     OpenCvCamera camera;
-    HSVBlueDetection blueDetection;
+    RedDetection redDetection;
     String webcamName;
     @Override
     public void runOpMode() {
 
         bot = new Robot(hardwareMap, telemetry);
         SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap);
-        Pose2d start = new Pose2d(-10,-72,0);
-        //old start
-        Pose2d newStart = new Pose2d(25,-50,180);
+
+
+        Pose2d newStart = new Pose2d(25,-50,90);
 
         initCam();
 
@@ -47,7 +48,7 @@ public class RightRedPark extends LinearOpMode {
         drive.setPoseEstimate(newStart);
 
         TrajectorySequence toCenterTape = drive.trajectorySequenceBuilder(newStart)
-                .lineToConstantHeading(new Vector2d(25, 23))
+                .lineToConstantHeading(new Vector2d(25, -23))
 
                 .addTemporalMarker(0, () -> {
 
@@ -65,14 +66,14 @@ public class RightRedPark extends LinearOpMode {
                     bot.setWristPosition(wristState.sideways);
                     bot.setWristState(wristState.sideways);
                 })
-                .lineToConstantHeading(new Vector2d(25, 27))
+                .lineToConstantHeading(new Vector2d(25, -27))
                 .addTemporalMarker(2, () -> {
 
                     bot.setWristPosition(wristState.sideways);
                     bot.setWristState(wristState.sideways);
                 })
 
-                .lineToLinearHeading(new Pose2d(62, 25.5, Math.toRadians(180)))
+                .lineToLinearHeading(new Pose2d(62, -25.5, Math.toRadians(180)))
                 .addTemporalMarker(3, () -> {
 
                     bot.setVirtualFourBarPosition(virtualFourBarState.outtaking, virtualFourBarExtensionState.extending);
@@ -82,7 +83,7 @@ public class RightRedPark extends LinearOpMode {
 
                 })
 
-                .lineToConstantHeading(new Vector2d(60, 25.5))
+                .lineToConstantHeading(new Vector2d(60, -25.5))
                 .addTemporalMarker(3.5, () -> {
 
 
@@ -91,133 +92,20 @@ public class RightRedPark extends LinearOpMode {
 
 
                 })
+                .waitSeconds(1)
+                .lineToConstantHeading(new Vector2d(60, -48))
+                .waitSeconds(1)
+                .lineToConstantHeading(new Vector2d(65, -48))
                 .build();
 
 
 
-
-        Trajectory newToCenterTape = drive.trajectoryBuilder(newStart)
-                .lineToConstantHeading(new Vector2d(25, -27))
-
-                .addDisplacementMarker(0, () -> {
-
-                    bot.setVirtualFourBarPosition(virtualFourBarState.intaking,virtualFourBarExtensionState.extending);
-                    bot.setVirtualFourBarState(virtualFourBarState.intaking);
-
-                    bot.setClawPosition(clawState.close);
-                    bot.setClawState(clawState.close);
-                })
-             .addDisplacementMarker(21, () -> {
-                    bot.setVirtualFourBarPosition(virtualFourBarState.init, virtualFourBarExtensionState.extending);
-                    bot.setVirtualFourBarState(virtualFourBarState.init);
-
-                    bot.activeIntake.setActiveIntakePower(.2);
-
-                    bot.setWristPosition(wristState.sideways);
-                    bot.setWristState(wristState.sideways);
-                })
-                .build();
-
-
-
-
-
-
-        Trajectory toBackboardFromCenter = drive.trajectoryBuilder(newToCenterTape.end())
-                .lineToLinearHeading(new Pose2d(62, -25.5, Math.toRadians(180)))
-                .addDisplacementMarker(0, () -> {
-
-                    bot.setVirtualFourBarPosition(virtualFourBarState.outtaking, virtualFourBarExtensionState.extending);
-                    bot.setVirtualFourBarState(virtualFourBarState.outtaking);
-
-
-
-
-
-                })
-                .build();
-
-
-
-        Trajectory leaveBackBoardfromCenter = drive.trajectoryBuilder(toBackboardFromCenter.end())
-                .lineToLinearHeading(new Pose2d(60, -25.5, Math.toRadians(180)))
-                .addDisplacementMarker(0, () -> {
-
-
-                    bot.setClawState(clawState.open);
-                    bot.setClawPosition(clawState.open);
-
-
-                })
-                .build();
-
-        Trajectory toRightTape = drive.trajectoryBuilder(newStart)
-                // .lineToConstantHeading(new Vector2d(25, 20))
-                .lineToLinearHeading(new Pose2d(22, -24, Math.toRadians(180)))
-
-                .addDisplacementMarker(0, () -> {
-
-                    bot.setVirtualFourBarPosition(virtualFourBarState.intaking, virtualFourBarExtensionState.extending);
-                    bot.setVirtualFourBarState(virtualFourBarState.intaking);
-
-                    bot.setClawPosition(clawState.close);
-                    bot.setClawState(clawState.close);
-
-
-                })
-                .addDisplacementMarker(22, () -> {
-                    bot.setVirtualFourBarPosition(virtualFourBarState.init, virtualFourBarExtensionState.extending);
-                    bot.setVirtualFourBarState(virtualFourBarState.init);
-
-                    bot.activeIntake.setActiveIntakePower(.2);
-
-                    bot.setWristPosition(wristState.sideways);
-                    bot.setWristState(wristState.sideways);
-                })
-                .build();
-
-        Trajectory toBackboardFromRight = drive.trajectoryBuilder(toRightTape.end())
-
-                .lineToConstantHeading(new Vector2d(62,-18))
-                .addDisplacementMarker(0, () -> {
-
-                    bot.setVirtualFourBarPosition(virtualFourBarState.outtaking, virtualFourBarExtensionState.extending);
-                    bot.setVirtualFourBarState(virtualFourBarState.outtaking);
-
-                })
-                .build();
-
-        Trajectory leaveBackboardFromRight = drive.trajectoryBuilder(toBackboardFromRight.end())
-
-                .lineToConstantHeading(new Vector2d(60,-18))
-                .addDisplacementMarker(0, () -> {
-
-
-                    bot.setClawState(clawState.open);
-                    bot.setClawPosition(clawState.open);
-
-
-                })
-                .build();
 
 
 
         waitForStart();
 
-    /* to get detection
-        switch (blueDetection.getLocation()) {
-            case LEFT:
-                // ...
-                break;
-            case RIGHT:
 
-                break;
-            case MIDDLE:
-
-        }
-         */
-
-        // to save battery
         camera.stopStreaming();
 
 
@@ -226,7 +114,7 @@ public class RightRedPark extends LinearOpMode {
         bot.setIntakeSlideState(intakeSlidesState.STATION);
         bot.setIntakeSlidePosition(intakeSlidesState.STATION, extensionState.extending);
 
-        switch (blueDetection.getLocation()) {
+        switch (redDetection.getLocation()) {
             case LEFT:
 
                 break;
@@ -237,9 +125,7 @@ public class RightRedPark extends LinearOpMode {
 
                 break;
             case MIDDLE:
-                drive.followTrajectory(newToCenterTape);
-                drive.followTrajectory(toBackboardFromCenter);
-                drive.followTrajectory(leaveBackBoardfromCenter);
+
 
                 break;
 
@@ -263,7 +149,7 @@ public class RightRedPark extends LinearOpMode {
         camera = OpenCvCameraFactory.getInstance().createWebcam(hardwareMap.get(WebcamName.class, webcamName), cameraMonitorViewId);
 
         // initializing our Detection class (details on how it works at the top)
-        blueDetection = new HSVBlueDetection(telemetry);
+        redDetection = new RedDetection(telemetry);
 
         // yeah what this does is it gets the thing which uses the thing so we can get the thing
         /*
@@ -271,7 +157,7 @@ public class RightRedPark extends LinearOpMode {
          we basically passthrough our detection into the camera
          and we feed the streaming camera frames into our Detection algorithm)
          */
-        camera.setPipeline(blueDetection);
+        camera.setPipeline(redDetection);
 
         /*
         this starts the camera streaming, with 2 possible combinations

@@ -39,7 +39,7 @@ public class LeftBluePark extends LinearOpMode {
         SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap);
 
         //old start
-        Pose2d newStart = new Pose2d(25, -50, Math.toRadians(270));
+        Pose2d newStart = new Pose2d(25, 50, Math.toRadians(90));
         Pose2d leftStart = new Pose2d(25, 50, Math.toRadians(180));
 
 
@@ -50,7 +50,7 @@ public class LeftBluePark extends LinearOpMode {
 
 
         TrajectorySequence toCenterTape = drive.trajectorySequenceBuilder(newStart)
-            .lineToConstantHeading(new Vector2d(25, -23))
+            .lineToConstantHeading(new Vector2d(25, 21))
 
                     .addTemporalMarker(0, () -> {
 
@@ -68,24 +68,24 @@ public class LeftBluePark extends LinearOpMode {
                         bot.setWristPosition(wristState.sideways);
                         bot.setWristState(wristState.sideways);
                     })
-                .lineToConstantHeading(new Vector2d(25, -30))
+                .lineToConstantHeading(new Vector2d(25, 30))
                 .addTemporalMarker(2, () -> {
 
                     bot.setWristPosition(wristState.sideways);
                     bot.setWristState(wristState.sideways);
                 })
 
-                .lineToLinearHeading(new Pose2d(62, -25.5, Math.toRadians(180)))
+                .lineToLinearHeading(new Pose2d(62, 25.5, Math.toRadians(180)))
                 .addTemporalMarker(3, () -> {
 
                     bot.setVirtualFourBarPosition(virtualFourBarState.outtaking, virtualFourBarExtensionState.extending);
                     bot.setVirtualFourBarState(virtualFourBarState.outtaking);
 
-                    bot.outtakeSlide.setPosition(150);
+                    bot.setOuttakeSlidePosition(outtakeSlidesState.LOWOUT, extensionState.extending);
 
                 })
 
-                .lineToConstantHeading(new Vector2d(60, -25.5))
+                .lineToConstantHeading(new Vector2d(61, 25.5))
                 .addTemporalMarker(3.5, () -> {
 
 
@@ -94,153 +94,13 @@ public class LeftBluePark extends LinearOpMode {
 
 
                 })
-                .build();
-
-
-
-        Trajectory newToCenterTape = drive.trajectoryBuilder(newStart)
-                .lineToConstantHeading(new Vector2d(25, 26))
-
-                .addDisplacementMarker(0, () -> {
-
-                    bot.setVirtualFourBarPosition(virtualFourBarState.intaking,virtualFourBarExtensionState.extending);
-                    bot.setVirtualFourBarState(virtualFourBarState.intaking);
-
-                    bot.setClawPosition(clawState.close);
-                    bot.setClawState(clawState.close);
-                })
-                .addDisplacementMarker(21, () -> {
-                    bot.setVirtualFourBarPosition(virtualFourBarState.init, virtualFourBarExtensionState.extending);
-                    bot.setVirtualFourBarState(virtualFourBarState.init);
-
-
-                    bot.setWristPosition(wristState.sideways);
-                    bot.setWristState(wristState.sideways);
-                })
-                .build();
-        Trajectory toCenterTapePathTwo = drive.trajectoryBuilder(newToCenterTape.end())
-                //.lineToConstantHeading(new Vector2d(25, 20))
-                .lineToLinearHeading(new Pose2d(25, 27, Math.toRadians(270)))
-                .addTemporalMarker(0, () -> {
-
-
-                    bot.activeIntake.setActiveIntakePower(-.2);
-
-
-                    bot.setWristPosition(wristState.sideways);
-                    bot.setWristState(wristState.sideways);
-                })
-
-
-                .build();
-
-
-
-
-
-
-        Trajectory toBackboardFromCenter = drive.trajectoryBuilder(newToCenterTape.end())
-                .lineToLinearHeading(new Pose2d(62, 25.5, Math.toRadians(180)))
-                .addDisplacementMarker(0, () -> {
-
-                    bot.setVirtualFourBarPosition(virtualFourBarState.outtaking, virtualFourBarExtensionState.extending);
-                    bot.setVirtualFourBarState(virtualFourBarState.outtaking);
-
-
-
-
-
-                })
-                .build();
-
-
-
-        Trajectory leaveBackBoardfromCenter = drive.trajectoryBuilder(toBackboardFromCenter.end())
-                .lineToConstantHeading(new Vector2d(60, 25.5))
-                .addDisplacementMarker(0, () -> {
-
-
-                    bot.setClawState(clawState.open);
-                    bot.setClawPosition(clawState.open);
-
-
-                })
-                .build();
-
-        Trajectory toRightTape = drive.trajectoryBuilder(newStart)
-                // .lineToConstantHeading(new Vector2d(25, 20))
-                .lineToLinearHeading(new Pose2d(22, 24, Math.toRadians(180)))
-
-                .addDisplacementMarker(0, () -> {
-
-                    bot.setVirtualFourBarPosition(virtualFourBarState.intaking, virtualFourBarExtensionState.extending);
-                    bot.setVirtualFourBarState(virtualFourBarState.intaking);
-
-                    bot.setClawPosition(clawState.close);
-                    bot.setClawState(clawState.close);
-
-
-                })
-                .addDisplacementMarker(22, () -> {
-                    bot.setVirtualFourBarPosition(virtualFourBarState.init, virtualFourBarExtensionState.extending);
-                    bot.setVirtualFourBarState(virtualFourBarState.init);
-
-                    bot.activeIntake.setActiveIntakePower(.2);
-
-                    bot.setWristPosition(wristState.sideways);
-                    bot.setWristState(wristState.sideways);
-                })
-                .build();
-
-        Trajectory toBackboardFromRight = drive.trajectoryBuilder(toRightTape.end())
-
-                .lineToConstantHeading(new Vector2d(62,18))
-                .addDisplacementMarker(0, () -> {
-
-                    bot.setVirtualFourBarPosition(virtualFourBarState.outtaking, virtualFourBarExtensionState.extending);
-                    bot.setVirtualFourBarState(virtualFourBarState.outtaking);
-
-                })
-                .build();
-
-        Trajectory leaveBackboardFromRight = drive.trajectoryBuilder(toBackboardFromRight.end())
-
-                .lineToConstantHeading(new Vector2d(60,18))
-                .addDisplacementMarker(0, () -> {
-
-
-                    bot.setClawState(clawState.open);
-                    bot.setClawPosition(clawState.open);
-
-
-                })
-                .build();
-
-        TrajectorySequence toLeftTape = drive.trajectorySequenceBuilder(newStart)
-                .lineToLinearHeading(new Pose2d(25, 40, Math.toRadians(90)))
                 .waitSeconds(.25)
-                .lineToLinearHeading(new Pose2d(45, 40, Math.toRadians(90)))
-                .waitSeconds(.25)
-                .lineToLinearHeading(new Pose2d(45, 22, Math.toRadians(180)))
-                .waitSeconds(.25)
-                // add outtake here, then another wait .25s
-                .lineToLinearHeading(new Pose2d(61, 358, Math.toRadians(180)))
+                .lineToConstantHeading(new Vector2d(60, 52))
+
+                .lineToConstantHeading(new Vector2d(68, 52))
+
 
                 .build();
-
-
-        waitForStart();
-
-//                .addTemporalMarker(1, () -> {
-//                    bot.setIntakeSlidePosition(intakeSlidesState.STATION, extensionState.extending);
-//            bot.setIntakeSlideState(intakeSlidesState.STATION);
-//            bot.setVirtualFourBarPosition(virtualFourBarState.intaking, virtualFourBarExtensionState.extending);
-//            bot.setVirtualFourBarState(virtualFourBarState.intaking);
-//            bot.setClawPosition(clawState.close);
-//            bot.setClawState(clawState.close);
-//                })
-
-
 
 
         waitForStart();
@@ -271,7 +131,7 @@ public class LeftBluePark extends LinearOpMode {
         switch (blueDetection.getLocation()) {
             case LEFT:
 
-                drive.followTrajectorySequence(toLeftTape);
+
 
                 break;
 
@@ -283,7 +143,7 @@ public class LeftBluePark extends LinearOpMode {
             case MIDDLE:
 
 
-              //  drive.followTrajectory(toCenterTapePathTwo);
+
 
                 break;
 
