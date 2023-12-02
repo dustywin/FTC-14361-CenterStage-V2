@@ -91,7 +91,7 @@ public class LeftBluePark extends LinearOpMode {
                 .addDisplacementMarker(0, () -> {
 
 
-                    bot.activeIntake.setActiveIntakePower(.2);
+                    bot.activeIntake.setActiveIntakePower(-.2);
 
                     bot.setWristPosition(wristState.sideways);
                     bot.setWristState(wristState.sideways);
@@ -175,6 +175,14 @@ public class LeftBluePark extends LinearOpMode {
 
 
                 })
+                .addDisplacementMarker(20, () -> {
+
+
+                    bot.outtakeSlide.setPosition(100);
+
+
+                })
+
                 .build();
 
 

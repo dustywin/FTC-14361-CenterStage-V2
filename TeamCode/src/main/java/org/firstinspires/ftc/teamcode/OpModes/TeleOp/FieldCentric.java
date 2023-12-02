@@ -29,8 +29,8 @@ public class FieldCentric extends OpMode {
     private ElapsedTime runTime;
     private GamepadEx driver, operator;
     private Robot bot;
-    private int count = 0;
-    private int outtakeSlideCount  = 0;
+    private int intakeSlideCountAdd = 0;
+    private int intakeSlideCountSubstract = 0;
 
     @Override
     public void init() {
@@ -69,14 +69,15 @@ public class FieldCentric extends OpMode {
         telemetry.addLine("Left Slide Position: " + bot.getOuttakeLeftSlidePosition() + " ticks");
         telemetry.addLine("Right Slide Position: " + bot.getOuttakeRightSlidePosition() + " ticks");
         telemetry.addLine("Intake Slide Position" + bot.getIntakeSlidePosition());
-        telemetry.addLine("Intake Slide Count " + count);
+        telemetry.addLine("Intake Slide Count " + intakeSlideCountAdd );
+        telemetry.addLine("Intake Slide Subtract Count " + intakeSlideCountSubstract );
+
         telemetry.addLine("Wrist Position: " + bot.wrist.getWristPosition());
         telemetry.addLine("State of V4B: init / " + bot.virtualFourBar.getvirtualFourBarExtensionState());
         telemetry.addLine("Right Claw Position: " + bot.claw.getRightClawPosition());
         telemetry.addLine("Left Claw Position: " + bot.claw.getLeftClawPosition());
 
-
-        telemetry.addLine("Intake Slide Encoder Tick Count " + count);
+        telemetry.addLine("Intake Slide Encoder Tick Count " + intakeSlideCountSubstract);
         telemetry.update();
 
         driver.readButtons();
@@ -172,9 +173,10 @@ public class FieldCentric extends OpMode {
 
         if(driver.wasJustPressed(GamepadKeys.Button.RIGHT_STICK_BUTTON))
         {
-            count -= 5;
-            bot.intakeSlide.setPosition(intakeSlide.retracted + count);
+            intakeSlideCountSubstract -= 5;
+            bot.intakeSlide.setPosition(intakeSlide.retracted + intakeSlideCountSubstract);
         }
+
 
         if(driver.wasJustPressed(GamepadKeys.Button.DPAD_DOWN))
         {
@@ -241,27 +243,15 @@ public class FieldCentric extends OpMode {
         }
 
         if(operator.wasJustPressed(GamepadKeys.Button.B)) {
-            if (bot.getOuttakeState() != null && bot.getOuttakeState().equals(outtakeSlidesState.MEDIUMOUT))
-            {
-                bot.outtakeSlide.setPosition(outtakeSlideCount + robotConstants.outtakeSlide.LOW);
-                bot.setOuttakeSlideState(outtakeSlidesState.LOWOUT);
-            }
-            else if(bot.getOuttakeState() != null && bot.getOuttakeState().equals(outtakeSlidesState.LOWOUT))
-            {
-                bot.setOuttakeSlidePosition(outtakeSlidesState.LOWOUT, extensionState.extending);
-                bot.setOuttakeSlideState(outtakeSlidesState.LOWOUT);
-            }
-            else if(bot.getOuttakeState() != null && bot.getOuttakeState().equals(outtakeSlidesState.HIGHOUT))
-            {
-                bot.outtakeSlide.setPosition(outtakeSlideCount + robotConstants.outtakeSlide.MEDIUM);
-                bot.setOuttakeSlideState(outtakeSlidesState.MEDIUMOUT);
-            }
+
+                intakeSlideCountAdd += 5;
+                bot.intakeSlide.setPosition(intakeSlide.retracted + intakeSlideCountAdd);
 
         }
-        if(operator.getRightY() > .1 || operator.getRightY() < -.1){
-            bot.outtakeSlide.setPosition((int)(Math.abs(operator.getRightY() * 1600)));
-            bot.setOuttakeSlideState(outtakeSlidesState.MEDIUMOUT);
-        }
+//        if(operator.getRightY() > .2 || operator.getRightY() < -.2){
+//            bot.outtakeSlide.setPosition((int)(Math.abs(operator.getRightY() * 1600)));
+//            bot.setOuttakeSlideState(outtakeSlidesState.MEDIUMOUT);
+//        }
 
           /*  if (bot.virtualFourBarState != null && bot.getvirtualFourBarState().equals(virtualFourBarState.outtaking))
             {
@@ -353,6 +343,16 @@ public class FieldCentric extends OpMode {
         {
          //   bot.setWristState(wristState.normal);
          //   bot.setWristPosition(wristState.normal);
+
+
+            if (bot.getvirtualFourBarState() != null && bot.getvirtualFourBarState().equals(virtualFourBarState.outtaking))
+            {
+                bot.setWristState(wristState.sideways);
+                bot.setWristPosition(wristState.sideways);
+            }
+
+
+
 
             bot.setVirtualFourBarPosition(virtualFourBarState.init, virtualFourBarExtensionState.extending);
             bot.setVirtualFourBarState(virtualFourBarState.init);

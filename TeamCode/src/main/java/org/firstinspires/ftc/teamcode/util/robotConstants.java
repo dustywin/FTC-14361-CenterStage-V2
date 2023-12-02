@@ -50,7 +50,7 @@ public class robotConstants
 
 
         public static int highExtension = 700;
-        public static int mediumExtension = 380;
+        public static int mediumExtension = 230;
 
 
 //        public static int fullExtension = -3600;
@@ -88,11 +88,11 @@ public class robotConstants
     public static class activeIntake
     {
 
-        public static double active = 0.2;
-        public static double reverseActive = -0.2;
+        public static double active = -.4;
+        public static double reverseActive =  .4;
 
-        public static double autoActive = 0.2;
-        public static double autoReverseActive = -0.2;
+        public static double autoActive = 0.34;
+        public static double autoReverseActive = -0.34;
 
 
 
@@ -105,7 +105,7 @@ public class robotConstants
 
     public static class Wrist
     {
-        public static double wristSideways = .67;
+        public static double wristSideways = .65;
         public static double wristNormal = 1;
 
         // scale is from .33 (0) to .67 (1) so there no overshoot at all
