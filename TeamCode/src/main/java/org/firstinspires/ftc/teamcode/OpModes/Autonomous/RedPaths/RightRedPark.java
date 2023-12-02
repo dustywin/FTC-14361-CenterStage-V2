@@ -114,7 +114,7 @@ public class RightRedPark extends LinearOpMode {
 
                 .lineToLinearHeading(new Pose2d(14, -33, Math.toRadians(0 + rOffset)))
                 .waitSeconds(1)
-                .lineToLinearHeading(new Pose2d(10, -33, Math.toRadians(0 + rOffset)))
+                .lineToLinearHeading(new Pose2d(7, -33, Math.toRadians(0 + rOffset)))
                 .waitSeconds(1)
                 .lineToLinearHeading(new Pose2d(52, -50, Math.toRadians(180 + rOffset)))
                 .waitSeconds(1)
@@ -137,7 +137,7 @@ public class RightRedPark extends LinearOpMode {
                 .addTemporalMarker(6.5,() -> {
                     bot.setClawPosition(clawState.open);
                 })
-               
+
 
                 .addTemporalMarker(7,() -> {
                     bot.setOuttakeSlidePosition(outtakeSlidesState.STATION, extensionState.extending);
