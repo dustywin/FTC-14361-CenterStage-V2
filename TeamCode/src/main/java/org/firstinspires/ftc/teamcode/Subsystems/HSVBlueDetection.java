@@ -42,8 +42,8 @@ public class HSVBlueDetection extends OpenCvPipeline {
             new Point(40, 135),
             new Point(100, 175));
     static final Rect MIDDLE_ROI = new Rect(
-            new Point(223, 138),
-            new Point(290, 178));
+            new Point(220, 138),
+            new Point(280, 178));
     static double PERCENT_COLOR_THRESHOLD = 0.35;
 
     public HSVBlueDetection(Telemetry t) { telemetry = t; }
@@ -66,8 +66,8 @@ public class HSVBlueDetection extends OpenCvPipeline {
         // *** don't forget to divide the values by 2 if you use Imgproc.COLOR_RBG2HSV
 
         // in this case, we using dark blue to light blue
-        Scalar lowHSV = new Scalar(100, 50, 72);
-        Scalar highHSV = new Scalar(127, 255, 242);
+        Scalar lowHSV = new Scalar(106, 178, 81);
+        Scalar highHSV = new Scalar(125, 255, 255);
 
 
         // this shows us the stuff in our range (in this case blue)

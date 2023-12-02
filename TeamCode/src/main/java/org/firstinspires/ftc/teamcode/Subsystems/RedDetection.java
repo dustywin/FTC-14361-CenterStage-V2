@@ -39,8 +39,8 @@ public class RedDetection extends OpenCvPipeline {
 
      */
     static final Rect RIGHT_ROI = new Rect(
-            new Point(60, 35),
-            new Point(120, 75));
+            new Point(220, 138),
+            new Point(280, 178));
     static final Rect MIDDLE_ROI = new Rect(
             new Point(140, 35),
             new Point(200, 75));
@@ -66,8 +66,8 @@ public class RedDetection extends OpenCvPipeline {
         // *** don't forget to divide the values by 2 if you use Imgproc.COLOR_RBG2HSV
 
         // in this case, we using dark blue to light blue
-        Scalar lowHSV = new Scalar(5.5, 209, 132);
-        Scalar highHSV = new Scalar(5.5, 255, 255);
+        Scalar lowHSV = new Scalar(5, 206, 104);
+        Scalar highHSV = new Scalar(8, 255, 255);
 
 
         // this shows us the stuff in our range (in this case blue)
