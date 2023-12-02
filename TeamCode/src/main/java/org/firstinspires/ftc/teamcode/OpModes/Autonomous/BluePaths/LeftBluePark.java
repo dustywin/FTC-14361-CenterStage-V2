@@ -189,6 +189,16 @@ public class LeftBluePark extends LinearOpMode {
 
                 .build();
 
+        TrajectorySequence leftTapeSpline = drive.trajectorySequenceBuilder(newStart)
+                // spline
+                .lineToLinearHeading(new Pose2d(30, 30, Math.toRadians(90)))
+                .waitSeconds(.25)
+                .lineToLinearHeading(new Pose2d(45, 40, Math.toRadians(180)))
+                .waitSeconds(.25)
+                // add outtake here, then another wait .25s
+                .lineToLinearHeading(new Pose2d(62, 32, Math.toRadians(180)))
+                // output on board
+                .build();
 
         waitForStart();
 
@@ -201,7 +211,7 @@ public class LeftBluePark extends LinearOpMode {
         bot.setIntakeSlideState(intakeSlidesState.STATION);
         bot.setIntakeSlidePosition(intakeSlidesState.STATION, extensionState.extending);
 
-        drive.followTrajectorySequence(toLeftTape);
+        drive.followTrajectorySequence(leftTapeSpline);
 
 
         /*
