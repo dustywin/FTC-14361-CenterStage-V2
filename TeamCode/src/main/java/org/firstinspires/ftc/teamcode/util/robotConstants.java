@@ -21,11 +21,7 @@ public class robotConstants
         //left is negative
         //right is positive
 
-
-
         public static int HIGHLEFT = -1400;
-
-
         public static int HIGHRIGHT = 1400;
         //sometimes the encoder values go negative so you might have to change those
 
@@ -79,15 +75,7 @@ public class robotConstants
         public static double autoLeftClose = .65;
         public static double autoRightClose = .63;
 
-
         public static double rightCloseOnePixel = .58;
-
-
-
-
-
-
-
     }
 
     public static class Arm
@@ -98,18 +86,11 @@ public class robotConstants
 
     public static class activeIntake
     {
-
-
         public static double active = -.4;
         public static double reverseActive =  .4;
 
         public static double autoActive = 0.34;
         public static double autoReverseActive = -0.34;
-
-
-
-
-
     }
 
     public static class Climb

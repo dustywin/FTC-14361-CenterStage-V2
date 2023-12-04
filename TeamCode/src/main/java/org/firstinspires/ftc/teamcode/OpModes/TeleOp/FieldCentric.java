@@ -119,7 +119,6 @@ public class FieldCentric extends OpMode {
             bot.setIntakeSlideState(intakeSlidesState.HIGHIN);
             bot.setIntakeSlidePosition(intakeSlidesState.HIGHIN, extensionState.extending);
             }
-
         }
 
         if(driver.wasJustPressed(GamepadKeys.Button.LEFT_STICK_BUTTON))
@@ -346,15 +345,11 @@ public class FieldCentric extends OpMode {
          //   bot.setWristState(wristState.normal);
          //   bot.setWristPosition(wristState.normal);
 
-
             if (bot.getvirtualFourBarState() != null && bot.getvirtualFourBarState().equals(virtualFourBarState.outtaking))
             {
                 bot.setWristState(wristState.sideways);
                 bot.setWristPosition(wristState.sideways);
             }
-
-
-
 
             bot.setVirtualFourBarPosition(virtualFourBarState.init, virtualFourBarExtensionState.extending);
             bot.setVirtualFourBarState(virtualFourBarState.init);

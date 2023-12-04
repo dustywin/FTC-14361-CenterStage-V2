@@ -47,7 +47,7 @@ public class LeftBlueRight extends LinearOpMode {
 
                 .addTemporalMarker(3,() -> {
                     bot.setVirtualFourBarPosition(virtualFourBarState.init, virtualFourBarExtensionState.extending);
-                    bot.setWristPosition(wristState.sideways);
+                    //bot.setWristPosition(wristState.sideways);
                 })
 
                 .addTemporalMarker(5,() -> {
@@ -56,7 +56,7 @@ public class LeftBlueRight extends LinearOpMode {
                 })
 
                 .addTemporalMarker(6,() -> {
-                    bot.setClawPosition(clawState.open);
+                    //bot.setClawPosition(clawState.open);
                 })
 
                 .addTemporalMarker(7,() -> {
