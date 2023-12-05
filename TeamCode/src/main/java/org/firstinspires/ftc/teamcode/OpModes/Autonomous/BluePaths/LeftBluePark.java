@@ -44,9 +44,7 @@ public class LeftBluePark extends LinearOpMode {
         Pose2d leftStart = new Pose2d(25, 50, Math.toRadians(180));
         bot.setInBrake();
 
-
         initCam();
-
 
         drive.setPoseEstimate(newStart);
 

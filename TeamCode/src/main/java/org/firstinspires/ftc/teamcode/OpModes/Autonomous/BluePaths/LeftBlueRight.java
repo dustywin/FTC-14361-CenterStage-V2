@@ -51,7 +51,7 @@ public class LeftBlueRight extends LinearOpMode {
                 })
 
                 .addTemporalMarker(5,() -> {
-                    bot.setVirtualFourBarPosition(virtualFourBarState.outtaking, virtualFourBarExtensionState.extending);
+                    //bot.setVirtualFourBarPosition(virtualFourBarState.outtaking, virtualFourBarExtensionState.extending);
                     bot.setOuttakeSlidePosition(outtakeSlidesState.LOWOUT, extensionState.extending);
                 })
 
