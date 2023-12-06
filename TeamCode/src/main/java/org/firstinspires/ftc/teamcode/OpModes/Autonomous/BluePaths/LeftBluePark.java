@@ -33,7 +33,7 @@ public class LeftBluePark extends LinearOpMode {
     HSVBlueDetection blueDetection;
     String webcamName;
     @Override
-    public void runOpMode() {9
+    public void runOpMode() {
 
         bot = new Robot(hardwareMap, telemetry);
         SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap);
