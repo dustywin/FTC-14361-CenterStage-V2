@@ -14,11 +14,14 @@ public class CenterTapeRR {
                 .followTrajectorySequence(drive ->
                         drive.trajectorySequenceBuilder(new Pose2d(15, -61, Math.toRadians(270)))
                                 .lineToConstantHeading(new Vector2d(15, -33))
-                                .waitSeconds(.25)
                                 .lineToConstantHeading(new Vector2d(15, -36))
-                                .lineToLinearHeading(new Pose2d(48, -36, Math.toRadians(360)))
+                                .waitSeconds(.5)
+                                .lineToLinearHeading(new Pose2d(48, -36, Math.toRadians(180)))
+                                .waitSeconds(.5)
                                 .lineToConstantHeading(new Vector2d(40, -36))
+                                .waitSeconds(.5)
                                 .lineToConstantHeading(new Vector2d(40, -58))
+                                .waitSeconds(.5)
                                 .lineToConstantHeading(new Vector2d(59, -58))
 
 
