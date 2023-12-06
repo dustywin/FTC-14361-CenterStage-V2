@@ -38,13 +38,13 @@ public class RedDetection extends OpenCvPipeline {
     Adjust the camera or the boxes so your TSE is inside it
 
      */
-    static final Rect RIGHT_ROI = new Rect(
+    static final Rect MIDDLE_ROI = new Rect(
             new Point(30, 135),
             new Point(90, 175));
-    static final Rect MIDDLE_ROI = new Rect(
-            new Point(220, 135),
-            new Point(280, 175));
-    static double PERCENT_COLOR_THRESHOLD = 0.3;
+    static final Rect RIGHT_ROI = new Rect(
+            new Point(140, 135),
+            new Point(200, 175));
+    static double PERCENT_COLOR_THRESHOLD = 0.18;
 
     public RedDetection(Telemetry t) { telemetry = t; }
 
@@ -67,8 +67,8 @@ public class RedDetection extends OpenCvPipeline {
 
         // in this case, we using dark blue to light blue
 
-        Scalar lowHSV = new Scalar(0, 128, 100);
-        Scalar highHSV = new Scalar(20, 255, 255);
+        Scalar lowHSV = new Scalar(175, 78, 78);
+        Scalar highHSV = new Scalar(179, 255, 255);
 
 
         // this shows us the stuff in our range (in this case blue)
