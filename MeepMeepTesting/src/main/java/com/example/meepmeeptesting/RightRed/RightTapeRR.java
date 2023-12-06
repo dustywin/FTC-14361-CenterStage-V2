@@ -12,8 +12,8 @@ public class RightTapeRR {
                 // Set bot constraints: maxVel, maxAccel, maxAngVel, maxAngAccel, track width
                 .setConstraints(60, 60, Math.toRadians(180), Math.toRadians(180), 10.5)
                 .followTrajectorySequence(drive ->
-                        drive.trajectorySequenceBuilder(new Pose2d(15, 61, Math.toRadians(270)))
-
+                        drive.trajectorySequenceBuilder(new Pose2d(14, -70, Math.toRadians(270)))
+                                .lineToConstantHeading(new Vector2d(14, -33))
                                 .build()
 
                 );
