@@ -6,15 +6,18 @@ import com.noahbres.meepmeep.roadrunner.DefaultBotBuilder;
 import com.noahbres.meepmeep.roadrunner.entity.RoadRunnerBotEntity;
 public class LeftTapeRR {
     public static void main(String[] args) {
-        MeepMeep meepMeep = new MeepMeep(800);
+        MeepMeep meepMeep = new MeepMeep(900);
 
         RoadRunnerBotEntity myBot = new DefaultBotBuilder(meepMeep)
                 // Set bot constraints: maxVel, maxAccel, maxAngVel, maxAngAccel, track width
                 .setConstraints(60, 60, Math.toRadians(180), Math.toRadians(180), 10.5)
                 .followTrajectorySequence(drive ->
-                        drive.trajectorySequenceBuilder(new Pose2d(15, 61, Math.toRadians(270)))
+                        drive.trajectorySequenceBuilder(new Pose2d(15, -61, Math.toRadians(270)))
+                                .lineToConstantHeading(new Vector2d(15, -33))
+                                .lineToLinearHeading(new Pose2d(15, -32, Math.toRadians(0)))
 
                                 .build()
+
 
                 );
 
