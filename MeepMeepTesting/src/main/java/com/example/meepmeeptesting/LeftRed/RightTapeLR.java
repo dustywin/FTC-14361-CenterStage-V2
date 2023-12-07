@@ -12,7 +12,26 @@ public class RightTapeLR {
                 // Set bot constraints: maxVel, maxAccel, maxAngVel, maxAngAccel, track width
                 .setConstraints(60, 60, Math.toRadians(180), Math.toRadians(180), 10.5)
                 .followTrajectorySequence(drive ->
-                        drive.trajectorySequenceBuilder(new Pose2d(15, 61, Math.toRadians(270)))
+                        drive.trajectorySequenceBuilder(new Pose2d(-35, -60, Math.toRadians(270)))
+                                .lineToConstantHeading(new Vector2d(-35, -45))
+                                .lineToLinearHeading(new Pose2d(-31, -38, Math.toRadians(230)))
+                                .waitSeconds(.5)
+                                .lineToConstantHeading(new Vector2d(-42, -45))
+                                .lineToLinearHeading(new Pose2d(-42, -11.5, Math.toRadians(180)))
+                                .lineToConstantHeading(new Vector2d(34, -11.5))
+                                .lineToConstantHeading(new Vector2d(34, -42.5))
+                                .waitSeconds(.5)
+                                .lineToConstantHeading(new Vector2d(47.5, -42.5))
+                                .waitSeconds(.5)
+                                .lineToConstantHeading(new Vector2d(34, -43))
+                                .lineToConstantHeading(new Vector2d(34, -13))
+                                .lineToConstantHeading(new Vector2d(59, -13))
+                                .waitSeconds(1)
+
+
+
+
+
 
                                 .build()
 

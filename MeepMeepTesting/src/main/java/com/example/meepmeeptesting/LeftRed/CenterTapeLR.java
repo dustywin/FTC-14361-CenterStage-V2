@@ -1,5 +1,4 @@
 package com.example.meepmeeptesting.LeftRed;
-
 import com.acmerobotics.roadrunner.geometry.Pose2d;
 import com.acmerobotics.roadrunner.geometry.Vector2d;
 import com.noahbres.meepmeep.MeepMeep;
@@ -13,9 +12,9 @@ public class CenterTapeLR {
                 // Set bot constraints: maxVel, maxAccel, maxAngVel, maxAngAccel, track width
                 .setConstraints(60, 60, Math.toRadians(180), Math.toRadians(180), 10.5)
                 .followTrajectorySequence(drive ->
-                                drive.trajectorySequenceBuilder(new Pose2d(15, 61, Math.toRadians(270)))
+                        drive.trajectorySequenceBuilder(new Pose2d(-35, 52, Math.toRadians(270)))
 
-                                        .build()
+                                .build()
 
                 );
 
