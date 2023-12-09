@@ -38,13 +38,24 @@ public class HSVBlueDetection extends OpenCvPipeline {
     Adjust the camera or the boxes so your TSE is inside it
 
      */
+
+    /*
+    trying something out-
+    Splitting the whole frame into 2 giant sections, and depending on which section has over the threshold of
+    blue, we find the TSE.
+
+    I have no idea if this will work or not
+     */
     static final Rect LEFT_ROI = new Rect(
-            new Point(40, 135),
-            new Point(100, 175));
+            new Point(0, 0),
+            new Point(100, 240));
     static final Rect MIDDLE_ROI = new Rect(
-            new Point(220, 138),
-            new Point(280, 178));
-    static double PERCENT_COLOR_THRESHOLD = 0.35;
+            new Point(105, 0),
+            new Point(320, 240));
+
+    static double PERCENT_COLOR_THRESHOLD = 0.10;
+    // this gonna need tweaking for this large amount of space.
+    // can't set too low because the tape is also caught in the camera frame
 
     public HSVBlueDetection(Telemetry t) { telemetry = t; }
 
