@@ -12,7 +12,7 @@ public class LeftTapeLR {
                 // Set bot constraints: maxVel, maxAccel, maxAngVel, maxAngAccel, track width
                 .setConstraints(60, 60, Math.toRadians(180), Math.toRadians(180), 10.5)
                 .followTrajectorySequence(drive ->
-                        drive.trajectorySequenceBuilder(new Pose2d(-35, 52, Math.toRadians(270)))
+                        drive.trajectorySequenceBuilder(new Pose2d(-35, -60, Math.toRadians(270)))
 
                                 .build()
 
