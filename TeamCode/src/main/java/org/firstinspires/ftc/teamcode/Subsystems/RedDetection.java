@@ -67,7 +67,7 @@ public class RedDetection extends OpenCvPipeline {
 
         // in this case, we using dark blue to light blue
 
-        Scalar lowHSV = new Scalar(175, 78, 78);
+        Scalar lowHSV = new Scalar(173, 150, 75);
         Scalar highHSV = new Scalar(179, 255, 255);
 
 

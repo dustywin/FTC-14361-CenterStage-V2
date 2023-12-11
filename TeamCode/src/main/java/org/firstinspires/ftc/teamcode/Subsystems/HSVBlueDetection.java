@@ -66,8 +66,8 @@ public class HSVBlueDetection extends OpenCvPipeline {
         // *** don't forget to divide the values by 2 if you use Imgproc.COLOR_RBG2HSV
 
         // in this case, we using dark blue to light blue
-        Scalar lowHSV = new Scalar(106, 178, 81);
-        Scalar highHSV = new Scalar(125, 255, 255);
+        Scalar lowHSV = new Scalar(103, 150, 81);
+        Scalar highHSV = new Scalar(128, 255, 255);
 
 
         // this shows us the stuff in our range (in this case blue)
