@@ -37,7 +37,7 @@ public class CenterTapeLB {
 
                                 .lineToConstantHeading(new Vector2d(40, 59))
                                 //finish park
-                                .lineToConstantHeading(new Vector2d(57, 59))
+                                .lineToConstantHeading(new Vector2d(58, 59))
 
 //                                .forward(30)
 //                                .turn(Math.toRadians(90))

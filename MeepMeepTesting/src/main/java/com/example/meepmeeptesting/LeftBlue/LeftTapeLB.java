@@ -16,6 +16,26 @@ public class LeftTapeLB {
 
                 .followTrajectorySequence(drive ->
                                 drive.trajectorySequenceBuilder(new Pose2d(15, 61, Math.toRadians(90)))
+                                        .lineToConstantHeading(new Vector2d(15, 55))
+                                        .waitSeconds(.5)
+                                        .lineToConstantHeading(new Vector2d(22.5, 55))
+                                        .waitSeconds(.5)
+                                        .lineToConstantHeading(new Vector2d(22.5, 43))
+                                        .waitSeconds(.5)
+                                        .lineToConstantHeading(new Vector2d(22.5, 55))
+                                        .waitSeconds(.5)
+                                        .lineToConstantHeading(new Vector2d(40, 55))
+                                        .waitSeconds(.5)
+                                        .lineToLinearHeading(new Pose2d(40, 41, Math.toRadians(180)))
+                                        .waitSeconds(.5)
+                                        .lineToConstantHeading(new Vector2d(48.5, 41))
+                                        .waitSeconds(.5)
+                                        .lineToConstantHeading(new Vector2d(40, 41))
+                                        .waitSeconds(.5)
+                                        .lineToConstantHeading(new Vector2d(40, 59))
+                                        .waitSeconds(.5)
+                                        .lineToConstantHeading(new Vector2d(58, 59))
+                                        .waitSeconds(.5)
 
                                         .build()
 
