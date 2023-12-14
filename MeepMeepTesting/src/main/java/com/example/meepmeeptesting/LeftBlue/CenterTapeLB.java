@@ -16,15 +16,28 @@ public class CenterTapeLB {
                 .followTrajectorySequence(drive ->
                         drive.trajectorySequenceBuilder(new Pose2d(15, 61, Math.toRadians(90)))
                                 //pushing onto center tape
-                                .lineToConstantHeading(new Vector2d(15, 31))
+                                .lineToConstantHeading(new Vector2d(15, 34))
+                                .waitSeconds(.5)
                                 //going to the middle of all of the tape
-                                .lineToConstantHeading(new Vector2d(15, 33))
+                                .lineToConstantHeading(new Vector2d(15, 45))
+                                .waitSeconds(.5)
+
                                 //going to backboard
-                                .lineToLinearHeading(new Pose2d(49, 36, Math.toRadians(180)))
-                                //going to park
-                                .lineToConstantHeading(new Vector2d(48, 61))
+                                .lineToLinearHeading(new Pose2d(40, 45, Math.toRadians(180)))
+                                .waitSeconds(.5)
+
+
+                                .lineToConstantHeading(new Vector2d(40, 35))
+                                .waitSeconds(.5)
+
+                                .lineToConstantHeading(new Vector2d(49, 35))
+                                .waitSeconds(.5)
+                                .lineToConstantHeading(new Vector2d(40, 35))
+
+
+                                .lineToConstantHeading(new Vector2d(40, 59))
                                 //finish park
-                                .lineToConstantHeading(new Vector2d(55, 61))
+                                .lineToConstantHeading(new Vector2d(57, 59))
 
 //                                .forward(30)
 //                                .turn(Math.toRadians(90))
