@@ -26,7 +26,7 @@ public class CenterTapeRB {
                                 .waitSeconds(.5)
                                 .lineToConstantHeading(new Vector2d(40, 34))
                                 .lineToConstantHeading(new Vector2d(40, 11.5))
-                                .lineToConstantHeading(new Vector2d(58.5, 11.5))
+                                .lineToConstantHeading(new Vector2d(59, 11.5))
 
                                 .build()
 
