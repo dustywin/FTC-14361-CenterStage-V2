@@ -16,6 +16,12 @@ public class RightTapeLB {
                 .followTrajectorySequence(drive ->
                                 drive.trajectorySequenceBuilder(new Pose2d(15, 61, Math.toRadians(90)))
                                         // this gonna be hard bruh with turning
+                                        .lineToConstantHeading(new Vector2d(15, 40))
+                                        .waitSeconds(.5)
+                                        .splineTo(new Vector2d(10, 35), Math.toRadians(180))
+                                        .waitSeconds(.5)
+
+
                                         .build()
                 );
 
