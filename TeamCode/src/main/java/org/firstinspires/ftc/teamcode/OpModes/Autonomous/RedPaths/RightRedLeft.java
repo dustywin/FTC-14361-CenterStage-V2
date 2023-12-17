@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.OpModes.Autonomous.RedPaths;
 
 import com.acmerobotics.roadrunner.geometry.Pose2d;
+import com.acmerobotics.roadrunner.geometry.Vector2d;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
@@ -22,7 +23,10 @@ public class RightRedLeft extends LinearOpMode {
 
         TrajectorySequence startToFinish = drive.trajectorySequenceBuilder(newStart)
 
-                
+                .lineToConstantHeading(new Vector2d(15, -33))
+                .lineToLinearHeading(new Pose2d(15, -32, Math.toRadians(0)))
+
+                .build();
 
         waitForStart();
 
