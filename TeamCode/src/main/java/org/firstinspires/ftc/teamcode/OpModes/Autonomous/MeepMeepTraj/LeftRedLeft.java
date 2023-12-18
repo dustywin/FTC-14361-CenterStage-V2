@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.OpModes.Autonomous.RedPaths;
+package org.firstinspires.ftc.teamcode.OpModes.Autonomous.MeepMeepTraj;
 import com.acmerobotics.roadrunner.geometry.Pose2d;
 import com.acmerobotics.roadrunner.geometry.Vector2d;
 import com.acmerobotics.roadrunner.trajectory.Trajectory;
@@ -18,6 +18,7 @@ import org.firstinspires.ftc.teamcode.OpModes.Autonomous.drive.SampleMecanumDriv
 @Autonomous(name = "LeftRedLeft")
 public class LeftRedLeft extends LinearOpMode {
     Robot bot;
+    public TrajectorySequence fullPath;
     @Override
     public void runOpMode() {
 
@@ -27,7 +28,7 @@ public class LeftRedLeft extends LinearOpMode {
         drive.setPoseEstimate(newStart);
 
 
-        TrajectorySequence startToFinish = drive.trajectorySequenceBuilder(newStart)
+         TrajectorySequence startToFinish = drive.trajectorySequenceBuilder(newStart)
                 .lineToConstantHeading(new Vector2d(-47, -43))
                 .waitSeconds(.5)
                 .lineToConstantHeading(new Vector2d(-47, -50))
@@ -53,10 +54,15 @@ public class LeftRedLeft extends LinearOpMode {
 
         waitForStart();
 
-
+        fullPath = startToFinish;
         drive.followTrajectorySequence(startToFinish);
 
 
+    }
+
+    // i have no idea if this will work, if it does though we're chilling
+    public TrajectorySequence getLeftRedLeftTraj(){
+        return fullPath;
     }
 
 }
