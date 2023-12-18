@@ -52,9 +52,10 @@ public class LeftRedLeft extends LinearOpMode {
                 .build();
 
 
+        fullPath = startToFinish;
+
         waitForStart();
 
-        fullPath = startToFinish;
         drive.followTrajectorySequence(startToFinish);
 
 
