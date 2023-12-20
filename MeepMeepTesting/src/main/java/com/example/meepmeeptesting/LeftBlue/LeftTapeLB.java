@@ -20,7 +20,7 @@ public class LeftTapeLB {
                                         .waitSeconds(.5)
                                         .lineToConstantHeading(new Vector2d(22.5, 55))
                                         .waitSeconds(.5)
-                                        .lineToConstantHeading(new Vector2d(22.5, 43))
+                                        .lineToConstantHeading(new Vector2d(20.5, 43))
                                         .waitSeconds(.5)
                                         .lineToConstantHeading(new Vector2d(22.5, 55))
                                         .waitSeconds(.5)
@@ -38,7 +38,6 @@ public class LeftTapeLB {
                                         .waitSeconds(.5)
 
                                         .build()
-
                 );
 
         meepMeep.setBackground(MeepMeep.Background.FIELD_CENTERSTAGE_JUICE_DARK)

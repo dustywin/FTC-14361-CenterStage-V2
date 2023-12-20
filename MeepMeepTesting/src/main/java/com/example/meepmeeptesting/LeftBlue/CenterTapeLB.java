@@ -16,7 +16,7 @@ public class CenterTapeLB {
                 .followTrajectorySequence(drive ->
                         drive.trajectorySequenceBuilder(new Pose2d(15, 61, Math.toRadians(90)))
                                 //pushing onto center tape
-                                .lineToConstantHeading(new Vector2d(15, 34))
+                                .lineToConstantHeading(new Vector2d(15, 36))
                                 .waitSeconds(.5)
                                 //going to the middle of all of the tape
                                 .lineToConstantHeading(new Vector2d(15, 45))
