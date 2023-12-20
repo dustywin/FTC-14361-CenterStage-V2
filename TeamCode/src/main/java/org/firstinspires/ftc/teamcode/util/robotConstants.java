@@ -122,15 +122,18 @@ public class robotConstants
         public static double intakingLeft = .84;
         //.486
         //.588
-        public static double intakingRight = .44;
+        public static double intakingRight = .75;
 
         public static double outtakingLeft = .45;
-        public static double outtakingRight = .05;
+        public static double outtakingRight = .33;
 
         public static double initLeft = .75;
         //.45
         //.55
-        public static double initRight = .35;
+        public static double initRight = .6;
+        public static double outtakingDownRight = 0.175;
+        public static double outtakingDownLeft = 0;
+
 
         public static double intakingLeftAuton = 0.5;
         public static double intakingRightAuton = 0.6;
