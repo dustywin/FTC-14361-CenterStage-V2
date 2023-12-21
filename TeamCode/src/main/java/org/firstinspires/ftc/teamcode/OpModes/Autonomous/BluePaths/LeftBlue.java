@@ -102,6 +102,7 @@ public class LeftBlue extends LinearOpMode {
         // ---------------------------- toRightTape ---------------------------- //
 
         TrajectorySequence toRightTape = drive.trajectorySequenceBuilder(startPose)
+                //going to right tape
                 .lineToLinearHeading(new Pose2d(12, 31, Math.toRadians(0)))
                 .waitSeconds(1.5)
                 //going to backboard
