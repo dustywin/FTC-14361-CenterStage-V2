@@ -16,15 +16,18 @@ public class RightTapeLB {
                 .followTrajectorySequence(drive ->
                                 drive.trajectorySequenceBuilder(new Pose2d(15, 61, Math.toRadians(90)))
                                         .lineToLinearHeading(new Pose2d(12, 31, Math.toRadians(0)))
+                                        .waitSeconds(1.5)
+                                        //going to backboard
+                                        .lineToLinearHeading(new Pose2d(51, 35, Math.toRadians(180)))
                                         .waitSeconds(1)
-                                        .lineToLinearHeading(new Pose2d(49, 36, Math.toRadians(180)))
+                                        //Moving away from backboard
+                                        .lineToConstantHeading(new Vector2d(40, 35))
                                         .waitSeconds(1)
-                                        .lineToLinearHeading(new Pose2d(47, 36, Math.toRadians(180)))
+                                        //Moving towards park position
+                                        .lineToLinearHeading(new Pose2d(40, 57, Math.toRadians(270)))
                                         .waitSeconds(1)
-                                        .lineToLinearHeading(new Pose2d(47, 60, Math.toRadians(180)))
-                                        .waitSeconds(1)
-                                        .lineToLinearHeading(new Pose2d(60, 60, Math.toRadians(180)))
-
+                                        //Parking
+                                        .lineToConstantHeading(new Vector2d(46, 57))
                                         .build()
                 );
 

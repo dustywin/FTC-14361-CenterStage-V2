@@ -23,30 +23,15 @@ public class CenterTapeLB {
                                 .waitSeconds(.5)
 
                                 //going to backboard
-                                .lineToLinearHeading(new Pose2d(40, 45, Math.toRadians(180)))
+                                .lineToLinearHeading(new Pose2d(51, 35, Math.toRadians(180)))
                                 .waitSeconds(.5)
-
 
                                 .lineToConstantHeading(new Vector2d(40, 35))
-                                .waitSeconds(.5)
 
-                                .lineToConstantHeading(new Vector2d(49, 35))
-                                .waitSeconds(.5)
-                                .lineToConstantHeading(new Vector2d(40, 35))
-
-
-                                .lineToConstantHeading(new Vector2d(40, 59))
+                                .lineToConstantHeading(new Vector2d(40, 57))
                                 //finish park
-                                .lineToConstantHeading(new Vector2d(58, 59))
+                                .lineToLinearHeading(new Pose2d(46, 57, Math.toRadians(270)))
 
-//                                .forward(30)
-//                                .turn(Math.toRadians(90))
-//                                .forward(30)
-//                                .turn(Math.toRadians(90))
-//                                .forward(30)
-//                                .turn(Math.toRadians(90))
-//                                .forward(30)
-//                                .turn(Math.toRadians(90))
                                 .build()
                 );
 
