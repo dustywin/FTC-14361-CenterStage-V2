@@ -27,19 +27,18 @@ import org.openftc.easyopencv.OpenCvCameraRotation;
 @Autonomous(name = "LeftBlue")
 
 public class LeftBlue extends LinearOpMode {
-
     Robot bot;
     OpenCvCamera camera;
     HSVBlueDetection blueDetection;
     String webcamName;
 
     @Override
-    public void runOpMode() {
-
+    public void runOpMode()
+    {
         bot = new Robot(hardwareMap, telemetry);
         SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap);
 
-        Pose2d startPose = new Pose2d(15, 61, Math.toRadians(90)))
+        Pose2d startPose = new Pose2d(15, 61, Math.toRadians(90));
         bot.setInBrake();
 
         initCam();
@@ -75,7 +74,6 @@ public class LeftBlue extends LinearOpMode {
         // ---------------------------- toCenterTape ---------------------------- //
 
         TrajectorySequence toCenterTape = drive.trajectorySequenceBuilder(startPose)
-        drive.trajectorySequenceBuilder(new Pose2d(15, 61, Math.toRadians(90)))
                 .lineToConstantHeading(new Vector2d(15, 36))
                 .waitSeconds(.5)
                 .lineToConstantHeading(new Vector2d(15, 45))
@@ -114,9 +112,6 @@ public class LeftBlue extends LinearOpMode {
         camera.stopStreaming();
 
         if (isStopRequested()) return;
-
-        bot.setIntakeSlideState(intakeSlidesState.STATION);
-        bot.setIntakeSlidePosition(intakeSlidesState.STATION, extensionState.extending);
 
 
         switch (blueDetection.getLocation())

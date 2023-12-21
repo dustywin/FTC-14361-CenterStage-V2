@@ -38,7 +38,6 @@ public class RightBlueMid
     HardwareMap hardwareMap;
     Telemetry telemetry;
     public void rightBlueMidExecute(HardwareMap hardwareMap)
-
     {
         this.hardwareMap = hardwareMap;
         SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap);
