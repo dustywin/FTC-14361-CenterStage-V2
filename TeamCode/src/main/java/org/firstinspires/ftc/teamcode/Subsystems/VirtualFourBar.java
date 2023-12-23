@@ -23,7 +23,7 @@ import org.firstinspires.ftc.teamcode.Commands.virtualFourBarState;
 public class VirtualFourBar
 {
     private ServoEx leftVirtualFourBar, rightVirtualFourBar;
-    AnalogInput rightAnalogInput;
+    AnalogInput rightAnalogInput, leftAnalogInput;
     public virtualFourBarExtensionState virtualFourBarExtension;
     double minAngle = 0, maxAngle= 360;
 
@@ -32,6 +32,7 @@ public class VirtualFourBar
         rightVirtualFourBar = new SimpleServo(hardwareMap, "rightVirtualFourBar", minAngle, maxAngle, AngleUnit.DEGREES);
         leftVirtualFourBar = new SimpleServo(hardwareMap, "leftVirtualFourBar", minAngle, maxAngle, AngleUnit.DEGREES);
         rightAnalogInput = hardwareMap.get(AnalogInput.class, "rightAnalogInput");
+        leftAnalogInput = hardwareMap.get(AnalogInput.class, "leftAnalogInput");
 
 
     }
@@ -89,6 +90,12 @@ public class VirtualFourBar
 // multiply by 360 to convert it to 0 to 360 degrees
 
         double position = rightAnalogInput.getVoltage() / 3.3 * 360;
+        return position;
+    }
+
+    public double getV4BLeftPosition(){
+
+        double position = leftAnalogInput.getVoltage() / 3.3 * 360;
         return position;
     }
     public void setRightVirtualFourBarPosition(){

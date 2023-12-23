@@ -77,8 +77,10 @@ public class FieldCentric extends OpMode {
         telemetry.addLine("Right Claw Position: " + bot.claw.getRightClawPosition());
         telemetry.addLine("Left Claw Position: " + bot.claw.getLeftClawPosition());
         telemetry.addLine("Right V4B Position: " + bot.virtualFourBar.getV4bRightPosition() + " ticks.");
-
         telemetry.addLine("Right V4B Position: " + (1-bot.virtualFourBar.getV4bRightPosition()/360) + " decimal.");
+        telemetry.addLine("Left V4B Position: " + bot.virtualFourBar.getV4BLeftPosition() + " ticks.");
+
+        telemetry.addLine("Left V4B Position: " + (1-bot.virtualFourBar.getV4BLeftPosition()/360) + " decimal.");
         telemetry.addLine("Intake Slide Encoder Tick Count " + intakeSlideCountSubstract);
         telemetry.update();
 
