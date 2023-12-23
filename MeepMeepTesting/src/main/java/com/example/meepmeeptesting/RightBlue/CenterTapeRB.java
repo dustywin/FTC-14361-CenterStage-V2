@@ -12,7 +12,21 @@ public class CenterTapeRB {
                 // Set bot constraints: maxVel, maxAccel, maxAngVel, maxAngAccel, track width
                 .setConstraints(60, 60, Math.toRadians(180), Math.toRadians(180), 10.5)
                 .followTrajectorySequence(drive ->
-                        drive.trajectorySequenceBuilder(new Pose2d(15, 61, Math.toRadians(90)))
+                        drive.trajectorySequenceBuilder(new Pose2d(-35, 61, Math.toRadians(90)))
+                                .lineToConstantHeading(new Vector2d(-35, 34))
+                                .lineToConstantHeading(new Vector2d(-35, 44))
+                                .waitSeconds(.5)
+                                .lineToLinearHeading(new Pose2d(-53.5, 44, Math.toRadians(180)))
+                                .waitSeconds(.5)
+                                .lineToConstantHeading(new Vector2d(-53.5, 11.5))
+                                .lineToConstantHeading(new Vector2d(40, 11.5))
+                                .waitSeconds(.5)
+                                .lineToConstantHeading(new Vector2d(40, 34))
+                                .lineToConstantHeading(new Vector2d(49, 34))
+                                .waitSeconds(.5)
+                                .lineToConstantHeading(new Vector2d(40, 34))
+                                .lineToConstantHeading(new Vector2d(40, 11.5))
+                                .lineToConstantHeading(new Vector2d(59, 11.5))
 
                                 .build()
 
