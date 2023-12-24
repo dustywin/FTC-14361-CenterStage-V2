@@ -6,16 +6,29 @@ import com.noahbres.meepmeep.roadrunner.DefaultBotBuilder;
 import com.noahbres.meepmeep.roadrunner.entity.RoadRunnerBotEntity;
 public class RightTapeRR {
     public static void main(String[] args) {
-        MeepMeep meepMeep = new MeepMeep(800);
+        MeepMeep meepMeep = new MeepMeep(700);
 
         RoadRunnerBotEntity myBot = new DefaultBotBuilder(meepMeep)
                 // Set bot constraints: maxVel, maxAccel, maxAngVel, maxAngAccel, track width
                 .setConstraints(60, 60, Math.toRadians(180), Math.toRadians(180), 10.5)
                 .followTrajectorySequence(drive ->
-                        drive.trajectorySequenceBuilder(new Pose2d(14, -70, Math.toRadians(270)))
-                                .lineToConstantHeading(new Vector2d(14, -33))
-                                .build()
+                        drive.trajectorySequenceBuilder(new Pose2d(15, -61, Math.toRadians(270)))
+                                //going to right tape
+                                .lineToLinearHeading(new Pose2d(11, -29, Math.toRadians(0)))
+                                .waitSeconds(2)
+                                //going to backboard
+                                .lineToLinearHeading(new Pose2d(51, -41, Math.toRadians(180)))
+                                .waitSeconds(1)
+                                //Moving away from backboard
+                                .lineToConstantHeading(new Vector2d(40, -41))
+                                .waitSeconds(1)
+                                //Moving towards park position
+                                .lineToLinearHeading(new Pose2d(40, -57, Math.toRadians(270)))
+                                .waitSeconds(1)
+                                //Parking
+                                .lineToConstantHeading(new Vector2d(46, -57))
 
+                                .build()
                 );
 
 

@@ -8,28 +8,30 @@ import com.noahbres.meepmeep.roadrunner.entity.RoadRunnerBotEntity;
 
 public class CenterTapeLB {
   public static void main(String[] args) {
-        MeepMeep meepMeep = new MeepMeep(800);
+        MeepMeep meepMeep = new MeepMeep(700);
 
         RoadRunnerBotEntity myBot = new DefaultBotBuilder(meepMeep)
                 // Set bot constraints: maxVel, maxAccel, maxAngVel, maxAngAccel, track width
                 .setConstraints(60, 60, Math.toRadians(180), Math.toRadians(180), 10.5)
+
                 .followTrajectorySequence(drive ->
                         drive.trajectorySequenceBuilder(new Pose2d(15, 61, Math.toRadians(90)))
-                                //pushing onto center tape
-                                .lineToConstantHeading(new Vector2d(15, 36))
-                                .waitSeconds(.5)
-                                //going to the middle of all of the tape
-                                .lineToConstantHeading(new Vector2d(15, 45))
-                                .waitSeconds(.5)
-
+                                //Moving onto center tape
+                                .lineToConstantHeading(new Vector2d(11, 36))
+                                .waitSeconds(1.5)
+                                //Moving away from center tape
+                                .lineToConstantHeading(new Vector2d(11, 45))
+                                .waitSeconds(1)
                                 //going to backboard
                                 .lineToLinearHeading(new Pose2d(51, 35, Math.toRadians(180)))
-                                .waitSeconds(.5)
-
+                                .waitSeconds(1)
+                                //Moving away from backboard
                                 .lineToConstantHeading(new Vector2d(40, 35))
-
+                                .waitSeconds(1)
+                                //Moving towards park position
                                 .lineToConstantHeading(new Vector2d(40, 57))
-                                //finish park
+                                .waitSeconds(1)
+                                //Parking
                                 .lineToLinearHeading(new Pose2d(46, 57, Math.toRadians(270)))
 
                                 .build()
@@ -41,6 +43,4 @@ public class CenterTapeLB {
                 .addEntity(myBot)
                 .start();
     }
-
-
 }

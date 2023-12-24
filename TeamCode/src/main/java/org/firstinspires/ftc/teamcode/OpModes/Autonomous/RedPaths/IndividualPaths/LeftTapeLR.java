@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.OpModes.Autonomous.RedPaths;
+package org.firstinspires.ftc.teamcode.OpModes.Autonomous.RedPaths.IndividualPaths;
 
 import com.acmerobotics.roadrunner.geometry.Pose2d;
 import com.acmerobotics.roadrunner.geometry.Vector2d;
@@ -11,7 +11,7 @@ import org.firstinspires.ftc.teamcode.Subsystems.Robot;
 
 @Autonomous(name = "RightRedLeft")
 
-public class RightRedLeft extends LinearOpMode {
+public class LeftTapeLR extends LinearOpMode {
     Robot bot;
 
     @Override

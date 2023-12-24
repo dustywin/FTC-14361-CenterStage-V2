@@ -1,8 +1,7 @@
-package org.firstinspires.ftc.teamcode.OpModes.Autonomous.BluePaths;
+package org.firstinspires.ftc.teamcode.OpModes.Autonomous.BluePaths.IndividualPaths;
 import com.acmerobotics.roadrunner.geometry.Pose2d;
 import com.acmerobotics.roadrunner.trajectory.Trajectory;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 
@@ -25,7 +24,7 @@ import org.firstinspires.ftc.teamcode.OpModes.Autonomous.drive.SampleMecanumDriv
 
 
 @Autonomous(name = "RightBlueMid")
-public class RightBlueMid
+public class CenterTapeRB
 {
 
     public Robot bot;

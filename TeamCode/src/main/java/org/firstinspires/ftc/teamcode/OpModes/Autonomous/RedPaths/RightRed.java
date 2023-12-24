@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.OpModes.Autonomous.BluePaths;
+package org.firstinspires.ftc.teamcode.OpModes.Autonomous.RedPaths;
 
 import com.acmerobotics.roadrunner.geometry.Pose2d;
 import com.acmerobotics.roadrunner.geometry.Vector2d;
@@ -24,9 +24,9 @@ import org.openftc.easyopencv.OpenCvCamera;
 import org.openftc.easyopencv.OpenCvCameraFactory;
 import org.openftc.easyopencv.OpenCvCameraRotation;
 
-@Autonomous(name = "LeftBlue")
+@Autonomous(name = "RightRed")
 
-public class LeftBlue extends LinearOpMode {
+public class RightRed extends LinearOpMode {
     Robot bot;
     OpenCvCamera camera;
     HSVBlueDetection blueDetection;
@@ -38,7 +38,7 @@ public class LeftBlue extends LinearOpMode {
         bot = new Robot(hardwareMap, telemetry);
         SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap);
 
-        Pose2d startPose = new Pose2d(15, 61, Math.toRadians(90));
+        Pose2d startPose = new Pose2d(15, -61, Math.toRadians(270));
         bot.setInBrake();
 
         initCam();
@@ -49,34 +49,34 @@ public class LeftBlue extends LinearOpMode {
 
         TrajectorySequence toLeftTape = drive.trajectorySequenceBuilder(startPose)
                 //Moving away from wall
-                .lineToConstantHeading(new Vector2d(15, 55))
+                .lineToConstantHeading(new Vector2d(15, -55))
                 .waitSeconds(1)
                 //Moving behind the left tape
-                .lineToConstantHeading(new Vector2d(22, 55))
+                .lineToConstantHeading(new Vector2d(24, -55))
                 .waitSeconds(1)
                 //Moving onto the left tape
-                .lineToConstantHeading(new Vector2d(22, 43))
+                .lineToConstantHeading(new Vector2d(24, -43))
                 .waitSeconds(2)
                 //Moving back behind the left tape
-                .lineToConstantHeading(new Vector2d(22, 55))
+                .lineToConstantHeading(new Vector2d(24, -55))
                 .waitSeconds(1)
                 //Moving towards backboard zone
-                .lineToConstantHeading(new Vector2d(36, 55))
+                .lineToConstantHeading(new Vector2d(36, -55))
                 .waitSeconds(1)
                 //Moving to backboard
-                .lineToLinearHeading(new Pose2d(51, 40, Math.toRadians(180)))
+                .lineToLinearHeading(new Pose2d(51, -28, Math.toRadians(180)))
                 .waitSeconds(.5)
                 //Moving away from backboard
-                .lineToConstantHeading(new Vector2d(48.5, 40))
+                .lineToConstantHeading(new Vector2d(48.5, -28))
                 .waitSeconds(1)
                 //Moving towards park position
-                .lineToConstantHeading(new Vector2d(40, 40))
+                .lineToConstantHeading(new Vector2d(40, -28))
                 .waitSeconds(1)
                 //Line up to park position
-                .lineToLinearHeading(new Pose2d(40, 57, Math.toRadians(270)))
+                .lineToLinearHeading(new Pose2d(40, -57, Math.toRadians(270)))
                 .waitSeconds(1)
                 //Parking
-                .lineToConstantHeading(new Vector2d(46, 57))
+                .lineToConstantHeading(new Vector2d(46, -57))
 
                 .build();
 
@@ -84,22 +84,22 @@ public class LeftBlue extends LinearOpMode {
 
         TrajectorySequence toCenterTape = drive.trajectorySequenceBuilder(startPose)
                 //Moving onto center tape
-                .lineToConstantHeading(new Vector2d(11, 36))
+                .lineToConstantHeading(new Vector2d(13, -36))
                 .waitSeconds(1.5)
                 //Moving away from center tape
-                .lineToConstantHeading(new Vector2d(11, 45))
+                .lineToConstantHeading(new Vector2d(13, -45))
                 .waitSeconds(1)
                 //going to backboard
-                .lineToLinearHeading(new Pose2d(51, 35, Math.toRadians(180)))
+                .lineToLinearHeading(new Pose2d(51, -35, Math.toRadians(180)))
                 .waitSeconds(1)
                 //Moving away from backboard
-                .lineToConstantHeading(new Vector2d(40, 35))
+                .lineToConstantHeading(new Vector2d(40, -35))
                 .waitSeconds(1)
                 //Moving towards park position
-                .lineToConstantHeading(new Vector2d(40, 57))
+                .lineToConstantHeading(new Vector2d(40, -57))
                 .waitSeconds(1)
                 //Parking
-                .lineToLinearHeading(new Pose2d(46, 57, Math.toRadians(270)))
+                .lineToLinearHeading(new Pose2d(46, -57, Math.toRadians(270)))
 
                 .build();
 
@@ -107,19 +107,19 @@ public class LeftBlue extends LinearOpMode {
 
         TrajectorySequence toRightTape = drive.trajectorySequenceBuilder(startPose)
                 //going to right tape
-                .lineToLinearHeading(new Pose2d(11, 31, Math.toRadians(0)))
+                .lineToLinearHeading(new Pose2d(11, -29, Math.toRadians(0)))
                 .waitSeconds(2)
                 //going to backboard
-                .lineToLinearHeading(new Pose2d(51, 31, Math.toRadians(180)))
+                .lineToLinearHeading(new Pose2d(51, -41, Math.toRadians(180)))
                 .waitSeconds(1)
                 //Moving away from backboard
-                .lineToConstantHeading(new Vector2d(40, 31))
+                .lineToConstantHeading(new Vector2d(40, -41))
                 .waitSeconds(1)
                 //Moving towards park position
-                .lineToLinearHeading(new Pose2d(40, 57, Math.toRadians(270)))
+                .lineToLinearHeading(new Pose2d(40, -57, Math.toRadians(270)))
                 .waitSeconds(1)
                 //Parking
-                .lineToConstantHeading(new Vector2d(46, 57))
+                .lineToConstantHeading(new Vector2d(46, -57))
 
                 .build();
 

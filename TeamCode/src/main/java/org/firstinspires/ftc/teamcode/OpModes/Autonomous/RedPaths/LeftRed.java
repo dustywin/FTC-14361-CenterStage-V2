@@ -1,4 +1,5 @@
 package org.firstinspires.ftc.teamcode.OpModes.Autonomous.BluePaths;
+
 import com.acmerobotics.roadrunner.geometry.Pose2d;
 import com.acmerobotics.roadrunner.geometry.Vector2d;
 import com.acmerobotics.roadrunner.trajectory.Trajectory;
@@ -6,65 +7,89 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
+import org.firstinspires.ftc.teamcode.Commands.activeIntakeState;
+import org.firstinspires.ftc.teamcode.Commands.clawState;
+import org.firstinspires.ftc.teamcode.Commands.extensionState;
+import org.firstinspires.ftc.teamcode.Commands.intakeSlidesState;
+import org.firstinspires.ftc.teamcode.Commands.outtakeSlidesState;
+import org.firstinspires.ftc.teamcode.Commands.virtualFourBarExtensionState;
+import org.firstinspires.ftc.teamcode.Commands.virtualFourBarState;
+import org.firstinspires.ftc.teamcode.Commands.wristState;
 import org.firstinspires.ftc.teamcode.Subsystems.HSVBlueDetection;
+import org.firstinspires.ftc.teamcode.Subsystems.Robot;
 import org.firstinspires.ftc.teamcode.OpModes.Autonomous.drive.SampleMecanumDrive;
+import org.firstinspires.ftc.teamcode.OpModes.Autonomous.trajectorysequence.TrajectorySequence;
+import org.firstinspires.ftc.teamcode.util.robotConstants;
 import org.openftc.easyopencv.OpenCvCamera;
 import org.openftc.easyopencv.OpenCvCameraFactory;
 import org.openftc.easyopencv.OpenCvCameraRotation;
 
-@Autonomous(name = "RightBluePark")
-public class RightBluePark extends LinearOpMode
-{
+@Autonomous(name = "LeftRed")
+
+public class LeftRed extends LinearOpMode {
+    Robot bot;
     OpenCvCamera camera;
     HSVBlueDetection blueDetection;
     String webcamName;
-    Pose2d myPose = new Pose2d(-63, -36, Math.toRadians(180));
+
     @Override
     public void runOpMode()
     {
+        bot = new Robot(hardwareMap, telemetry);
         SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap);
+
+        Pose2d startPose = new Pose2d(15, 61, Math.toRadians(90));
+        bot.setInBrake();
 
         initCam();
 
+        drive.setPoseEstimate(startPose);
 
-        drive.setPoseEstimate(myPose);
+        // ---------------------------- toLeftTape ---------------------------- //
 
-        Trajectory Traj1 = drive.trajectoryBuilder(myPose)
-                .back(80)
+        TrajectorySequence toLeftTape = drive.trajectorySequenceBuilder(startPose)
                 .build();
-        Trajectory Traj2 = drive.trajectoryBuilder(Traj1.end())
-                .strafeRight(95)
+
+        // ---------------------------- toCenterTape ---------------------------- //
+
+        TrajectorySequence toCenterTape = drive.trajectorySequenceBuilder(startPose)
                 .build();
-        Trajectory Traj3 = drive.trajectoryBuilder(Traj2.end())
-                .strafeRight(95)
+
+        // ---------------------------- toRightTape ---------------------------- //
+
+        TrajectorySequence toRightTape = drive.trajectorySequenceBuilder(startPose)
                 .build();
+
+        // ---------------------------- Camera ---------------------------- //
 
         waitForStart();
 
-        /* to get detection
-        switch (blueDetection.getLocation()) {
-            case LEFT:
-                // ...
-                break;
-            case RIGHT:
-                // ...
-                break;
-            case MIDDLE:
-                // ...
-        }
-         */
-
-        // to save battery
         camera.stopStreaming();
 
+        if (isStopRequested()) return;
 
-        if(isStopRequested()) return;
 
-        drive.followTrajectory(Traj1);
-        drive.followTrajectory(Traj2);
+        switch (blueDetection.getLocation())
+        {
+            case LEFT:
+                drive.setPoseEstimate(startPose);
 
-        drive.turn(-1);
-        drive.followTrajectory(Traj3);
+                drive.followTrajectorySequence(toLeftTape);
+
+                break;
+            case RIGHT:
+                drive.setPoseEstimate(startPose);
+
+                drive.followTrajectorySequence(toRightTape);
+
+                break;
+            case MIDDLE:
+                drive.setPoseEstimate(startPose);
+
+                drive.followTrajectorySequence(toCenterTape);
+
+                break;
+        }
     }
 
     private void initCam() {
