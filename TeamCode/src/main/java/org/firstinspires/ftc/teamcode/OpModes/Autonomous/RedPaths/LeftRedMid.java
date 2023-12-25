@@ -60,11 +60,11 @@ public class LeftRedMid extends LinearOpMode
         Trajectory toBackBoard = drive.trajectoryBuilder(passThroughGate.end())
                 .lineToLinearHeading(new Pose2d(54, -30, Math.toRadians(180)))
                 .addTemporalMarker(0.5, () -> {
-                    bot.setWristPosition(wristState.sideways);
+                    bot.setWristPosition(wristState.downOuttaking);
                     bot.setVirtualFourBarPosition(virtualFourBarState.outtaking, virtualFourBarExtensionState.extending);
                 })
                 .addTemporalMarker(2,() -> {
-                    bot.setWristPosition(wristState.normal);
+                    bot.setWristPosition(wristState.downOuttaking);
                     bot.setClawPosition(clawState.open);
                 })
                 .build();

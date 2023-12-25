@@ -19,8 +19,14 @@ public class CenterTapeLB {
 
                                 .lineToConstantHeading(new Vector2d(15, 31))
                                 .addDisplacementMarker(0, () -> {
-//                                    bot.setVirtualFourBarPosition(virtualFourBarState.intaking,virtualFourBarExtensionState.extending);
-//                                    bot.setVirtualFourBarState(virtualFourBarState.intaking);
+
+
+//                                  bot.setWristPosition(wristState.downIntaking);
+//                          bot.setWristState(wristState.downIntaking);
+ //                                   bot.setVirtualFourBarPosition(virtualFourBarState.intaking,virtualFourBarExtensionState.extending);
+//                                            bot.setVirtualFourBarState(virtualFourBarState.intaking);
+
+
 //
 //                                    bot.setClawPosition(clawState.close);
 //                                    bot.setClawState(clawState.close);
@@ -28,21 +34,27 @@ public class CenterTapeLB {
                                 .waitSeconds(.25)
 
                                 .addDisplacementMarker(15, () -> {
-//                                    bot.setVirtualFourBarPosition(virtualFourBarState.init, virtualFourBarExtensionState.extending);
-//                                    bot.setVirtualFourBarState(virtualFourBarState.init);
-//
-//                                    bot.setWristPosition(wristState.sideways);
-//                                    bot.setWristState(wristState.sideways);
+//                                     bot.setVirtualFourBarPosition(virtualFourBarState.outtakingDown, virtualFourBarExtensionState.extending);
+////                                  bot.setVirtualFourBarState(virtualFourBarState.outtakingDown);
+
+ //                                   bot.setWristPosition(wristState.downOuttaking);
+  //                                  bot.setWristState(wristState.downOuttaking);
+
+
                                 })
                                 .waitSeconds(.5)
+                                .addDisplacementMarker(28, () -> {
+//                                  bot.setClawState(clawState.leftOpen);
+////                                   bot.setClawPosition(clawState.leftOpen);
 
-                                //going to the middle of all of the tape
-                                .lineToConstantHeading(new Vector2d(15, 33))
+
+                                })
+
                                 //going to backboard
                                 .addDisplacementMarker(40, () -> {
-//                                 bot.setVirtualFourBarPosition(virtualFourBarState.outtaking, virtualFourBarExtensionState.extending);
-//                                  bot.setVirtualFourBarState(virtualFourBarState.outtaking);
-//
+  //
+//                                         bot.setVirtualFourBarPosition(virtualFourBarState.outtaking, virtualFourBarExtensionState.extending);
+//////                                  bot.setVirtualFourBarState(virtualFourBarState.outtaking);
 //                                   bot.setOuttakeSlidePosition(outtakeSlidesState.LOWOUT, extensionState.extending);
                                 })
                                 .waitSeconds(.5)
@@ -58,14 +70,6 @@ public class CenterTapeLB {
                                 //finish park
                                 .lineToConstantHeading(new Vector2d(55, 61))
 
-//                                .forward(30)
-//                                .turn(Math.toRadians(90))
-//                                .forward(30)
-//                                .turn(Math.toRadians(90))
-//                                .forward(30)
-//                                .turn(Math.toRadians(90))
-//                                .forward(30)
-//                                .turn(Math.toRadians(90))
                                 .build()
                 );
 

@@ -13,16 +13,35 @@ public class CenterTapeRR {
                 .setConstraints(60, 60, Math.toRadians(180), Math.toRadians(180), 10.5)
                 .followTrajectorySequence(drive ->
                         drive.trajectorySequenceBuilder(new Pose2d(15, -61, Math.toRadians(270)))
-                                .lineToConstantHeading(new Vector2d(15, -33))
-                                .lineToConstantHeading(new Vector2d(15, -36))
+                                .addDisplacementMarker(0, () -> {
+
+                                })
+                                .lineToConstantHeading(new Vector2d(15, -38.75))
+                                .addDisplacementMarker(5, () -> {
+
+                                })
+
+
+                                .addDisplacementMarker(15, () -> {
+
+                                })
+
+                                .addDisplacementMarker(22, () -> {
+
+                                })
+                                .waitSeconds(2)
+                                .lineToLinearHeading(new Pose2d(60, -40, Math.toRadians(180)))
+                                .waitSeconds(1)
+                                .addDisplacementMarker(23, () -> {
+
+                                })
                                 .waitSeconds(.5)
-                                .lineToLinearHeading(new Pose2d(48, -36, Math.toRadians(180)))
+                                .lineToConstantHeading(new Vector2d(48, -36))
+
                                 .waitSeconds(.5)
-                                .lineToConstantHeading(new Vector2d(40, -36))
+                                .lineToConstantHeading(new Vector2d(48, -58))
                                 .waitSeconds(.5)
-                                .lineToConstantHeading(new Vector2d(40, -58))
-                                .waitSeconds(.5)
-                                .lineToConstantHeading(new Vector2d(59, -58))
+                                .lineToConstantHeading(new Vector2d(65, -58))
 
 
 

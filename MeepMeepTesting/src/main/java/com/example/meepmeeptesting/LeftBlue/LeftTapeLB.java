@@ -21,11 +21,15 @@ public class LeftTapeLB {
 
                                         .addDisplacementMarker(0, () -> {
 //
+
+//                                  bot.setWristPosition(wristState.downIntaking);
+//                          bot.setWristState(wristState.downIntaking);
 //                                            bot.setVirtualFourBarPosition(virtualFourBarState.intaking,virtualFourBarExtensionState.extending);
 //                                            bot.setVirtualFourBarState(virtualFourBarState.intaking);
+
 //
-//                                            bot.setClawPosition(clawState.close);
-//                                            bot.setClawState(clawState.close);
+//                                    bot.setClawPosition(clawState.close);
+//                                    bot.setClawState(clawState.close);
                                         })
 
                                         .addDisplacementMarker(15, () -> {

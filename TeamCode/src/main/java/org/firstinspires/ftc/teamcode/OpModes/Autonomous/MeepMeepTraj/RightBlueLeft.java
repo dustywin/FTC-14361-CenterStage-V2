@@ -1,14 +1,13 @@
 package org.firstinspires.ftc.teamcode.OpModes.Autonomous.MeepMeepTraj;
 
 import com.acmerobotics.roadrunner.geometry.Pose2d;
-import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import org.firstinspires.ftc.teamcode.OpModes.Autonomous.drive.SampleMecanumDrive;
 import org.firstinspires.ftc.teamcode.OpModes.Autonomous.trajectorysequence.TrajectorySequence;
 import org.firstinspires.ftc.teamcode.Subsystems.Robot;
 
-@Autonomous(name = "RightBlueLeft")
+//@Autonomous(name = "RightBlueLeft")
 
 public class RightBlueLeft extends LinearOpMode {
     Robot bot;

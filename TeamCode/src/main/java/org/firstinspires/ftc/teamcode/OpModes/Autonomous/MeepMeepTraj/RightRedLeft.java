@@ -8,7 +8,7 @@ import org.firstinspires.ftc.teamcode.OpModes.Autonomous.drive.SampleMecanumDriv
 import org.firstinspires.ftc.teamcode.OpModes.Autonomous.trajectorysequence.TrajectorySequence;
 import org.firstinspires.ftc.teamcode.Subsystems.Robot;
 
-@Autonomous(name = "RightBlueLeft")
+//@Autonomous(name = "RightBlueLeft")
 
 public class RightRedLeft extends LinearOpMode {
     Robot bot;

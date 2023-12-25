@@ -1,6 +1,8 @@
 package org.firstinspires.ftc.teamcode.Subsystems;
 
 
+import static org.firstinspires.ftc.teamcode.util.robotConstants.virtualFourBar.autoDropLeft;
+import static org.firstinspires.ftc.teamcode.util.robotConstants.virtualFourBar.autoDropRight;
 import static org.firstinspires.ftc.teamcode.util.robotConstants.virtualFourBar.initLeft;
 import static org.firstinspires.ftc.teamcode.util.robotConstants.virtualFourBar.initRight;
 import static org.firstinspires.ftc.teamcode.util.robotConstants.virtualFourBar.intakingLeft;
@@ -34,6 +36,8 @@ public class VirtualFourBar
         rightAnalogInput = hardwareMap.get(AnalogInput.class, "rightAnalogInput");
         leftAnalogInput = hardwareMap.get(AnalogInput.class, "leftAnalogInput");
 
+        leftVirtualFourBar.setInverted(true);
+
 
     }
 
@@ -57,6 +61,12 @@ public class VirtualFourBar
             case outtakingDown:
                 leftVirtualFourBar.setPosition(outtakingDownLeft);
                 rightVirtualFourBar.setPosition(outtakingDownRight);
+
+                virtualFourBarExtension = virtualFourBarExtensionState.station;
+                break;
+            case autoDrop:
+                leftVirtualFourBar.setPosition(autoDropLeft);
+                rightVirtualFourBar.setPosition(autoDropRight);
 
                 virtualFourBarExtension = virtualFourBarExtensionState.station;
         break;

@@ -64,15 +64,15 @@ public class RightRedPark extends LinearOpMode {
                     bot.setVirtualFourBarState(virtualFourBarState.init);
 
 
-                    bot.setWristPosition(wristState.sideways);
-                    bot.setWristState(wristState.sideways);
+                    bot.setWristPosition(wristState.downIntaking);
+                    bot.setWristState(wristState.downIntaking);
                 })
                 .waitSeconds(1)
                 .lineToConstantHeading(new Vector2d(25, -30))
                 .addTemporalMarker(5, () -> {
 
-                    bot.setWristPosition(wristState.sideways);
-                    bot.setWristState(wristState.sideways);
+                    bot.setWristPosition(wristState.downOuttaking);
+                    bot.setWristState(wristState.downOuttaking);
                 })
                 .waitSeconds(1)
 
@@ -126,14 +126,14 @@ public class RightRedPark extends LinearOpMode {
                     bot.setVirtualFourBarState(virtualFourBarState.init);
 
 
-                    bot.setWristPosition(wristState.sideways);
-                    bot.setWristState(wristState.sideways);
+                    bot.setWristPosition(wristState.downIntaking);
+                    bot.setWristState(wristState.downOuttaking);
                 })
                 .lineToLinearHeading(new Pose2d(20, -25.5, Math.toRadians(0)))
                 .addTemporalMarker(5, () -> {
 
-                    bot.setWristPosition(wristState.sideways);
-                    bot.setWristState(wristState.sideways);
+                    bot.setWristPosition(wristState.downOuttaking);
+                    bot.setWristState(wristState.downOuttaking);
                 })
 
                 .lineToLinearHeading(new Pose2d(61, -24, Math.toRadians(180)))
@@ -187,14 +187,14 @@ public class RightRedPark extends LinearOpMode {
                     bot.setVirtualFourBarState(virtualFourBarState.init);
 
 
-                    bot.setWristPosition(wristState.sideways);
-                    bot.setWristState(wristState.sideways);
+                    bot.setWristPosition(wristState.downIntaking);
+                    bot.setWristState(wristState.downIntaking);
                 })
                 .lineToLinearHeading(new Pose2d(30, -25.5, Math.toRadians(270)))
                 .addTemporalMarker(5.5, () -> {
 
-                    bot.setWristPosition(wristState.sideways);
-                    bot.setWristState(wristState.sideways);
+                    bot.setWristPosition(wristState.downOuttaking);
+                    bot.setWristState(wristState.downOuttaking);
                 })
 
                 .lineToConstantHeading(new Vector2d(25, -25.5))
