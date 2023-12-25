@@ -16,6 +16,7 @@ import org.firstinspires.ftc.teamcode.Commands.virtualFourBarExtensionState;
 import org.firstinspires.ftc.teamcode.Commands.virtualFourBarState;
 import org.firstinspires.ftc.teamcode.Commands.wristState;
 import org.firstinspires.ftc.teamcode.Subsystems.HSVBlueDetection;
+import org.firstinspires.ftc.teamcode.Subsystems.HSVRedDetection;
 import org.firstinspires.ftc.teamcode.Subsystems.Robot;
 import org.firstinspires.ftc.teamcode.OpModes.Autonomous.drive.SampleMecanumDrive;
 import org.firstinspires.ftc.teamcode.OpModes.Autonomous.trajectorysequence.TrajectorySequence;
@@ -29,7 +30,7 @@ import org.openftc.easyopencv.OpenCvCameraRotation;
 public class RightRed extends LinearOpMode {
     Robot bot;
     OpenCvCamera camera;
-    HSVBlueDetection blueDetection;
+    HSVRedDetection redDetection;
     String webcamName;
 
     @Override
@@ -132,7 +133,7 @@ public class RightRed extends LinearOpMode {
         if (isStopRequested()) return;
 
 
-        switch (blueDetection.getLocation())
+        switch (redDetection.getLocation())
         {
             case LEFT:
                 drive.setPoseEstimate(startPose);
@@ -167,7 +168,7 @@ public class RightRed extends LinearOpMode {
         camera = OpenCvCameraFactory.getInstance().createWebcam(hardwareMap.get(WebcamName.class, webcamName), cameraMonitorViewId);
 
         // initializing our Detection class (details on how it works at the top)
-        blueDetection = new HSVBlueDetection(telemetry);
+        redDetection = new HSVRedDetection(telemetry);
 
         // yeah what this does is it gets the thing which uses the thing so we can get the thing
         /*
@@ -175,7 +176,7 @@ public class RightRed extends LinearOpMode {
          we basically passthrough our detection into the camera
          and we feed the streaming camera frames into our Detection algorithm)
          */
-        camera.setPipeline(blueDetection);
+        camera.setPipeline(redDetection);
 
         /*
         this starts the camera streaming, with 2 possible combinations

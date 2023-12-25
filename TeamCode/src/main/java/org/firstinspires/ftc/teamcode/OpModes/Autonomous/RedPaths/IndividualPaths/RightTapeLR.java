@@ -15,7 +15,7 @@ import org.firstinspires.ftc.teamcode.OpModes.Autonomous.drive.SampleMecanumDriv
 public class RightTapeLR extends LinearOpMode
 {
     Robot bot;
-    Pose2d startPose = new Pose2d(15, 61, Math.toRadians(90));
+    Pose2d startPose = new Pose2d(-35, -61, Math.toRadians(270));
 
     @Override
     public void runOpMode() throws InterruptedException
@@ -27,6 +27,32 @@ public class RightTapeLR extends LinearOpMode
         drive.setPoseEstimate(startPose);
 
         TrajectorySequence toRightTape = drive.trajectorySequenceBuilder(startPose)
+                //going to right tape
+                .lineToLinearHeading(new Pose2d(-35,-30, Math.toRadians(180)))
+                .waitSeconds(2)
+                //Moving away from right tape
+                .lineToConstantHeading(new Vector2d(-43, -30))
+                .waitSeconds(.5)
+                //Moving behind gate
+                .lineToConstantHeading(new Vector2d(-43, -11.5))
+                .waitSeconds(.5)
+                //Passing through gate
+                .lineToConstantHeading(new Vector2d(40, -11.5))
+                .waitSeconds(.5)
+                //Lining up with the right side of the backboard
+                .lineToConstantHeading(new Vector2d(40, -40.5))
+                .waitSeconds(.5)
+                //Moving to backboard
+                .lineToConstantHeading(new Vector2d(51, -40.5))
+                .waitSeconds(2)
+                //Moving away from backboard
+                .lineToConstantHeading(new Vector2d(40, -40.5))
+                .waitSeconds(.5)
+                //Lining up with parking position
+                .lineToLinearHeading(new Pose2d(40, -11.5, Math.toRadians(90)))
+                .waitSeconds(1)
+                //Parking
+                .lineToConstantHeading(new Vector2d(59, -11.5))
 
                 .build();
 

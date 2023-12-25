@@ -27,9 +27,6 @@ public class LeftTapeRR extends LinearOpMode
         drive.setPoseEstimate(startPose);
 
         TrajectorySequence toLeftTape = drive.trajectorySequenceBuilder(startPose)
-                //Moving away from wall
-                .lineToConstantHeading(new Vector2d(15, -55))
-                .waitSeconds(1)
                 //Moving behind the left tape
                 .lineToConstantHeading(new Vector2d(24, -55))
                 .waitSeconds(1)

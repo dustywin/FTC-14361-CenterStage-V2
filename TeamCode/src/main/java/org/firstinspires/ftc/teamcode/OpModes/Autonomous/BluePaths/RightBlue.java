@@ -38,7 +38,7 @@ public class RightBlue extends LinearOpMode {
         bot = new Robot(hardwareMap, telemetry);
         SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap);
 
-        Pose2d startPose = new Pose2d(15, 61, Math.toRadians(90));
+        Pose2d startPose = new Pose2d(-35, 61, Math.toRadians(90));
         bot.setInBrake();
 
         initCam();
@@ -48,16 +48,103 @@ public class RightBlue extends LinearOpMode {
         // ---------------------------- toLeftTape ---------------------------- //
 
         TrajectorySequence toLeftTape = drive.trajectorySequenceBuilder(startPose)
+                //going to left tape
+                .lineToLinearHeading(new Pose2d(-35,30, Math.toRadians(180)))
+                .waitSeconds(2)
+                //Moving away from left tape
+                .lineToConstantHeading(new Vector2d(-43, 30))
+                .waitSeconds(.5)
+                //Moving behind gate
+                .lineToConstantHeading(new Vector2d(-43, 11.5))
+                .waitSeconds(.5)
+                //Passing through gate
+                .lineToConstantHeading(new Vector2d(40, 11.5))
+                .waitSeconds(.5)
+                //Lining up with the left side of the backboard
+                .lineToConstantHeading(new Vector2d(40, 40.5))
+                .waitSeconds(.5)
+                //Moving to backboard
+                .lineToConstantHeading(new Vector2d(51, 40.5))
+                .waitSeconds(2)
+                //Moving away from backboard
+                .lineToConstantHeading(new Vector2d(40, 40.5))
+                .waitSeconds(.5)
+                //Lining up with parking position
+                .lineToLinearHeading(new Pose2d(40, 11.5, Math.toRadians(270)))
+                .waitSeconds(1)
+                //Parking
+                .lineToConstantHeading(new Vector2d(59, 11.5))
+
                 .build();
 
         // ---------------------------- toCenterTape ---------------------------- //
 
         TrajectorySequence toCenterTape = drive.trajectorySequenceBuilder(startPose)
+                //Moving onto center tape
+                .lineToConstantHeading(new Vector2d(-37, 34))
+                .waitSeconds(2)
+                //Moving behind center tape
+                .lineToConstantHeading(new Vector2d(-37, 44))
+                .waitSeconds(.5)
+                //Moving away from center tape
+                .lineToLinearHeading(new Pose2d(-53.5, 44, Math.toRadians(180)))
+                .waitSeconds(.5)
+                //Moving behind gate
+                .lineToConstantHeading(new Vector2d(-53.5, 11.5))
+                .waitSeconds(.5)
+                //Passing through gate
+                .lineToConstantHeading(new Vector2d(40, 11.5))
+                .waitSeconds(.5)
+                //Lining up with the center of the backboard
+                .lineToConstantHeading(new Vector2d(40, 34))
+                .waitSeconds(.5)
+                //Moving to backboard
+                .lineToConstantHeading(new Vector2d(51, 34))
+                .waitSeconds(2)
+                //Moving away from backboard
+                .lineToConstantHeading(new Vector2d(40, 34))
+                .waitSeconds(.5)
+                //Lining up with parking position
+                .lineToLinearHeading(new Pose2d(40, 11.5, Math.toRadians(270)))
+                .waitSeconds(1)
+                //Parking
+                .lineToConstantHeading(new Vector2d(59, 11.5))
+
                 .build();
 
         // ---------------------------- toRightTape ---------------------------- //
 
         TrajectorySequence toRightTape = drive.trajectorySequenceBuilder(startPose)
+                //Moving onto right tape
+                .lineToConstantHeading(new Vector2d(-47.5, 43))
+                .waitSeconds(2)
+                //Moving behind right tape
+                .lineToConstantHeading(new Vector2d(-47.5, 50))
+                .waitSeconds(.5)
+                //Moving behind center tape
+                .lineToConstantHeading(new Vector2d(-34, 50))
+                .waitSeconds(.5)
+                //Lining up with the gate
+                .lineToConstantHeading(new Vector2d(-34, 10.5))
+                .waitSeconds(.5)
+                //Passing through gate
+                .lineToLinearHeading(new Pose2d(45, 10.5, Math.toRadians(180)))
+                .waitSeconds(.5)
+                //Lining up with the right side of the backboard
+                .lineToConstantHeading(new Vector2d(45, 29))
+                .waitSeconds(.5)
+                //Moving to backboard
+                .lineToConstantHeading(new Vector2d(51, 29))
+                .waitSeconds(2)
+                //Moving away from backboard
+                .lineToConstantHeading(new Vector2d(45, 29))
+                .waitSeconds(.5)
+                //Lining up with parking position
+                .lineToLinearHeading(new Pose2d(45, 11.5, Math.toRadians(270)))
+                .waitSeconds(1)
+                //Parking
+                .lineToConstantHeading(new Vector2d(59, 11.5))
+
                 .build();
 
         // ---------------------------- Camera ---------------------------- //

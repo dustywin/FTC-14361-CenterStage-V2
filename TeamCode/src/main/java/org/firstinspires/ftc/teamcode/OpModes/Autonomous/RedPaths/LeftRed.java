@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.OpModes.Autonomous.BluePaths;
+package org.firstinspires.ftc.teamcode.OpModes.Autonomous.RedPaths;
 
 import com.acmerobotics.roadrunner.geometry.Pose2d;
 import com.acmerobotics.roadrunner.geometry.Vector2d;
@@ -16,6 +16,7 @@ import org.firstinspires.ftc.teamcode.Commands.virtualFourBarExtensionState;
 import org.firstinspires.ftc.teamcode.Commands.virtualFourBarState;
 import org.firstinspires.ftc.teamcode.Commands.wristState;
 import org.firstinspires.ftc.teamcode.Subsystems.HSVBlueDetection;
+import org.firstinspires.ftc.teamcode.Subsystems.HSVRedDetection;
 import org.firstinspires.ftc.teamcode.Subsystems.Robot;
 import org.firstinspires.ftc.teamcode.OpModes.Autonomous.drive.SampleMecanumDrive;
 import org.firstinspires.ftc.teamcode.OpModes.Autonomous.trajectorysequence.TrajectorySequence;
@@ -29,7 +30,7 @@ import org.openftc.easyopencv.OpenCvCameraRotation;
 public class LeftRed extends LinearOpMode {
     Robot bot;
     OpenCvCamera camera;
-    HSVBlueDetection blueDetection;
+    HSVRedDetection redDetection;
     String webcamName;
 
     @Override
@@ -38,7 +39,7 @@ public class LeftRed extends LinearOpMode {
         bot = new Robot(hardwareMap, telemetry);
         SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap);
 
-        Pose2d startPose = new Pose2d(15, 61, Math.toRadians(90));
+        Pose2d startPose = new Pose2d(-35, -61, Math.toRadians(270));
         bot.setInBrake();
 
         initCam();
@@ -48,16 +49,104 @@ public class LeftRed extends LinearOpMode {
         // ---------------------------- toLeftTape ---------------------------- //
 
         TrajectorySequence toLeftTape = drive.trajectorySequenceBuilder(startPose)
+                //Moving onto left tape
+                .lineToConstantHeading(new Vector2d(-45.5, -41.5))
+                .waitSeconds(2)
+                //Moving behind left tape
+                .lineToConstantHeading(new Vector2d(-45.5, -50))
+                .waitSeconds(.5)
+                //Moving behind center tape
+                .lineToConstantHeading(new Vector2d(-34, -50))
+                .waitSeconds(.5)
+                //Lining up with the gate
+                .lineToConstantHeading(new Vector2d(-34, -10.5))
+                .waitSeconds(.5)
+                //Passing through gate
+                .lineToLinearHeading(new Pose2d(45, -10.5,Math.toRadians(180)))
+                .waitSeconds(.5)
+                //Lining up with the left side of the backboard
+                .lineToConstantHeading(new Vector2d(45, -28))
+                .waitSeconds(.5)
+                //Moving to backboard
+                .lineToConstantHeading(new Vector2d(51, -28))
+                .waitSeconds(2)
+                //Moving away from backboard
+                .lineToConstantHeading(new Vector2d(45, -28))
+                .waitSeconds(.1)
+                //Lining up with parking position
+                .lineToLinearHeading(new Pose2d(45, -11.5, Math.toRadians(90)))
+                .waitSeconds(1)
+                //Parking
+                .lineToConstantHeading(new Vector2d(59, -11.5))
+                .waitSeconds(.5)
+
                 .build();
 
         // ---------------------------- toCenterTape ---------------------------- //
 
         TrajectorySequence toCenterTape = drive.trajectorySequenceBuilder(startPose)
+                //Moving onto center tape
+                .lineToConstantHeading(new Vector2d(-35, -35))
+                .waitSeconds(2)
+                //Moving behind center tape
+                .lineToConstantHeading(new Vector2d(-35, -44))
+                .waitSeconds(.5)
+                //Moving away from center tape
+                .lineToLinearHeading(new Pose2d(-53.5, -44, Math.toRadians(180)))
+                .waitSeconds(.5)
+                //Moving behind gate
+                .lineToConstantHeading(new Vector2d(-53.5, -11.5))
+                .waitSeconds(.5)
+                //Passing through gate
+                .lineToConstantHeading(new Vector2d(40, -11.5))
+                .waitSeconds(.5)
+                //Lining up with the center of the backboard
+                .lineToConstantHeading(new Vector2d(40, -34))
+                .waitSeconds(.5)
+                //Moving to backboard
+                .lineToConstantHeading(new Vector2d(51, -34))
+                .waitSeconds(2)
+                //Moving away from backboard
+                .lineToConstantHeading(new Vector2d(40, -34))
+                .waitSeconds(.5)
+                //Lining up with parking position
+                .lineToLinearHeading(new Pose2d(40, -12.5,Math.toRadians(90)))
+                .waitSeconds(1)
+                //Parking
+                .lineToConstantHeading(new Vector2d(59, -12.5))
+
                 .build();
 
         // ---------------------------- toRightTape ---------------------------- //
 
         TrajectorySequence toRightTape = drive.trajectorySequenceBuilder(startPose)
+                //going to right tape
+                .lineToLinearHeading(new Pose2d(-35,-30, Math.toRadians(180)))
+                .waitSeconds(2)
+                //Moving away from right tape
+                .lineToConstantHeading(new Vector2d(-43, -30))
+                .waitSeconds(.5)
+                //Moving behind gate
+                .lineToConstantHeading(new Vector2d(-43, -11.5))
+                .waitSeconds(.5)
+                //Passing through gate
+                .lineToConstantHeading(new Vector2d(40, -11.5))
+                .waitSeconds(.5)
+                //Lining up with the right side of the backboard
+                .lineToConstantHeading(new Vector2d(40, -40.5))
+                .waitSeconds(.5)
+                //Moving to backboard
+                .lineToConstantHeading(new Vector2d(51, -40.5))
+                .waitSeconds(2)
+                //Moving away from backboard
+                .lineToConstantHeading(new Vector2d(40, -40.5))
+                .waitSeconds(.5)
+                //Lining up with parking position
+                .lineToLinearHeading(new Pose2d(40, -11.5, Math.toRadians(90)))
+                .waitSeconds(1)
+                //Parking
+                .lineToConstantHeading(new Vector2d(59, -11.5))
+
                 .build();
 
         // ---------------------------- Camera ---------------------------- //
@@ -69,7 +158,7 @@ public class LeftRed extends LinearOpMode {
         if (isStopRequested()) return;
 
 
-        switch (blueDetection.getLocation())
+        switch (redDetection.getLocation())
         {
             case LEFT:
                 drive.setPoseEstimate(startPose);
@@ -104,7 +193,7 @@ public class LeftRed extends LinearOpMode {
         camera = OpenCvCameraFactory.getInstance().createWebcam(hardwareMap.get(WebcamName.class, webcamName), cameraMonitorViewId);
 
         // initializing our Detection class (details on how it works at the top)
-        blueDetection = new HSVBlueDetection(telemetry);
+        redDetection = new HSVRedDetection(telemetry);
 
         // yeah what this does is it gets the thing which uses the thing so we can get the thing
         /*
@@ -112,7 +201,7 @@ public class LeftRed extends LinearOpMode {
          we basically passthrough our detection into the camera
          and we feed the streaming camera frames into our Detection algorithm)
          */
-        camera.setPipeline(blueDetection);
+        camera.setPipeline(redDetection);
 
         /*
         this starts the camera streaming, with 2 possible combinations
