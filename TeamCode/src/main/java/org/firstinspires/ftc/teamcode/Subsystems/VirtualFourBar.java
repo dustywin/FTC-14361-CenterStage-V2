@@ -39,6 +39,7 @@ public class VirtualFourBar
         leftVirtualFourBar.setInverted(true);
 
 
+
     }
 
     public void setVirtualFourBarPosition(virtualFourBarState virtualFourBarState, virtualFourBarExtensionState virtualFourBarExtensionState)

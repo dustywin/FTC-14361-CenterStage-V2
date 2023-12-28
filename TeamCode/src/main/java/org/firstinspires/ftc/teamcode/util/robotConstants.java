@@ -108,8 +108,8 @@ public class robotConstants
 
     public static class Wrist
     {
-        public static double downOuttaking = .815;
-        public static double downIntaking = .16;
+        public static double downOuttaking = 0.3;
+        public static double downIntaking = .985;
 
         // scale is from .33 (0) to .67 (1) so there no overshoot at all
 
@@ -130,12 +130,12 @@ public class robotConstants
         public static double initLeft = .24;
         //.45
         //.55
-        public static double initRight = .44;
+        public static double initRight = .49;
 
-        public static double outtakingDownLeft = .6;
+        public static double outtakingDownLeft = .62;
         public static double outtakingDownRight = .08;
 
-        public static double autoDropLeft = .55;
+        public static double autoDropLeft = .57;
         public static double autoDropRight = .15;
 
 
