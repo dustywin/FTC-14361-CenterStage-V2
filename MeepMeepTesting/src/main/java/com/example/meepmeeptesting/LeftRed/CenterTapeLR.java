@@ -21,10 +21,10 @@ public class CenterTapeLR {
                                 .lineToConstantHeading(new Vector2d(-35, -44))
                                 .waitSeconds(.5)
                                 //Moving away from center tape
-                                .lineToLinearHeading(new Pose2d(-53.5, -44, Math.toRadians(180)))
+                                .lineToLinearHeading(new Pose2d(-51, -44, Math.toRadians(180)))
                                 .waitSeconds(.5)
                                 //Moving behind gate
-                                .lineToConstantHeading(new Vector2d(-53.5, -11.5))
+                                .lineToConstantHeading(new Vector2d(-51, -11.5))
                                 .waitSeconds(.5)
                                 //Passing through gate
                                 .lineToConstantHeading(new Vector2d(40, -11.5))

@@ -28,22 +28,22 @@ public class CenterTapeRR extends LinearOpMode
 
         TrajectorySequence toCenterTape = drive.trajectorySequenceBuilder(startPose)
                 //Moving onto center tape
-                .lineToConstantHeading(new Vector2d(13, -35))
-                .waitSeconds(1.5)
+                .lineToConstantHeading(new Vector2d(11, -35.5))
+                .waitSeconds(2)
                 //Moving away from center tape
-                .lineToConstantHeading(new Vector2d(13, -45))
-                .waitSeconds(1)
+                .lineToConstantHeading(new Vector2d(11, -45))
+                .waitSeconds(.5)
                 //going to backboard
-                .lineToLinearHeading(new Pose2d(51, -33, Math.toRadians(180)))
-                .waitSeconds(1)
+                .lineToLinearHeading(new Pose2d(54, -35, Math.toRadians(180)))
+                .waitSeconds(.5)
                 //Moving away from backboard
-                .lineToConstantHeading(new Vector2d(40, -33))
+                .lineToConstantHeading(new Vector2d(40, -35))
                 .waitSeconds(1)
                 //Moving towards park position
-                .lineToLinearHeading(new Pose2d(40, -57, Math.toRadians(90)))
-                .waitSeconds(1)
+                .lineToLinearHeading(new Pose2d(40, -57,Math.toRadians(90)))
+                .waitSeconds(.5)
                 //Parking
-                .lineToConstantHeading(new Vector2d(46, -57))
+                .lineToConstantHeading(new Vector2d(49, -57))
 
                 .build();
 

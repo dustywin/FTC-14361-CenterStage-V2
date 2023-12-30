@@ -14,7 +14,6 @@ public class LeftTapeLR {
 
                 .followTrajectorySequence(drive ->
                         drive.trajectorySequenceBuilder(new Pose2d(-38, -61, Math.toRadians(270)))
-                                .waitSeconds(1)
                                 //Moving onto left tape
                                 .lineToConstantHeading(new Vector2d(-45.5, -41.5))
                                 .waitSeconds(2)
@@ -27,24 +26,26 @@ public class LeftTapeLR {
                                 //Lining up with the gate
                                 .lineToConstantHeading(new Vector2d(-34, -10.5))
                                 .waitSeconds(.5)
+                                //Turn
+                                .lineToLinearHeading(new Pose2d(-32, -10.5,Math.toRadians(180)))
+                                .waitSeconds(.5)
                                 //Passing through gate
-                                .lineToLinearHeading(new Pose2d(45, -10.5,Math.toRadians(180)))
+                                .lineToConstantHeading(new Vector2d(43, -10.5))
                                 .waitSeconds(.5)
                                 //Lining up with the left side of the backboard
-                                .lineToConstantHeading(new Vector2d(45, -28))
+                                .lineToConstantHeading(new Vector2d(43, -28))
                                 .waitSeconds(.5)
                                 //Moving to backboard
                                 .lineToConstantHeading(new Vector2d(51, -28))
                                 .waitSeconds(2)
                                 //Moving away from backboard
-                                .lineToConstantHeading(new Vector2d(45, -28))
+                                .lineToConstantHeading(new Vector2d(43, -28))
                                 .waitSeconds(.1)
                                 //Lining up with parking position
-                                .lineToLinearHeading(new Pose2d(45, -11.5, Math.toRadians(90)))
+                                .lineToLinearHeading(new Pose2d(43, -11.5, Math.toRadians(90)))
                                 .waitSeconds(1)
                                 //Parking
                                 .lineToConstantHeading(new Vector2d(59, -11.5))
-                                .waitSeconds(.5)
 
                                 .build()
                 );

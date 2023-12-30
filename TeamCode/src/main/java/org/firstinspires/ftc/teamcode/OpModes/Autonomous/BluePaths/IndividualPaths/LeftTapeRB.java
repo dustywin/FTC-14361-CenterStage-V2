@@ -1,100 +1,70 @@
 package org.firstinspires.ftc.teamcode.OpModes.Autonomous.BluePaths.IndividualPaths;
 import com.acmerobotics.roadrunner.geometry.Pose2d;
+import com.acmerobotics.roadrunner.geometry.Vector2d;
 import com.acmerobotics.roadrunner.trajectory.Trajectory;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.hardware.HardwareMap;
 
-import org.firstinspires.ftc.teamcode.Commands.activeIntakeState;
-import org.firstinspires.ftc.teamcode.Commands.clawState;
-import org.firstinspires.ftc.teamcode.Commands.virtualFourBarExtensionState;
-import org.firstinspires.ftc.teamcode.Commands.virtualFourBarState;
-import org.firstinspires.ftc.teamcode.Commands.wristState;
+import org.firstinspires.ftc.robotcore.external.Telemetry;
+import org.firstinspires.ftc.teamcode.OpModes.Autonomous.trajectorysequence.TrajectorySequence;
 import org.firstinspires.ftc.teamcode.Subsystems.Robot;
 import org.firstinspires.ftc.teamcode.OpModes.Autonomous.drive.SampleMecanumDrive;
 
-@Autonomous(name = "RightBlueLeft")
+@Autonomous(name = "LeftTapeRB")
 public class LeftTapeRB extends LinearOpMode
 {
     Robot bot;
-    Pose2d myPose = new Pose2d(-36, 63, Math.toRadians(90));
-    public Trajectory ejectPixel, backUp, behindGate, passThroughGate, toBackBoard, moveFromBackBoard, towardsPark, park;
-    public SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap);
+    Pose2d startPose = new Pose2d(-35, 61, Math.toRadians(90));
 
     @Override
-    public void runOpMode()
+    public void runOpMode() throws InterruptedException
     {
+        SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap);
         bot = new Robot(hardwareMap, telemetry);
         bot.setInBrake();
 
-        drive.setPoseEstimate(myPose);
+        drive.setPoseEstimate(startPose);
 
-        Trajectory ejectPixel = drive.trajectoryBuilder(myPose)
-                .addDisplacementMarker(0, () -> {
-                    bot.setClawPosition(clawState.close);
-                    bot.setClawState(clawState.close);
-                    bot.setVirtualFourBarPosition(virtualFourBarState.init,virtualFourBarExtensionState.extending);
-                    bot.setVirtualFourBarState(virtualFourBarState.init);
-                })
-                .addDisplacementMarker(39, () -> {
-                    bot.setActiveIntakePosition(activeIntakeState.activeReverse);
-                })
-                .lineToLinearHeading(new Pose2d(-39, 36, Math.toRadians(0)))
+        TrajectorySequence toLeftTape = drive.trajectorySequenceBuilder(startPose)
+                //Moving away from starting pose
+                .lineToConstantHeading(new Vector2d(-38,61))
+                .waitSeconds(.5)
+                //Moving behind left tape
+                .lineToLinearHeading(new Pose2d(-38,30, Math.toRadians(180)))
+                .waitSeconds(.5)
+                //Moving onto left tape
+                .lineToConstantHeading(new Vector2d(-35, 30))
+                .waitSeconds(2)
+                //Moving away from left tape
+                .lineToConstantHeading(new Vector2d(-43, 30))
+                .waitSeconds(.5)
+                //Moving behind gate
+                .lineToConstantHeading(new Vector2d(-43, 11.5))
+                .waitSeconds(.5)
+                //Passing through gate
+                .lineToConstantHeading(new Vector2d(40, 11.5))
+                .waitSeconds(.5)
+                //Lining up with the left side of the backboard
+                .lineToConstantHeading(new Vector2d(40, 40.5))
+                .waitSeconds(.5)
+                //Moving to backboard
+                .lineToConstantHeading(new Vector2d(51, 40.5))
+                .waitSeconds(2)
+                //Moving away from backboard
+                .lineToConstantHeading(new Vector2d(40, 40.5))
+                .waitSeconds(.5)
+                //Lining up with parking position
+                .lineToLinearHeading(new Pose2d(40, 11.5, Math.toRadians(270)))
+                .waitSeconds(1)
+                //Parking
+                .lineToConstantHeading(new Vector2d(59, 11.5))
+
                 .build();
 
-        Trajectory backUp = drive.trajectoryBuilder(ejectPixel.end())
-                .addTemporalMarker(0, () -> {
-                    bot.setActiveIntakePosition(activeIntakeState.inactive);
-                })
-                .back(6)
-                .build();
+        waitForStart();
 
-        Trajectory behindGate = drive.trajectoryBuilder(backUp.end())
-                .lineToLinearHeading(new Pose2d(-39, 12, Math.toRadians(180)))
-                .build();
-
-        Trajectory passThroughGate = drive.trajectoryBuilder(behindGate.end())
-                .back(70)
-                .build();
-
-        Trajectory toBackBoard = drive.trajectoryBuilder(passThroughGate.end())
-                .lineToLinearHeading(new Pose2d(54, 30, Math.toRadians(180)))
-                .addTemporalMarker(0.5, () -> {
-                    bot.setWristPosition(wristState.sideways);
-                    bot.setVirtualFourBarPosition(virtualFourBarState.outtaking, virtualFourBarExtensionState.extending);
-                })
-                .addTemporalMarker(2,() -> {
-                    bot.setWristPosition(wristState.normal);
-                    bot.setClawPosition(clawState.open);
-                })
-                .build();
-
-        Trajectory moveFromBackBoard = drive.trajectoryBuilder(toBackBoard.end())
-                .addTemporalMarker(0.5,() -> {
-                    bot.setVirtualFourBarPosition(virtualFourBarState.init, virtualFourBarExtensionState.extending);
-                })
-                .forward(5)
-                .build();
-
-        Trajectory towardsPark = drive.trajectoryBuilder(moveFromBackBoard.end())
-                .strafeLeft(24)
-                .build();
-
-        Trajectory park = drive.trajectoryBuilder(towardsPark.end())
-                .back(16)
-                .build();
-
-
-
-    }
-
-    public void rightBlueLeftExecute(){
-        drive.followTrajectory(ejectPixel);
-        drive.followTrajectory(backUp);
-        drive.followTrajectory(behindGate);
-        drive.followTrajectory(passThroughGate);
-        drive.followTrajectory(toBackBoard);
-        drive.followTrajectory(moveFromBackBoard);
-        drive.followTrajectory(towardsPark);
-        drive.followTrajectory(park);
+        if (!isStopRequested())
+            drive.followTrajectorySequence(toLeftTape);
     }
 }

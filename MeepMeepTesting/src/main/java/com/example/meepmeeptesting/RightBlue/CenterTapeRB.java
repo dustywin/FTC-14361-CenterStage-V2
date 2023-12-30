@@ -15,16 +15,16 @@ public class CenterTapeRB {
                 .followTrajectorySequence(drive ->
                         drive.trajectorySequenceBuilder(new Pose2d(-35, 61, Math.toRadians(90)))
                                 //Moving onto center tape
-                                .lineToConstantHeading(new Vector2d(-37, 35))
+                                .lineToConstantHeading(new Vector2d(-35, 35))
                                 .waitSeconds(2)
                                 //Moving behind center tape
-                                .lineToConstantHeading(new Vector2d(-37, 44))
+                                .lineToConstantHeading(new Vector2d(-35, 44))
                                 .waitSeconds(.5)
                                 //Moving away from center tape
-                                .lineToLinearHeading(new Pose2d(-53.5, 44, Math.toRadians(180)))
+                                .lineToLinearHeading(new Pose2d(-51, 44, Math.toRadians(180)))
                                 .waitSeconds(.5)
                                 //Moving behind gate
-                                .lineToConstantHeading(new Vector2d(-53.5, 11.5))
+                                .lineToConstantHeading(new Vector2d(-51, 11.5))
                                 .waitSeconds(.5)
                                 //Passing through gate
                                 .lineToConstantHeading(new Vector2d(40, 11.5))
@@ -39,10 +39,10 @@ public class CenterTapeRB {
                                 .lineToConstantHeading(new Vector2d(40, 34))
                                 .waitSeconds(.5)
                                 //Lining up with parking position
-                                .lineToLinearHeading(new Pose2d(40, 11.5,Math.toRadians(270)))
+                                .lineToLinearHeading(new Pose2d(40, 12.5,Math.toRadians(270)))
                                 .waitSeconds(1)
                                 //Parking
-                                .lineToConstantHeading(new Vector2d(59, 11.5))
+                                .lineToConstantHeading(new Vector2d(59, 12.5))
 
                                 .build()
                 );

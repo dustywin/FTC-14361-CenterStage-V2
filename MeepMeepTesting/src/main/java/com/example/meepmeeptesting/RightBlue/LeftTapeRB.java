@@ -14,8 +14,14 @@ public class LeftTapeRB {
 
                 .followTrajectorySequence(drive ->
                         drive.trajectorySequenceBuilder(new Pose2d(-35, 61, Math.toRadians(90)))
-                                //going to left tape
-                                .lineToLinearHeading(new Pose2d(-35,30, Math.toRadians(180)))
+                                //Moving away from starting pose
+                                .lineToConstantHeading(new Vector2d(-38,61))
+                                .waitSeconds(.5)
+                                //Moving behind left tape
+                                .lineToLinearHeading(new Pose2d(-38,30, Math.toRadians(180)))
+                                .waitSeconds(.5)
+                                //Moving onto left tape
+                                .lineToConstantHeading(new Vector2d(-35, 30))
                                 .waitSeconds(2)
                                 //Moving away from left tape
                                 .lineToConstantHeading(new Vector2d(-43, 30))

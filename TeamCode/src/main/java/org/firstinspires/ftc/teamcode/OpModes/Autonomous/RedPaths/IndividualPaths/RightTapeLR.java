@@ -27,8 +27,11 @@ public class RightTapeLR extends LinearOpMode
         drive.setPoseEstimate(startPose);
 
         TrajectorySequence toRightTape = drive.trajectorySequenceBuilder(startPose)
-                //going to right tape
-                .lineToLinearHeading(new Pose2d(-35,-30, Math.toRadians(180)))
+                //Moving behind right tape
+                .lineToLinearHeading(new Pose2d(-38,-30, Math.toRadians(180)))
+                .waitSeconds(.5)
+                //Moving onto right tape
+                .lineToConstantHeading(new Vector2d(-35, -30))
                 .waitSeconds(2)
                 //Moving away from right tape
                 .lineToConstantHeading(new Vector2d(-43, -30))
