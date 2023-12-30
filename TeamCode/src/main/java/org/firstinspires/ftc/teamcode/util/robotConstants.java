@@ -8,22 +8,11 @@ public class robotConstants
         public static double I = 0.0;
         public static double D = 0.0;
 
-        public static double pulleyCircumference = 0.0;
-        public static double ticksPerRevolution = 0.0;
-
-
         public static int MOSTHIGHLEFT = -1500;
         public static int MOSTHIGHRIGHT = 1500;
-        public static int HIGH = 1400;
-        public static int MEDIUM = 900;
-        public static int LOW = 450;
-        //left is negative
-        //right is positive
 
-
-
-        public static int HIGHLEFT = -1400;
-        public static int HIGHRIGHT = 1400;
+        public static int HIGHLEFT = -1275;
+        public static int HIGHRIGHT = 1275;
         //sometimes the encoder values go negative so you might have to change those
 
         public static int MEDIUMLEFT = -900;
@@ -31,7 +20,6 @@ public class robotConstants
 
         public static int LOWLEFT = -450;
         public static int LOWRIGHT = 450;
-
 
         public static int AUTOLOWLEFT = -100;
         public static int AUTOLOWRIGHT = 100;
@@ -45,20 +33,8 @@ public class robotConstants
         public static double I = 0.5;
         public static double D = 0.5;
 
-        public static double pulleyCircumference = 0.0;
-        public static double ticksPerRevolution = 0.0;
-
-
         public static int highExtension = 700;
         public static int mediumExtension = 230;
-
-
-//        public static int fullExtension = -3600;
-//        public static int mediumExtension = -1200;
-//        public static int shortExtension = -500;
-
-        // first comp length below
-
         public static int lowExtension = 0;
         public static int retracted = 0;
     }
@@ -75,11 +51,7 @@ public class robotConstants
         public static double autoLeftClose = .65;
         public static double autoRightClose = .63;
 
-
         public static double rightCloseOnePixel = .58;
-
-
-
     }
 
     public static class Arm
@@ -96,9 +68,6 @@ public class robotConstants
 
         public static double autoActive = 0.34;
         public static double autoReverseActive = -0.34;
-
-
-
     }
 
     public static class Climb
