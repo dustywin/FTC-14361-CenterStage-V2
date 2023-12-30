@@ -1,0 +1,7 @@
+#Fri Nov 10 22:27:32 CST 2023
+base.0=C\:\\Users\\grump\\Downloads\\FTC-14361-CenterStage-V2\\TeamCode\\build\\intermediates\\dex\\debugAndroidTest\\mergeProjectDexDebugAndroidTest\\0\\classes.dex
+base.1=C\:\\Users\\grump\\Downloads\\FTC-14361-CenterStage-V2\\TeamCode\\build\\intermediates\\dex\\debugAndroidTest\\mergeProjectDexDebugAndroidTest\\3\\classes.dex
+path.0=0/classes.dex
+path.1=3/classes.dex
+renamed.0=classes.dex
+renamed.1=classes2.dex
