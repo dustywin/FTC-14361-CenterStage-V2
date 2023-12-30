@@ -68,10 +68,10 @@ public class robotConstants
         public static double intakeAuto = 0.0;
         public static double intakeTeleOp = 0.0;
 
-        public static double leftClose = .7;
-        public static double rightClose = .58;
-        public static double leftOpen = .9;
-        public static double rightOpen = .33;
+        public static double leftClose = .94;
+        public static double rightClose = .35;
+        public static double leftOpen = .77;
+        public static double rightOpen = .47;
         public static double autoLeftClose = .65;
         public static double autoRightClose = .63;
 
@@ -108,8 +108,8 @@ public class robotConstants
 
     public static class Wrist
     {
-        public static double wristSideways = .65;
-        public static double wristNormal = 1;
+        public static double downOuttaking = 0.3;
+        public static double downIntaking = .985;
 
         // scale is from .33 (0) to .67 (1) so there no overshoot at all
 
@@ -119,18 +119,27 @@ public class robotConstants
 
     public static class virtualFourBar
     {
-        public static double intakingLeft = .84;
+        public static double intakingLeft = 0.01;
         //.486
         //.588
-        public static double intakingRight = .44;
+        public static double intakingRight = .75;
 
-        public static double outtakingLeft = .45;
-        public static double outtakingRight = .05;
+        public static double outtakingLeft = .47;
+        public static double outtakingRight = .31;
 
-        public static double initLeft = .75;
+        public static double initLeft = .24;
         //.45
         //.55
-        public static double initRight = .35;
+        public static double initRight = .49;
+
+        public static double outtakingDownLeft = .62;
+        public static double outtakingDownRight = .08;
+
+        public static double autoDropLeft = .57;
+        public static double autoDropRight = .15;
+
+
+
 
         public static double intakingLeftAuton = 0.5;
         public static double intakingRightAuton = 0.6;

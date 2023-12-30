@@ -1,0 +1,7 @@
+org.firstinspires.ftc.teamcode.test.TeamCode-androidTest-0 C:\Users\grump\Downloads\FTC-14361-CenterStage-V2\TeamCode\build\generated\res\resValues\androidTest\debug
+org.firstinspires.ftc.teamcode.test.TeamCode-androidTest-1 C:\Users\grump\Downloads\FTC-14361-CenterStage-V2\TeamCode\build\generated\res\rs\androidTest\debug
+org.firstinspires.ftc.teamcode.test.TeamCode-mergeDebugAndroidTestResources-2 C:\Users\grump\Downloads\FTC-14361-CenterStage-V2\TeamCode\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\merged.dir
+org.firstinspires.ftc.teamcode.test.TeamCode-mergeDebugAndroidTestResources-3 C:\Users\grump\Downloads\FTC-14361-CenterStage-V2\TeamCode\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\stripped.dir
+org.firstinspires.ftc.teamcode.test.TeamCode-merged_res-4 C:\Users\grump\Downloads\FTC-14361-CenterStage-V2\TeamCode\build\intermediates\merged_res\debugAndroidTest
+org.firstinspires.ftc.teamcode.test.TeamCode-androidTest-5 C:\Users\grump\Downloads\FTC-14361-CenterStage-V2\TeamCode\src\androidTest\res
+org.firstinspires.ftc.teamcode.test.TeamCode-androidTestDebug-6 C:\Users\grump\Downloads\FTC-14361-CenterStage-V2\TeamCode\src\androidTestDebug\res
