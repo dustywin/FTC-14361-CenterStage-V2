@@ -37,9 +37,6 @@ public class VirtualFourBar
         leftAnalogInput = hardwareMap.get(AnalogInput.class, "leftAnalogInput");
 
         leftVirtualFourBar.setInverted(true);
-
-
-
     }
 
     public void setVirtualFourBarPosition(virtualFourBarState virtualFourBarState, virtualFourBarExtensionState virtualFourBarExtensionState)
@@ -97,8 +94,8 @@ public class VirtualFourBar
     public double getV4bRightPosition(){
 
         // get the voltage of our analog line
-// divide by 3.3 (the max voltage) to get a value between 0 and 1
-// multiply by 360 to convert it to 0 to 360 degrees
+        // divide by 3.3 (the max voltage) to get a value between 0 and 1
+        // multiply by 360 to convert it to 0 to 360 degrees
 
         double position = rightAnalogInput.getVoltage() / 3.3 * 360;
         return position;
