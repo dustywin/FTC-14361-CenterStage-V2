@@ -34,7 +34,7 @@ public class RightTapeLB extends LinearOpMode
                 .lineToConstantHeading(new Vector2d(11, 31))
                 .waitSeconds(2)
                 //going to backboard
-                .lineToLinearHeading(new Pose2d(54, 31, Math.toRadians(180)))
+                .lineToLinearHeading(new Pose2d(53, 31, Math.toRadians(180)))
                 .waitSeconds(2)
                 //Moving away from backboard
                 .lineToConstantHeading(new Vector2d(40, 31))

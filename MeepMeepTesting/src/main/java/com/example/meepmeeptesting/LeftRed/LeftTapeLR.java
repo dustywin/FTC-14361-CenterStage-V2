@@ -36,16 +36,16 @@ public class LeftTapeLR {
                                 .lineToConstantHeading(new Vector2d(43, -28))
                                 .waitSeconds(.5)
                                 //Moving to backboard
-                                .lineToConstantHeading(new Vector2d(51, -28))
+                                .lineToConstantHeading(new Vector2d(53, -29))
                                 .waitSeconds(2)
                                 //Moving away from backboard
                                 .lineToConstantHeading(new Vector2d(43, -28))
                                 .waitSeconds(.1)
                                 //Lining up with parking position
-                                .lineToLinearHeading(new Pose2d(43, -11.5, Math.toRadians(90)))
+                                .lineToLinearHeading(new Pose2d(43, -14, Math.toRadians(90)))
                                 .waitSeconds(1)
                                 //Parking
-                                .lineToConstantHeading(new Vector2d(59, -11.5))
+                                .lineToConstantHeading(new Vector2d(59, -14))
 
                                 .build()
                 );

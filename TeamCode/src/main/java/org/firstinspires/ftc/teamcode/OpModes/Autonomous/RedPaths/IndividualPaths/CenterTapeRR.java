@@ -34,7 +34,7 @@ public class CenterTapeRR extends LinearOpMode
                 .lineToConstantHeading(new Vector2d(11, -45))
                 .waitSeconds(.5)
                 //going to backboard
-                .lineToLinearHeading(new Pose2d(54, -35, Math.toRadians(180)))
+                .lineToLinearHeading(new Pose2d(53, -35, Math.toRadians(180)))
                 .waitSeconds(.5)
                 //Moving away from backboard
                 .lineToConstantHeading(new Vector2d(40, -35))
