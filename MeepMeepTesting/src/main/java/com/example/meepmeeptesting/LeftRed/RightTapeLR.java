@@ -14,8 +14,11 @@ public class RightTapeLR {
 
                 .followTrajectorySequence(drive ->
                         drive.trajectorySequenceBuilder(new Pose2d(-38, -61, Math.toRadians(270)))
-                                //going to right tape
-                                .lineToLinearHeading(new Pose2d(-35,-30, Math.toRadians(180)))
+                                //Moving behind right tape
+                                .lineToLinearHeading(new Pose2d(-38,-30, Math.toRadians(180)))
+                                .waitSeconds(.5)
+                                //Moving onto right tape
+                                .lineToConstantHeading(new Vector2d(-35, -30))
                                 .waitSeconds(2)
                                 //Moving away from right tape
                                 .lineToConstantHeading(new Vector2d(-43, -30))
@@ -30,16 +33,16 @@ public class RightTapeLR {
                                 .lineToConstantHeading(new Vector2d(40, -40.5))
                                 .waitSeconds(.5)
                                 //Moving to backboard
-                                .lineToConstantHeading(new Vector2d(51, -40.5))
+                                .lineToConstantHeading(new Vector2d(53, -40.5))
                                 .waitSeconds(2)
                                 //Moving away from backboard
                                 .lineToConstantHeading(new Vector2d(40, -40.5))
                                 .waitSeconds(.5)
                                 //Lining up with parking position
-                                .lineToLinearHeading(new Pose2d(40, -11.5, Math.toRadians(90)))
+                                .lineToLinearHeading(new Pose2d(40, -14, Math.toRadians(90)))
                                 .waitSeconds(1)
                                 //Parking
-                                .lineToConstantHeading(new Vector2d(59, -11.5))
+                                .lineToConstantHeading(new Vector2d(59, -14))
 
                                 .build()
                 );
