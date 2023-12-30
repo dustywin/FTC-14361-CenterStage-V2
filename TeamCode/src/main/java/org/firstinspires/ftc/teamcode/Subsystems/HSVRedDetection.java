@@ -20,7 +20,7 @@ https://www.youtube.com/watch?v=JO7dqzJi8lw&ab_channel=FTCteamWolfCorpRobotics12
 
 I've added some comments abt stuff- Good luck!
  */
-public class RedDetection extends OpenCvPipeline {
+public class HSVRedDetection extends OpenCvPipeline {
     Telemetry telemetry;
     Mat mat = new Mat();
     public enum Location {
@@ -38,15 +38,16 @@ public class RedDetection extends OpenCvPipeline {
     Adjust the camera or the boxes so your TSE is inside it
 
      */
-    static final Rect RIGHT_ROI = new Rect(
+
+    static final Rect MIDDLE_ROI = new Rect(
             new Point(30, 135),
             new Point(90, 175));
-    static final Rect MIDDLE_ROI = new Rect(
+    static final Rect RIGHT_ROI = new Rect(
             new Point(140, 135),
             new Point(200, 175));
-    static double PERCENT_COLOR_THRESHOLD = 0.3;
+    static double PERCENT_COLOR_THRESHOLD = 0.18;
 
-    public RedDetection(Telemetry t) { telemetry = t; }
+    public HSVRedDetection(Telemetry t) { telemetry = t; }
 
     @Override
     public Mat processFrame(Mat input) {
@@ -67,8 +68,13 @@ public class RedDetection extends OpenCvPipeline {
 
         // in this case, we using dark blue to light blue
 
+// HEAD:TeamCode/src/main/java/org/firstinspires/ftc/teamcode/Subsystems/RedDetection.java
         Scalar lowHSV = new Scalar(0, 128, 100);
         Scalar highHSV = new Scalar(20, 255, 255);
+
+//        Scalar lowHSV = new Scalar(173, 150, 75);
+//        Scalar highHSV = new Scalar(179, 255, 255);
+//>>>>>>> goob3WheelOdo:TeamCode/src/main/java/org/firstinspires/ftc/teamcode/Subsystems/HSVRedDetection.java
 
 
         // this shows us the stuff in our range (in this case blue)

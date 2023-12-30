@@ -24,14 +24,14 @@ public class Wrist
     {
         switch(wristState)
         {
-            case normal:
-                servo.setPosition(robotConstants.Wrist.wristNormal);
+            case downIntaking:
+                servo.setPosition(robotConstants.Wrist.downIntaking);
                 break;
-            case sideways:
-                servo.setPosition(robotConstants.Wrist.wristSideways);
+            case downOuttaking:
+                servo.setPosition(robotConstants.Wrist.downOuttaking);
                 break;
             default:
-                servo.setPosition(robotConstants.Wrist.wristNormal);
+                servo.setPosition(robotConstants.Wrist.downIntaking);
         }
     }
     public double getWristPosition()

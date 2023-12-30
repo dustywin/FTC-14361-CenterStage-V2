@@ -12,7 +12,6 @@ public class robotConstants
         public static double ticksPerRevolution = 0.0;
 
 
-
         public static int MOSTHIGHLEFT = -1500;
         public static int MOSTHIGHRIGHT = 1500;
         public static int HIGH = 1400;
@@ -20,6 +19,8 @@ public class robotConstants
         public static int LOW = 450;
         //left is negative
         //right is positive
+
+
 
         public static int HIGHLEFT = -1400;
         public static int HIGHRIGHT = 1400;
@@ -67,15 +68,18 @@ public class robotConstants
         public static double intakeAuto = 0.0;
         public static double intakeTeleOp = 0.0;
 
-        public static double leftClose = .7;
-        public static double rightClose = .58;
-        public static double leftOpen = .9;
-        public static double rightOpen = .33;
-
+        public static double leftClose = .94;
+        public static double rightClose = .35;
+        public static double leftOpen = .77;
+        public static double rightOpen = .47;
         public static double autoLeftClose = .65;
         public static double autoRightClose = .63;
 
+
         public static double rightCloseOnePixel = .58;
+
+
+
     }
 
     public static class Arm
@@ -86,11 +90,15 @@ public class robotConstants
 
     public static class activeIntake
     {
-        public static double active = -.4;
-        public static double reverseActive =  .4;
+
+        public static double active = -.7;
+        public static double reverseActive = .7;
 
         public static double autoActive = 0.34;
         public static double autoReverseActive = -0.34;
+
+
+
     }
 
     public static class Climb
@@ -100,10 +108,8 @@ public class robotConstants
 
     public static class Wrist
     {
-
-        public static double wristSideways = .65;
-
-        public static double wristNormal = 1;
+        public static double downOuttaking = 0.3;
+        public static double downIntaking = .985;
 
         // scale is from .33 (0) to .67 (1) so there no overshoot at all
 
@@ -113,20 +119,42 @@ public class robotConstants
 
     public static class virtualFourBar
     {
-        public static double intakingLeft = .84;
+        public static double intakingLeft = 0.01;
         //.486
         //.588
-        public static double intakingRight = .44;
+        public static double intakingRight = .75;
 
-        public static double outtakingLeft = .45;
-        public static double outtakingRight = .05;
+        public static double outtakingLeft = .47;
+        public static double outtakingRight = .31;
 
-        public static double initLeft = .75;
+        public static double initLeft = .24;
         //.45
         //.55
-        public static double initRight = .35;
+        public static double initRight = .49;
+
+        public static double outtakingDownLeft = .62;
+        public static double outtakingDownRight = .08;
+
+        public static double autoDropLeft = .57;
+        public static double autoDropRight = .15;
+
+
+
 
         public static double intakingLeftAuton = 0.5;
         public static double intakingRightAuton = 0.6;
+
+
+
+
+        // right: .58
+        // left: .41
+
+        /*
+        Robot is EVEN at both sides at:
+
+        L: .64
+        R: .45
+         */
     }
 }

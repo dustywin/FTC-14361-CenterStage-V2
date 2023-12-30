@@ -1,9 +1,10 @@
-package org.firstinspires.ftc.teamcode.OpModes.Autonomous.BluePaths;
+package org.firstinspires.ftc.teamcode.OpModes.Autonomous.BluePaths.IndividualPaths;
 import com.acmerobotics.roadrunner.geometry.Pose2d;
 import com.acmerobotics.roadrunner.trajectory.Trajectory;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
+import org.firstinspires.ftc.teamcode.Commands.activeIntakeState;
 import org.firstinspires.ftc.teamcode.Commands.clawState;
 import org.firstinspires.ftc.teamcode.Commands.virtualFourBarExtensionState;
 import org.firstinspires.ftc.teamcode.Commands.virtualFourBarState;
@@ -11,8 +12,8 @@ import org.firstinspires.ftc.teamcode.Commands.wristState;
 import org.firstinspires.ftc.teamcode.Subsystems.Robot;
 import org.firstinspires.ftc.teamcode.OpModes.Autonomous.drive.SampleMecanumDrive;
 
-@Autonomous(name = "RightBlueMid")
-public class RightBlueMid extends LinearOpMode
+@Autonomous(name = "RightBlueLeft")
+public class LeftTapeRB extends LinearOpMode
 {
     Robot bot;
     Pose2d myPose = new Pose2d(-36, 63, Math.toRadians(90));
@@ -26,57 +27,51 @@ public class RightBlueMid extends LinearOpMode
 
         drive.setPoseEstimate(myPose);
 
-        Trajectory pushPixel = drive.trajectoryBuilder(myPose)
+        Trajectory ejectPixel = drive.trajectoryBuilder(myPose)
                 .addDisplacementMarker(0, () -> {
                     bot.setClawPosition(clawState.close);
                     bot.setClawState(clawState.close);
+                    bot.setVirtualFourBarPosition(virtualFourBarState.init,virtualFourBarExtensionState.extending);
+                    bot.setVirtualFourBarState(virtualFourBarState.init);
                 })
-                .back(31)
+                .addDisplacementMarker(39, () -> {
+                    bot.setActiveIntakePosition(activeIntakeState.activeReverse);
+                })
+                .lineToLinearHeading(new Pose2d(-39, 36, Math.toRadians(0)))
                 .build();
 
-        Trajectory backUp = drive.trajectoryBuilder(pushPixel.end())
-                .forward(6)
+        Trajectory backUp = drive.trajectoryBuilder(ejectPixel.end())
+                .addTemporalMarker(0, () -> {
+                    bot.setActiveIntakePosition(activeIntakeState.inactive);
+                })
+                .back(6)
                 .build();
 
-        Trajectory moveFromTape = drive.trajectoryBuilder(backUp.end())
-                .strafeLeft(20)
+        Trajectory behindGate = drive.trajectoryBuilder(backUp.end())
+                .lineToLinearHeading(new Pose2d(-39, 12, Math.toRadians(180)))
                 .build();
 
-        Trajectory behindGate1 = drive.trajectoryBuilder(moveFromTape.end())
-                .back(30)
+        Trajectory passThroughGate = drive.trajectoryBuilder(behindGate.end())
+                .back(70)
                 .build();
 
-        Trajectory behindGate2 = drive.trajectoryBuilder(behindGate1.end())
-                .lineToLinearHeading(new Pose2d(-36, 6, Math.toRadians(180)))
-                .build();
-
-        Trajectory passThroughGate1 = drive.trajectoryBuilder(behindGate2.end())
-                .back(60)
-                //lineToLinearHeading strafe dist. = 80
-                .build();
-
-        Trajectory passThroughGate2 = drive.trajectoryBuilder(behindGate2.end())
-                .strafeLeft(29)
-                .build();
-
-        Trajectory toBackBoard = drive.trajectoryBuilder(passThroughGate2.end())
-                .lineToLinearHeading(new Pose2d(57, 29, Math.toRadians(180)))
+        Trajectory toBackBoard = drive.trajectoryBuilder(passThroughGate.end())
+                .lineToLinearHeading(new Pose2d(54, 30, Math.toRadians(180)))
                 .addTemporalMarker(0.5, () -> {
-                    bot.setWristPosition(wristState.sideways);
+                    bot.setWristPosition(wristState.downOuttaking);
                     bot.setVirtualFourBarPosition(virtualFourBarState.outtaking, virtualFourBarExtensionState.extending);
                 })
                 .addTemporalMarker(2,() -> {
-                    bot.setWristPosition(wristState.normal);
+                    bot.setWristPosition(wristState.downOuttaking);
                     bot.setClawPosition(clawState.open);
                 })
                 .build();
 
-
         Trajectory moveFromBackBoard = drive.trajectoryBuilder(toBackBoard.end())
-//                .addTemporalMarker(0.5,() -> {
-//                    bot.setVirtualFourBarPosition(virtualFourBarState.init, virtualFourBarExtensionState.extending);
-//                })
-                .forward(10)
+                .addTemporalMarker(0.5,() -> {
+                    bot.setVirtualFourBarPosition(virtualFourBarState.init, virtualFourBarExtensionState.extending);
+                })
+                .forward(5)
                 .build();
 
         Trajectory towardsPark = drive.trajectoryBuilder(moveFromBackBoard.end())
@@ -84,7 +79,7 @@ public class RightBlueMid extends LinearOpMode
                 .build();
 
         Trajectory park = drive.trajectoryBuilder(towardsPark.end())
-                .back(20)
+                .back(16)
                 .build();
 
         waitForStart();
@@ -94,16 +89,14 @@ public class RightBlueMid extends LinearOpMode
             return;
         }
 
-        drive.followTrajectory(pushPixel);
+        drive.followTrajectory(ejectPixel);
         drive.followTrajectory(backUp);
-        drive.followTrajectory(moveFromTape);
-        drive.followTrajectory(behindGate1);
-        drive.followTrajectory(behindGate2);
-        drive.followTrajectory(passThroughGate1);
-        drive.followTrajectory(passThroughGate2);
+        drive.followTrajectory(behindGate);
+        drive.followTrajectory(passThroughGate);
         drive.followTrajectory(toBackBoard);
         drive.followTrajectory(moveFromBackBoard);
         drive.followTrajectory(towardsPark);
         drive.followTrajectory(park);
+
     }
 }
