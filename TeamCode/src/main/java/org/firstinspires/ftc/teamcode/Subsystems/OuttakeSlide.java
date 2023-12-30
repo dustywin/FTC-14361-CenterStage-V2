@@ -4,20 +4,15 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
-
 import org.firstinspires.ftc.teamcode.Commands.extensionState;
 import org.firstinspires.ftc.teamcode.Commands.outtakeSlidesState;
 import org.firstinspires.ftc.teamcode.util.robotConstants;
-
-
-
 
 public class OuttakeSlide
 {
     DcMotorEx rightouttakeSlide, leftouttakeSlide;
     private final int countsPerRev = 384;
     double power = .9;
-
 
     public OuttakeSlide(HardwareMap hardwareMap) {
         rightouttakeSlide = hardwareMap.get(DcMotorEx.class, "rightOuttakeSlide");
@@ -27,8 +22,6 @@ public class OuttakeSlide
         leftouttakeSlide.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         rightouttakeSlide.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         leftouttakeSlide.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-
-
 
         rightouttakeSlide.setTargetPositionTolerance(5);
         leftouttakeSlide.setTargetPositionTolerance(5);
