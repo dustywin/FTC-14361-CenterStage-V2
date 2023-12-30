@@ -13,7 +13,7 @@ public class CenterTapeLR {
                 .setConstraints(60, 60, Math.toRadians(180), Math.toRadians(180), 10.5)
 
                 .followTrajectorySequence(drive ->
-                        drive.trajectorySequenceBuilder(new Pose2d(-35, -61, Math.toRadians(270)))
+                        drive.trajectorySequenceBuilder(new Pose2d(-38, -61, Math.toRadians(270)))
                                 //Moving onto center tape
                                 .lineToConstantHeading(new Vector2d(-35, -35))
                                 .waitSeconds(2)
