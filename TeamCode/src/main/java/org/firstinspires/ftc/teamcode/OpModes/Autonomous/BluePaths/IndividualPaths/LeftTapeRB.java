@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.OpModes.Autonomous.BluePaths;
+package org.firstinspires.ftc.teamcode.OpModes.Autonomous.BluePaths.IndividualPaths;
 import com.acmerobotics.roadrunner.geometry.Pose2d;
 import com.acmerobotics.roadrunner.trajectory.Trajectory;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
@@ -13,7 +13,7 @@ import org.firstinspires.ftc.teamcode.Subsystems.Robot;
 import org.firstinspires.ftc.teamcode.OpModes.Autonomous.drive.SampleMecanumDrive;
 
 @Autonomous(name = "RightBlueLeft")
-public class RightBlueLeft extends LinearOpMode
+public class LeftTapeRB extends LinearOpMode
 {
     Robot bot;
     Pose2d myPose = new Pose2d(-36, 63, Math.toRadians(90));

@@ -1,8 +1,7 @@
-package org.firstinspires.ftc.teamcode.OpModes.Autonomous.BluePaths;
+package org.firstinspires.ftc.teamcode.OpModes.Autonomous.BluePaths.IndividualPaths;
 import com.acmerobotics.roadrunner.geometry.Pose2d;
 import com.acmerobotics.roadrunner.trajectory.Trajectory;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 
@@ -24,11 +23,11 @@ import org.openftc.easyopencv.OpenCvCameraRotation;
 import org.firstinspires.ftc.teamcode.OpModes.Autonomous.drive.SampleMecanumDrive;
 
 
-//@Autonomous(name = "RightBlueMid")
-public class RightBlueMid
+@Autonomous(name = "RightBlueMid")
+public class CenterTapeRB
 {
 
-  /*  public Robot bot;
+    public Robot bot;
     OpenCvCamera camera;
     HSVBlueDetection blueDetection;
     String webcamName;
@@ -38,7 +37,6 @@ public class RightBlueMid
     HardwareMap hardwareMap;
     Telemetry telemetry;
     public void rightBlueMidExecute(HardwareMap hardwareMap)
-
     {
         this.hardwareMap = hardwareMap;
         SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap);
@@ -84,11 +82,11 @@ public class RightBlueMid
         Trajectory toBackBoard = drive.trajectoryBuilder(passThroughGate.end())
                 .lineToLinearHeading(new Pose2d(54, 30, Math.toRadians(180)))
                 .addTemporalMarker(0.5, () -> {
-                    bot.setWristPosition(wristState.downOuttaking);
+                    bot.setWristPosition(wristState.sideways);
                     bot.setVirtualFourBarPosition(virtualFourBarState.outtaking, virtualFourBarExtensionState.extending);
                 })
                 .addTemporalMarker(2,() -> {
-                    bot.setWristPosition(wristState.downOuttaking);
+                    bot.setWristPosition(wristState.normal);
                     bot.setClawPosition(clawState.open);
                 })
                 .build();
@@ -121,12 +119,10 @@ public class RightBlueMid
             case MIDDLE:
                 // ...
         }
-
+         */
 
         // to save battery
         camera.stopStreaming();
-        waitForStart();
-        if(isStopRequested()) return;
 
 
         drive.followTrajectory(pushPixel);
@@ -161,13 +157,13 @@ public class RightBlueMid
         (fr tho idk what pipeline does, but from what I gathered,
          we basically passthrough our detection into the camera
          and we feed the streaming camera frames into our Detection algorithm)
-
+         */
         camera.setPipeline(blueDetection);
 
-
+        /*
         this starts the camera streaming, with 2 possible combinations
         it starts streaming at a chosen res, or if something goes wrong it throws an error
-
+         */
         camera.openCameraDeviceAsync(new OpenCvCamera.AsyncCameraOpenListener() {
             @Override
             public void onOpened() {
@@ -181,6 +177,6 @@ public class RightBlueMid
             }
         });
     }
-*/
+
 
 }

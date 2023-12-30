@@ -8,85 +8,44 @@ import com.noahbres.meepmeep.roadrunner.entity.RoadRunnerBotEntity;
 
 public class LeftTapeLB {
     public static void main(String[] args) {
-        MeepMeep meepMeep = new MeepMeep(800);
+        MeepMeep meepMeep = new MeepMeep(700);
 
         RoadRunnerBotEntity myBot = new DefaultBotBuilder(meepMeep)
                 // Set bot constraints: maxVel, maxAccel, maxAngVel, maxAngAccel, track width
                 .setConstraints(60, 60, Math.toRadians(180), Math.toRadians(180), 10.5)
 
                 .followTrajectorySequence(drive ->
-                                drive.trajectorySequenceBuilder(new Pose2d(15, 61, Math.toRadians(90)))
-                                        .lineToConstantHeading(new Vector2d(25, 25.5))
-
-
-                                        .addDisplacementMarker(0, () -> {
-//
-
-//                                  bot.setWristPosition(wristState.downIntaking);
-//                          bot.setWristState(wristState.downIntaking);
-//                                            bot.setVirtualFourBarPosition(virtualFourBarState.intaking,virtualFourBarExtensionState.extending);
-//                                            bot.setVirtualFourBarState(virtualFourBarState.intaking);
-
-//
-//                                    bot.setClawPosition(clawState.close);
-//                                    bot.setClawState(clawState.close);
-                                        })
-
-                                        .addDisplacementMarker(15, () -> {
-//                                            bot.setVirtualFourBarPosition(virtualFourBarState.init, virtualFourBarExtensionState.extending);
-//                                            bot.setVirtualFourBarState(virtualFourBarState.init);
-//
-//
-//                                            bot.setWristPosition(wristState.sideways);
-//                                            bot.setWristState(wristState.sideways);
-                                        })
-
-                                        .lineToConstantHeading(new Vector2d(30, 25.5))
-                                        .addDisplacementMarker(60, () -> {
-//                                 bot.setVirtualFourBarPosition(virtualFourBarState.outtaking, virtualFourBarExtensionState.extending);
-//                                  bot.setVirtualFourBarState(virtualFourBarState.outtaking);
-//
-//                                   bot.setOuttakeSlidePosition(outtakeSlidesState.LOWOUT, extensionState.extending);
-                                        })
-
-                                        .lineToConstantHeading(new Vector2d(25, 25.5))
-
-                                        .lineToConstantHeading(new Vector2d(25, 30.5))
-
-                                        .lineToConstantHeading(new Vector2d(35, 30.5))
-
-                                        .lineToConstantHeading(new Vector2d(62, 30.5))
-                                        .lineToConstantHeading(new Vector2d(61, 30.5))
-
-
-                                        .waitSeconds(.25)
-
-
-                                        .addDisplacementMarker(90, () -> {
-
-//
-//                                            bot.setClawState(clawState.open);
-//                                            bot.setClawPosition(clawState.open);
-//
-
-                                        })
-                                        .waitSeconds(1)
-
-
-                                        .lineToConstantHeading(new Vector2d(55, 52))
-
-                                        .lineToConstantHeading(new Vector2d(68, 52))
-
-                                        .addDisplacementMarker(105,() -> {
-//                                            bot.setOuttakeSlidePosition(outtakeSlidesState.STATION, extensionState.extending);
-//                                            bot.setVirtualFourBarPosition(virtualFourBarState.init, virtualFourBarExtensionState.extending);
-                                        })
-                                        .waitSeconds(1)
-
-                                        .build()
-
-
-
+                        drive.trajectorySequenceBuilder(new Pose2d(15, 61, Math.toRadians(90)))
+                                //Moving away from wall
+                                .lineToConstantHeading(new Vector2d(15, 55))
+                                .waitSeconds(1)
+                                //Moving behind the left tape
+                                .lineToConstantHeading(new Vector2d(22, 55))
+                                .waitSeconds(1)
+                                //Moving onto the left tape
+                                .lineToConstantHeading(new Vector2d(22, 43))
+                                .waitSeconds(2)
+                                //Moving back behind the left tape
+                                .lineToConstantHeading(new Vector2d(22, 55))
+                                .waitSeconds(1)
+                                //Moving towards backboard zone
+                                .lineToConstantHeading(new Vector2d(36, 55))
+                                .waitSeconds(1)
+                                //Moving to backboard
+                                .lineToLinearHeading(new Pose2d(51, 40, Math.toRadians(180)))
+                                .waitSeconds(.5)
+                                //Moving away from backboard
+                                .lineToConstantHeading(new Vector2d(48.5, 40))
+                                .waitSeconds(1)
+                                //Moving towards park position
+                                .lineToConstantHeading(new Vector2d(40, 40))
+                                .waitSeconds(1)
+                                //Line up to park position
+                                .lineToLinearHeading(new Pose2d(40, 57, Math.toRadians(270)))
+                                .waitSeconds(1)
+                                //Parking
+                                .lineToConstantHeading(new Vector2d(46, 57))
+                                .build()
                 );
 
         meepMeep.setBackground(MeepMeep.Background.FIELD_CENTERSTAGE_JUICE_DARK)

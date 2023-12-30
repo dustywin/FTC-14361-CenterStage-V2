@@ -20,7 +20,7 @@ https://www.youtube.com/watch?v=JO7dqzJi8lw&ab_channel=FTCteamWolfCorpRobotics12
 
 I've added some comments abt stuff- Good luck!
  */
-public class RedDetection extends OpenCvPipeline {
+public class HSVRedDetection extends OpenCvPipeline {
     Telemetry telemetry;
     Mat mat = new Mat();
     public enum Location {
@@ -46,7 +46,7 @@ public class RedDetection extends OpenCvPipeline {
             new Point(200, 175));
     static double PERCENT_COLOR_THRESHOLD = 0.18;
 
-    public RedDetection(Telemetry t) { telemetry = t; }
+    public HSVRedDetection(Telemetry t) { telemetry = t; }
 
     @Override
     public Mat processFrame(Mat input) {

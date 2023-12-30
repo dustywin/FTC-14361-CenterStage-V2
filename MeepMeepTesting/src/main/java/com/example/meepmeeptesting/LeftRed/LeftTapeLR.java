@@ -6,36 +6,47 @@ import com.noahbres.meepmeep.roadrunner.DefaultBotBuilder;
 import com.noahbres.meepmeep.roadrunner.entity.RoadRunnerBotEntity;
 public class LeftTapeLR {
     public static void main(String[] args) {
-        MeepMeep meepMeep = new MeepMeep(800);
+        MeepMeep meepMeep = new MeepMeep(700);
 
         RoadRunnerBotEntity myBot = new DefaultBotBuilder(meepMeep)
                 // Set bot constraints: maxVel, maxAccel, maxAngVel, maxAngAccel, track width
                 .setConstraints(60, 60, Math.toRadians(180), Math.toRadians(180), 10.5)
+
                 .followTrajectorySequence(drive ->
-                        drive.trajectorySequenceBuilder(new Pose2d(-35, -60, Math.toRadians(270)))
-                                .lineToConstantHeading(new Vector2d(-47, -43))
+                        drive.trajectorySequenceBuilder(new Pose2d(-38, -61, Math.toRadians(270)))
+                                .waitSeconds(1)
+                                //Moving onto left tape
+                                .lineToConstantHeading(new Vector2d(-45.5, -41.5))
+                                .waitSeconds(2)
+                                //Moving behind left tape
+                                .lineToConstantHeading(new Vector2d(-45.5, -50))
                                 .waitSeconds(.5)
-                                .lineToConstantHeading(new Vector2d(-47, -50))
-                                .lineToConstantHeading(new Vector2d(-33, -50))
+                                //Moving behind center tape
+                                .lineToConstantHeading(new Vector2d(-34, -50))
                                 .waitSeconds(.5)
-                                .lineToLinearHeading(new Pose2d(-33, -12, Math.toRadians(180)))
+                                //Lining up with the gate
+                                .lineToConstantHeading(new Vector2d(-34, -10.5))
                                 .waitSeconds(.5)
-                                .lineToConstantHeading(new Vector2d(37, -12))
+                                //Passing through gate
+                                .lineToLinearHeading(new Pose2d(45, -10.5,Math.toRadians(180)))
                                 .waitSeconds(.5)
-                                .lineToConstantHeading(new Vector2d(37, -29))
+                                //Lining up with the left side of the backboard
+                                .lineToConstantHeading(new Vector2d(45, -28))
                                 .waitSeconds(.5)
-                                .lineToConstantHeading(new Vector2d(49.5, -29))
-                                .waitSeconds(.5)
-                                .lineToConstantHeading(new Vector2d(37, -29))
-                                .lineToConstantHeading(new Vector2d(37, -12))
-                                .waitSeconds(.5)
-                                .lineToConstantHeading(new Vector2d(57, -12))
-
-
+                                //Moving to backboard
+                                .lineToConstantHeading(new Vector2d(51, -28))
+                                .waitSeconds(2)
+                                //Moving away from backboard
+                                .lineToConstantHeading(new Vector2d(45, -28))
+                                .waitSeconds(.1)
+                                //Lining up with parking position
+                                .lineToLinearHeading(new Pose2d(45, -11.5, Math.toRadians(90)))
+                                .waitSeconds(1)
+                                //Parking
+                                .lineToConstantHeading(new Vector2d(59, -11.5))
                                 .waitSeconds(.5)
 
                                 .build()
-
                 );
 
 

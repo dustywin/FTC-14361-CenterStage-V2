@@ -7,68 +7,32 @@ import com.noahbres.meepmeep.roadrunner.DefaultBotBuilder;
 import com.noahbres.meepmeep.roadrunner.entity.RoadRunnerBotEntity;
 
 public class CenterTapeLB {
-  public static void main(String[] args) {
-        MeepMeep meepMeep = new MeepMeep(800);
+    public static void main(String[] args) {
+        MeepMeep meepMeep = new MeepMeep(700);
 
         RoadRunnerBotEntity myBot = new DefaultBotBuilder(meepMeep)
                 // Set bot constraints: maxVel, maxAccel, maxAngVel, maxAngAccel, track width
                 .setConstraints(60, 60, Math.toRadians(180), Math.toRadians(180), 10.5)
+
                 .followTrajectorySequence(drive ->
                         drive.trajectorySequenceBuilder(new Pose2d(15, 61, Math.toRadians(90)))
-                                //pushing onto center tape
-
-                                .lineToConstantHeading(new Vector2d(15, 31))
-                                .addDisplacementMarker(0, () -> {
-
-
-//                                  bot.setWristPosition(wristState.downIntaking);
-//                          bot.setWristState(wristState.downIntaking);
- //                                   bot.setVirtualFourBarPosition(virtualFourBarState.intaking,virtualFourBarExtensionState.extending);
-//                                            bot.setVirtualFourBarState(virtualFourBarState.intaking);
-
-
-//
-//                                    bot.setClawPosition(clawState.close);
-//                                    bot.setClawState(clawState.close);
-                                })
-                                .waitSeconds(.25)
-
-                                .addDisplacementMarker(15, () -> {
-//                                     bot.setVirtualFourBarPosition(virtualFourBarState.outtakingDown, virtualFourBarExtensionState.extending);
-////                                  bot.setVirtualFourBarState(virtualFourBarState.outtakingDown);
-
- //                                   bot.setWristPosition(wristState.downOuttaking);
-  //                                  bot.setWristState(wristState.downOuttaking);
-
-
-                                })
-                                .waitSeconds(.5)
-                                .addDisplacementMarker(28, () -> {
-//                                  bot.setClawState(clawState.leftOpen);
-////                                   bot.setClawPosition(clawState.leftOpen);
-
-
-                                })
-
-                                //going to backboard
-                                .addDisplacementMarker(40, () -> {
-  //
-//                                         bot.setVirtualFourBarPosition(virtualFourBarState.outtaking, virtualFourBarExtensionState.extending);
-//////                                  bot.setVirtualFourBarState(virtualFourBarState.outtaking);
-//                                   bot.setOuttakeSlidePosition(outtakeSlidesState.LOWOUT, extensionState.extending);
-                                })
-                                .waitSeconds(.5)
-                                .addDisplacementMarker(65, () -> {
-//                                   bot.setClawState(clawState.open);
-//                                   bot.setClawPosition(clawState.open);
-                                })
-
-                                .lineToLinearHeading(new Pose2d(49, 36, Math.toRadians(180)))
+                                //Moving onto center tape
+                                .lineToConstantHeading(new Vector2d(11, 36))
+                                .waitSeconds(1.5)
+                                //Moving away from center tape
+                                .lineToConstantHeading(new Vector2d(11, 45))
                                 .waitSeconds(1)
-                                //going to park
-                                .lineToConstantHeading(new Vector2d(48, 61))
-                                //finish park
-                                .lineToConstantHeading(new Vector2d(55, 61))
+                                //going to backboard
+                                .lineToLinearHeading(new Pose2d(51, 35, Math.toRadians(180)))
+                                .waitSeconds(1)
+                                //Moving away from backboard
+                                .lineToConstantHeading(new Vector2d(40, 35))
+                                .waitSeconds(1)
+                                //Moving towards park position
+                                .lineToConstantHeading(new Vector2d(40, 57))
+                                .waitSeconds(1)
+                                //Parking
+                                .lineToLinearHeading(new Pose2d(46, 57, Math.toRadians(270)))
 
                                 .build()
                 );
@@ -79,6 +43,4 @@ public class CenterTapeLB {
                 .addEntity(myBot)
                 .start();
     }
-
-
 }
