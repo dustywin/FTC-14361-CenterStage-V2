@@ -12,7 +12,8 @@ import org.firstinspires.ftc.teamcode.Commands.wristState;
 import org.firstinspires.ftc.teamcode.OpModes.Autonomous.drive.SampleMecanumDrive;
 import org.firstinspires.ftc.teamcode.OpModes.Autonomous.trajectorysequence.TrajectorySequence;
 import org.firstinspires.ftc.teamcode.Subsystems.HSVBlueDetection;
-import org.firstinspires.ftc.teamcode.Subsystems.RedDetection;
+import org.firstinspires.ftc.teamcode.Subsystems.HSVRedDetection;
+
 import org.firstinspires.ftc.teamcode.Subsystems.Robot;
 import org.openftc.easyopencv.OpenCvCamera;
 
@@ -20,7 +21,7 @@ import org.openftc.easyopencv.OpenCvCamera;
 public class RightRedMid extends LinearOpMode {
     Robot bot;
     OpenCvCamera camera;
-    RedDetection redDetection;
+    HSVRedDetection redDetection;
     String webcamName;
 
     public void runOpMode() {
@@ -96,6 +97,7 @@ public class RightRedMid extends LinearOpMode {
 
         }
     }
+
 
 
 
