@@ -46,16 +46,16 @@ public class CenterTapeRB extends LinearOpMode
                 .lineToConstantHeading(new Vector2d(40, 34))
                 .waitSeconds(.5)
                 //Moving to backboard
-                .lineToConstantHeading(new Vector2d(51, 34))
+                .lineToConstantHeading(new Vector2d(53, 34))
                 .waitSeconds(2)
                 //Moving away from backboard
                 .lineToConstantHeading(new Vector2d(40, 34))
                 .waitSeconds(.5)
                 //Lining up with parking position
-                .lineToLinearHeading(new Pose2d(40, 12.5,Math.toRadians(270)))
+                .lineToLinearHeading(new Pose2d(40, 14,Math.toRadians(270)))
                 .waitSeconds(1)
                 //Parking
-                .lineToConstantHeading(new Vector2d(59, 12.5))
+                .lineToConstantHeading(new Vector2d(59, 14))
 
                 .build();
 
