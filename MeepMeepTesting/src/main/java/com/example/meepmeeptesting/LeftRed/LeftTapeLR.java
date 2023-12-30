@@ -13,7 +13,8 @@ public class LeftTapeLR {
                 .setConstraints(60, 60, Math.toRadians(180), Math.toRadians(180), 10.5)
 
                 .followTrajectorySequence(drive ->
-                        drive.trajectorySequenceBuilder(new Pose2d(-35, -61, Math.toRadians(270)))
+                        drive.trajectorySequenceBuilder(new Pose2d(-38, -61, Math.toRadians(270)))
+                                .waitSeconds(1)
                                 //Moving onto left tape
                                 .lineToConstantHeading(new Vector2d(-45.5, -41.5))
                                 .waitSeconds(2)

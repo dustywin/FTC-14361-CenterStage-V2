@@ -15,7 +15,7 @@ import org.firstinspires.ftc.teamcode.OpModes.Autonomous.drive.SampleMecanumDriv
 public class CenterTapeLR extends LinearOpMode
 {
     Robot bot;
-    Pose2d startPose = new Pose2d(-35, -61, Math.toRadians(270));
+    Pose2d startPose = new Pose2d(-38, -61, Math.toRadians(270));
 
     @Override
     public void runOpMode() throws InterruptedException

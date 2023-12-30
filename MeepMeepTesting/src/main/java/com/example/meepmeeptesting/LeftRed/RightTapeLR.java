@@ -13,7 +13,7 @@ public class RightTapeLR {
                 .setConstraints(60, 60, Math.toRadians(180), Math.toRadians(180), 10.5)
 
                 .followTrajectorySequence(drive ->
-                        drive.trajectorySequenceBuilder(new Pose2d(-35, -61, Math.toRadians(270)))
+                        drive.trajectorySequenceBuilder(new Pose2d(-38, -61, Math.toRadians(270)))
                                 //going to right tape
                                 .lineToLinearHeading(new Pose2d(-35,-30, Math.toRadians(180)))
                                 .waitSeconds(2)
