@@ -1,37 +1,37 @@
-org.firstinspires.ftc.teamcode.TeamCode-jetified-Hardware-9.0.1-0 /Users/dustinnnguyen/.gradle/caches/transforms-3/114106ac94a97d10e8f21c4ae6f96e19/transformed/jetified-Hardware-9.0.1/res
-org.firstinspires.ftc.teamcode.TeamCode-jetified-lifecycle-viewmodel-savedstate-2.5.1-1 /Users/dustinnnguyen/.gradle/caches/transforms-3/2d7e9186325833fcc44b5274c40a0d29/transformed/jetified-lifecycle-viewmodel-savedstate-2.5.1/res
-org.firstinspires.ftc.teamcode.TeamCode-jetified-lifecycle-process-2.4.1-2 /Users/dustinnnguyen/.gradle/caches/transforms-3/2e15a087c88ce5a9a3ae15fcfdf8afa0/transformed/jetified-lifecycle-process-2.4.1/res
-org.firstinspires.ftc.teamcode.TeamCode-jetified-RobotServer-9.0.1-3 /Users/dustinnnguyen/.gradle/caches/transforms-3/35aa6ecf48072086de41a8e521f446b8/transformed/jetified-RobotServer-9.0.1/res
-org.firstinspires.ftc.teamcode.TeamCode-core-1.9.0-4 /Users/dustinnnguyen/.gradle/caches/transforms-3/3ed1d9dd6eccc1cd536df93400b21c1b/transformed/core-1.9.0/res
-org.firstinspires.ftc.teamcode.TeamCode-jetified-savedstate-1.2.0-5 /Users/dustinnnguyen/.gradle/caches/transforms-3/4616229220554fbbb39d06f76fd75059/transformed/jetified-savedstate-1.2.0/res
-org.firstinspires.ftc.teamcode.TeamCode-jetified-annotation-experimental-1.3.0-6 /Users/dustinnnguyen/.gradle/caches/transforms-3/46c9be3766a7021d44eb098b083c7cae/transformed/jetified-annotation-experimental-1.3.0/res
-org.firstinspires.ftc.teamcode.TeamCode-jetified-startup-runtime-1.1.1-7 /Users/dustinnnguyen/.gradle/caches/transforms-3/4e0be17cbab7dbe74f2aa8988291449d/transformed/jetified-startup-runtime-1.1.1/res
-org.firstinspires.ftc.teamcode.TeamCode-jetified-opencv-repackaged-bundled-dylibs-4.7.0-A-8 /Users/dustinnnguyen/.gradle/caches/transforms-3/561415b838a86c1dd200218d280fef68/transformed/jetified-opencv-repackaged-bundled-dylibs-4.7.0-A/res
-org.firstinspires.ftc.teamcode.TeamCode-jetified-Blocks-9.0.1-9 /Users/dustinnnguyen/.gradle/caches/transforms-3/64e47fef94886260e7e2314e92e160c6/transformed/jetified-Blocks-9.0.1/res
-org.firstinspires.ftc.teamcode.TeamCode-lifecycle-runtime-2.5.1-10 /Users/dustinnnguyen/.gradle/caches/transforms-3/658bd6e606431ba90e7c02f6dcc0a588/transformed/lifecycle-runtime-2.5.1/res
-org.firstinspires.ftc.teamcode.TeamCode-jetified-zxing-android-embedded-4.3.0-11 /Users/dustinnnguyen/.gradle/caches/transforms-3/77b030d33441ad2424efa99d4f05c37e/transformed/jetified-zxing-android-embedded-4.3.0/res
-org.firstinspires.ftc.teamcode.TeamCode-fragment-1.3.6-12 /Users/dustinnnguyen/.gradle/caches/transforms-3/7832ac9b8cdba26ba47533cba6c1707f/transformed/fragment-1.3.6/res
-org.firstinspires.ftc.teamcode.TeamCode-jetified-core-ktx-1.9.0-13 /Users/dustinnnguyen/.gradle/caches/transforms-3/7d0549b3a4b41ad4e3f0305ce0c6e584/transformed/jetified-core-ktx-1.9.0/res
-org.firstinspires.ftc.teamcode.TeamCode-jetified-apriltag-2.0.0-14 /Users/dustinnnguyen/.gradle/caches/transforms-3/8c29294e7d6270000637f21a9110154a/transformed/jetified-apriltag-2.0.0/res
-org.firstinspires.ftc.teamcode.TeamCode-jetified-activity-1.6.0-15 /Users/dustinnnguyen/.gradle/caches/transforms-3/a4dfa5a5a1b190ff27db51984445a42f/transformed/jetified-activity-1.6.0/res
-org.firstinspires.ftc.teamcode.TeamCode-jetified-core-2.1.1-16 /Users/dustinnnguyen/.gradle/caches/transforms-3/a9bf995e12ae4b29b61ea8bb6974e662/transformed/jetified-core-2.1.1/res
-org.firstinspires.ftc.teamcode.TeamCode-jetified-OnBotJava-9.0.1-17 /Users/dustinnnguyen/.gradle/caches/transforms-3/b48fab3853691df14fc5f98ac0eed0e4/transformed/jetified-OnBotJava-9.0.1/res
-org.firstinspires.ftc.teamcode.TeamCode-jetified-FtcCommon-9.0.1-18 /Users/dustinnnguyen/.gradle/caches/transforms-3/c356b40a3595f2adb3d546d333fdf4de/transformed/jetified-FtcCommon-9.0.1/res
-org.firstinspires.ftc.teamcode.TeamCode-jetified-appcompat-resources-1.6.1-19 /Users/dustinnnguyen/.gradle/caches/transforms-3/c59113fcb9b527c916c9d2da7938d362/transformed/jetified-appcompat-resources-1.6.1/res
-org.firstinspires.ftc.teamcode.TeamCode-jetified-RobotCore-9.0.1-20 /Users/dustinnnguyen/.gradle/caches/transforms-3/cd67206d3a42b9a926e6761ce00754f7/transformed/jetified-RobotCore-9.0.1/res
-org.firstinspires.ftc.teamcode.TeamCode-lifecycle-livedata-core-2.5.1-21 /Users/dustinnnguyen/.gradle/caches/transforms-3/d639800720821c7712c0a275153aaf26/transformed/lifecycle-livedata-core-2.5.1/res
-org.firstinspires.ftc.teamcode.TeamCode-lifecycle-viewmodel-2.5.1-22 /Users/dustinnnguyen/.gradle/caches/transforms-3/d68499c309e4c9cdfe060aceb0b1f2cc/transformed/lifecycle-viewmodel-2.5.1/res
-org.firstinspires.ftc.teamcode.TeamCode-jetified-dashboard-0.4.13-23 /Users/dustinnnguyen/.gradle/caches/transforms-3/ef999c84d897145cc5214d235a5f043b/transformed/jetified-dashboard-0.4.13/res
-org.firstinspires.ftc.teamcode.TeamCode-appcompat-1.6.1-24 /Users/dustinnnguyen/.gradle/caches/transforms-3/f1b7a143da4aed9e9e352d0107654b88/transformed/appcompat-1.6.1/res
-org.firstinspires.ftc.teamcode.TeamCode-jetified-emoji2-views-helper-1.2.0-25 /Users/dustinnnguyen/.gradle/caches/transforms-3/f29a95fb9b3d6efc80458ae5cb8575c5/transformed/jetified-emoji2-views-helper-1.2.0/res
-org.firstinspires.ftc.teamcode.TeamCode-jetified-emoji2-1.2.0-26 /Users/dustinnnguyen/.gradle/caches/transforms-3/f2a089a9802cffd4060008f0db9494d2/transformed/jetified-emoji2-1.2.0/res
-org.firstinspires.ftc.teamcode.TeamCode-jetified-Inspection-9.0.1-27 /Users/dustinnnguyen/.gradle/caches/transforms-3/fea5e8120cbdff1aea9d51b6fa87e0e7/transformed/jetified-Inspection-9.0.1/res
-org.firstinspires.ftc.teamcode.TeamCode-packaged_res-28 /Users/dustinnnguyen/Documents/GitHub/FTC Controller Dusty Buns/FTC-14361-CenterStage-V2/FtcRobotController/build/intermediates/packaged_res/debug
-org.firstinspires.ftc.teamcode.TeamCode-pngs-29 /Users/dustinnnguyen/Documents/GitHub/FTC Controller Dusty Buns/FTC-14361-CenterStage-V2/TeamCode/build/generated/res/pngs/debug
-org.firstinspires.ftc.teamcode.TeamCode-resValues-30 /Users/dustinnnguyen/Documents/GitHub/FTC Controller Dusty Buns/FTC-14361-CenterStage-V2/TeamCode/build/generated/res/resValues/debug
-org.firstinspires.ftc.teamcode.TeamCode-rs-31 /Users/dustinnnguyen/Documents/GitHub/FTC Controller Dusty Buns/FTC-14361-CenterStage-V2/TeamCode/build/generated/res/rs/debug
-org.firstinspires.ftc.teamcode.TeamCode-mergeDebugResources-32 /Users/dustinnnguyen/Documents/GitHub/FTC Controller Dusty Buns/FTC-14361-CenterStage-V2/TeamCode/build/intermediates/incremental/debug/mergeDebugResources/merged.dir
-org.firstinspires.ftc.teamcode.TeamCode-mergeDebugResources-33 /Users/dustinnnguyen/Documents/GitHub/FTC Controller Dusty Buns/FTC-14361-CenterStage-V2/TeamCode/build/intermediates/incremental/debug/mergeDebugResources/stripped.dir
-org.firstinspires.ftc.teamcode.TeamCode-merged_res-34 /Users/dustinnnguyen/Documents/GitHub/FTC Controller Dusty Buns/FTC-14361-CenterStage-V2/TeamCode/build/intermediates/merged_res/debug
-org.firstinspires.ftc.teamcode.TeamCode-debug-35 /Users/dustinnnguyen/Documents/GitHub/FTC Controller Dusty Buns/FTC-14361-CenterStage-V2/TeamCode/src/debug/res
-org.firstinspires.ftc.teamcode.TeamCode-main-36 /Users/dustinnnguyen/Documents/GitHub/FTC Controller Dusty Buns/FTC-14361-CenterStage-V2/TeamCode/src/main/res
+org.firstinspires.ftc.teamcode.TeamCode-jetified-Hardware-9.0.1-0 C:\Users\grump\.gradle\caches\transforms-3\114106ac94a97d10e8f21c4ae6f96e19\transformed\jetified-Hardware-9.0.1\res
+org.firstinspires.ftc.teamcode.TeamCode-jetified-lifecycle-viewmodel-savedstate-2.5.1-1 C:\Users\grump\.gradle\caches\transforms-3\2d7e9186325833fcc44b5274c40a0d29\transformed\jetified-lifecycle-viewmodel-savedstate-2.5.1\res
+org.firstinspires.ftc.teamcode.TeamCode-jetified-lifecycle-process-2.4.1-2 C:\Users\grump\.gradle\caches\transforms-3\2e15a087c88ce5a9a3ae15fcfdf8afa0\transformed\jetified-lifecycle-process-2.4.1\res
+org.firstinspires.ftc.teamcode.TeamCode-jetified-RobotServer-9.0.1-3 C:\Users\grump\.gradle\caches\transforms-3\35aa6ecf48072086de41a8e521f446b8\transformed\jetified-RobotServer-9.0.1\res
+org.firstinspires.ftc.teamcode.TeamCode-core-1.9.0-4 C:\Users\grump\.gradle\caches\transforms-3\3ed1d9dd6eccc1cd536df93400b21c1b\transformed\core-1.9.0\res
+org.firstinspires.ftc.teamcode.TeamCode-jetified-savedstate-1.2.0-5 C:\Users\grump\.gradle\caches\transforms-3\4616229220554fbbb39d06f76fd75059\transformed\jetified-savedstate-1.2.0\res
+org.firstinspires.ftc.teamcode.TeamCode-jetified-annotation-experimental-1.3.0-6 C:\Users\grump\.gradle\caches\transforms-3\46c9be3766a7021d44eb098b083c7cae\transformed\jetified-annotation-experimental-1.3.0\res
+org.firstinspires.ftc.teamcode.TeamCode-jetified-startup-runtime-1.1.1-7 C:\Users\grump\.gradle\caches\transforms-3\4e0be17cbab7dbe74f2aa8988291449d\transformed\jetified-startup-runtime-1.1.1\res
+org.firstinspires.ftc.teamcode.TeamCode-jetified-opencv-repackaged-bundled-dylibs-4.7.0-A-8 C:\Users\grump\.gradle\caches\transforms-3\561415b838a86c1dd200218d280fef68\transformed\jetified-opencv-repackaged-bundled-dylibs-4.7.0-A\res
+org.firstinspires.ftc.teamcode.TeamCode-jetified-Blocks-9.0.1-9 C:\Users\grump\.gradle\caches\transforms-3\64e47fef94886260e7e2314e92e160c6\transformed\jetified-Blocks-9.0.1\res
+org.firstinspires.ftc.teamcode.TeamCode-lifecycle-runtime-2.5.1-10 C:\Users\grump\.gradle\caches\transforms-3\658bd6e606431ba90e7c02f6dcc0a588\transformed\lifecycle-runtime-2.5.1\res
+org.firstinspires.ftc.teamcode.TeamCode-jetified-zxing-android-embedded-4.3.0-11 C:\Users\grump\.gradle\caches\transforms-3\77b030d33441ad2424efa99d4f05c37e\transformed\jetified-zxing-android-embedded-4.3.0\res
+org.firstinspires.ftc.teamcode.TeamCode-fragment-1.3.6-12 C:\Users\grump\.gradle\caches\transforms-3\7832ac9b8cdba26ba47533cba6c1707f\transformed\fragment-1.3.6\res
+org.firstinspires.ftc.teamcode.TeamCode-jetified-core-ktx-1.9.0-13 C:\Users\grump\.gradle\caches\transforms-3\7d0549b3a4b41ad4e3f0305ce0c6e584\transformed\jetified-core-ktx-1.9.0\res
+org.firstinspires.ftc.teamcode.TeamCode-jetified-apriltag-2.0.0-14 C:\Users\grump\.gradle\caches\transforms-3\8c29294e7d6270000637f21a9110154a\transformed\jetified-apriltag-2.0.0\res
+org.firstinspires.ftc.teamcode.TeamCode-jetified-activity-1.6.0-15 C:\Users\grump\.gradle\caches\transforms-3\a4dfa5a5a1b190ff27db51984445a42f\transformed\jetified-activity-1.6.0\res
+org.firstinspires.ftc.teamcode.TeamCode-jetified-core-2.1.1-16 C:\Users\grump\.gradle\caches\transforms-3\a9bf995e12ae4b29b61ea8bb6974e662\transformed\jetified-core-2.1.1\res
+org.firstinspires.ftc.teamcode.TeamCode-jetified-OnBotJava-9.0.1-17 C:\Users\grump\.gradle\caches\transforms-3\b48fab3853691df14fc5f98ac0eed0e4\transformed\jetified-OnBotJava-9.0.1\res
+org.firstinspires.ftc.teamcode.TeamCode-jetified-FtcCommon-9.0.1-18 C:\Users\grump\.gradle\caches\transforms-3\c356b40a3595f2adb3d546d333fdf4de\transformed\jetified-FtcCommon-9.0.1\res
+org.firstinspires.ftc.teamcode.TeamCode-jetified-appcompat-resources-1.6.1-19 C:\Users\grump\.gradle\caches\transforms-3\c59113fcb9b527c916c9d2da7938d362\transformed\jetified-appcompat-resources-1.6.1\res
+org.firstinspires.ftc.teamcode.TeamCode-jetified-RobotCore-9.0.1-20 C:\Users\grump\.gradle\caches\transforms-3\cd67206d3a42b9a926e6761ce00754f7\transformed\jetified-RobotCore-9.0.1\res
+org.firstinspires.ftc.teamcode.TeamCode-lifecycle-livedata-core-2.5.1-21 C:\Users\grump\.gradle\caches\transforms-3\d639800720821c7712c0a275153aaf26\transformed\lifecycle-livedata-core-2.5.1\res
+org.firstinspires.ftc.teamcode.TeamCode-lifecycle-viewmodel-2.5.1-22 C:\Users\grump\.gradle\caches\transforms-3\d68499c309e4c9cdfe060aceb0b1f2cc\transformed\lifecycle-viewmodel-2.5.1\res
+org.firstinspires.ftc.teamcode.TeamCode-jetified-dashboard-0.4.13-23 C:\Users\grump\.gradle\caches\transforms-3\ef999c84d897145cc5214d235a5f043b\transformed\jetified-dashboard-0.4.13\res
+org.firstinspires.ftc.teamcode.TeamCode-appcompat-1.6.1-24 C:\Users\grump\.gradle\caches\transforms-3\f1b7a143da4aed9e9e352d0107654b88\transformed\appcompat-1.6.1\res
+org.firstinspires.ftc.teamcode.TeamCode-jetified-emoji2-views-helper-1.2.0-25 C:\Users\grump\.gradle\caches\transforms-3\f29a95fb9b3d6efc80458ae5cb8575c5\transformed\jetified-emoji2-views-helper-1.2.0\res
+org.firstinspires.ftc.teamcode.TeamCode-jetified-emoji2-1.2.0-26 C:\Users\grump\.gradle\caches\transforms-3\f2a089a9802cffd4060008f0db9494d2\transformed\jetified-emoji2-1.2.0\res
+org.firstinspires.ftc.teamcode.TeamCode-jetified-Inspection-9.0.1-27 C:\Users\grump\.gradle\caches\transforms-3\fea5e8120cbdff1aea9d51b6fa87e0e7\transformed\jetified-Inspection-9.0.1\res
+org.firstinspires.ftc.teamcode.TeamCode-packaged_res-28 C:\Users\grump\Downloads\FTC-14361-CenterStage-V2\FtcRobotController\build\intermediates\packaged_res\debug
+org.firstinspires.ftc.teamcode.TeamCode-pngs-29 C:\Users\grump\Downloads\FTC-14361-CenterStage-V2\TeamCode\build\generated\res\pngs\debug
+org.firstinspires.ftc.teamcode.TeamCode-resValues-30 C:\Users\grump\Downloads\FTC-14361-CenterStage-V2\TeamCode\build\generated\res\resValues\debug
+org.firstinspires.ftc.teamcode.TeamCode-rs-31 C:\Users\grump\Downloads\FTC-14361-CenterStage-V2\TeamCode\build\generated\res\rs\debug
+org.firstinspires.ftc.teamcode.TeamCode-mergeDebugResources-32 C:\Users\grump\Downloads\FTC-14361-CenterStage-V2\TeamCode\build\intermediates\incremental\debug\mergeDebugResources\merged.dir
+org.firstinspires.ftc.teamcode.TeamCode-mergeDebugResources-33 C:\Users\grump\Downloads\FTC-14361-CenterStage-V2\TeamCode\build\intermediates\incremental\debug\mergeDebugResources\stripped.dir
+org.firstinspires.ftc.teamcode.TeamCode-merged_res-34 C:\Users\grump\Downloads\FTC-14361-CenterStage-V2\TeamCode\build\intermediates\merged_res\debug
+org.firstinspires.ftc.teamcode.TeamCode-debug-35 C:\Users\grump\Downloads\FTC-14361-CenterStage-V2\TeamCode\src\debug\res
+org.firstinspires.ftc.teamcode.TeamCode-main-36 C:\Users\grump\Downloads\FTC-14361-CenterStage-V2\TeamCode\src\main\res

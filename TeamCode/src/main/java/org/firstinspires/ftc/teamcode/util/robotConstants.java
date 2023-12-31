@@ -12,8 +12,8 @@ public class robotConstants
         public static double ticksPerRevolution = 0.0;
 
 
-        public static int MOSTHIGHLEFT = -1500;
-        public static int MOSTHIGHRIGHT = 1500;
+        public static int MOSTHIGHLEFT = -1275;
+        public static int MOSTHIGHRIGHT = 1275;
         public static int HIGH = 1400;
         public static int MEDIUM = 900;
         public static int LOW = 450;
@@ -22,8 +22,8 @@ public class robotConstants
 
 
 
-        public static int HIGHLEFT = -1400;
-        public static int HIGHRIGHT = 1400;
+        public static int HIGHLEFT = -1175;
+        public static int HIGHRIGHT = 1175;
         //sometimes the encoder values go negative so you might have to change those
 
         public static int MEDIUMLEFT = -900;
@@ -48,18 +48,8 @@ public class robotConstants
         public static double pulleyCircumference = 0.0;
         public static double ticksPerRevolution = 0.0;
 
-
-        public static int highExtension = 700;
+        public static int highExtension = 715;
         public static int mediumExtension = 230;
-
-
-//        public static int fullExtension = -3600;
-//        public static int mediumExtension = -1200;
-//        public static int shortExtension = -500;
-
-        // first comp length below
-
-        public static int lowExtension = 0;
         public static int retracted = 0;
     }
 
@@ -74,12 +64,7 @@ public class robotConstants
         public static double rightOpen = .47;
         public static double autoLeftClose = .65;
         public static double autoRightClose = .63;
-
-
         public static double rightCloseOnePixel = .58;
-
-
-
     }
 
     public static class Arm
@@ -108,8 +93,8 @@ public class robotConstants
 
     public static class Wrist
     {
-        public static double downOuttaking = 0.3;
-        public static double downIntaking = .985;
+        public static double downOuttaking = .81;
+        public static double downIntaking = .145;
 
         // scale is from .33 (0) to .67 (1) so there no overshoot at all
 
@@ -127,10 +112,10 @@ public class robotConstants
         public static double outtakingLeft = .47;
         public static double outtakingRight = .31;
 
-        public static double initLeft = .24;
+        public static double initLeft = .14;
         //.45
         //.55
-        public static double initRight = .49;
+        public static double initRight = .59;
 
         public static double outtakingDownLeft = .62;
         public static double outtakingDownRight = .08;
