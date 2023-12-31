@@ -34,32 +34,34 @@ public class RightRedMid extends LinearOpMode {
 
         TrajectorySequence everything = drive.trajectorySequenceBuilder(start)
                 .waitSeconds(1)
-                .addDisplacementMarker(0, () -> {
 
-                })
+//                .addDisplacementMarker(0.05, 0, () -> {
+//                    // This example will run 50% of the way through the path, plus 2.1 inches
+//                    // The offset can be left at zero but is useful for making slight adjustments to the timing
+//                })
+
                 .addDisplacementMarker(5, () -> {
                     bot.setVirtualFourBarState(virtualFourBarState.init);
                     bot.setVirtualFourBarPosition(virtualFourBarState.init, virtualFourBarExtensionState.extending);
                 })
-                .addDisplacementMarker(15, () -> {
-                    bot.setVirtualFourBarPosition(virtualFourBarState.autoDrop, virtualFourBarExtensionState.extending);
-            bot.setVirtualFourBarState(virtualFourBarState.autoDrop);
-
+                .addDisplacementMarker(10, () -> {
                     bot.setWristPosition(wristState.downOuttaking);
                     bot.setWristState(wristState.downOuttaking);
                 })
-                .addDisplacementMarker(22, () -> {
-                    bot.setClawPosition(clawState.leftClose);
-                    bot.setClawState(clawState.leftClose);                })
+                .addDisplacementMarker(15, () -> {
+                    bot.setVirtualFourBarPosition(virtualFourBarState.autoDrop, virtualFourBarExtensionState.extending);
+                    bot.setVirtualFourBarState(virtualFourBarState.autoDrop);
 
-//                .addDisplacementMarker(23, () -> {
-//                    bot.setVirtualFourBarPosition(virtualFourBarState.autoDrop, virtualFourBarExtensionState.extending);
-//                    bot.setVirtualFourBarState(virtualFourBarState.autoDrop);
-//                })
-//
+                })
 
                 .waitSeconds(2)
                 .lineToConstantHeading(new Vector2d(15, -38.75))
+
+                .addDisplacementMarker(() -> {
+                    bot.setClawPosition(clawState.leftClose);
+                    bot.setClawState(clawState.leftClose);
+                })
+
                 .waitSeconds(1)
 //                .lineToLinearHeading(new Pose2d(62, -36, Math.toRadians(180)))
 ////                .addDisplacementMarker(45, () -> {
