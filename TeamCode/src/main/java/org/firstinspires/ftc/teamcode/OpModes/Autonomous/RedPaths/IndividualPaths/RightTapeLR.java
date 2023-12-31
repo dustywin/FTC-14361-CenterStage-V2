@@ -52,10 +52,10 @@ public class RightTapeLR extends LinearOpMode
                 .lineToConstantHeading(new Vector2d(40, -40.5))
                 .waitSeconds(.5)
                 //Lining up with parking position
-                .lineToLinearHeading(new Pose2d(40, -14, Math.toRadians(90)))
+                .lineToLinearHeading(new Pose2d(40, -16, Math.toRadians(90)))
                 .waitSeconds(1)
                 //Parking
-                .lineToConstantHeading(new Vector2d(59, -14))
+                .lineToConstantHeading(new Vector2d(59, -16))
 
                 .build();
 
