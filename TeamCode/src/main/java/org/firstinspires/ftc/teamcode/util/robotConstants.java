@@ -107,9 +107,6 @@ public class robotConstants
         public static double autoDropLeft = .57;
         public static double autoDropRight = .15;
 
-
-
-
         public static double intakingLeftAuton = 0.5;
         public static double intakingRightAuton = 0.6;
 
