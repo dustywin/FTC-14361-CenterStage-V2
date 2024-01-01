@@ -13,12 +13,14 @@ public class LeftTapeRR {
                 .setConstraints(60, 60, Math.toRadians(180), Math.toRadians(180), 10.5)
 
                 .followTrajectorySequence(drive ->
-                        drive.trajectorySequenceBuilder(new Pose2d(9.5, -61, Math.toRadians(270)))
+                        drive.trajectorySequenceBuilder(new Pose2d(9, -61, Math.toRadians(270)))
+
+                                .lineToConstantHeading(new Vector2d(20, -61))
                                 ///Moving behind right tape
-                                .lineToLinearHeading(new Pose2d(15, -31, Math.toRadians(0)))
+                                .lineToLinearHeading(new Pose2d(20, -38, Math.toRadians(0)))
                                 .waitSeconds(.5)
                                 //Moving onto right tape
-                                .lineToConstantHeading(new Vector2d(11, -31))
+                                .lineToConstantHeading(new Vector2d(9, -38))
                                 .waitSeconds(2)
                                 //going to backboard
                                 .lineToLinearHeading(new Pose2d(54, -29, Math.toRadians(180)))

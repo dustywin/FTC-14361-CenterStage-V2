@@ -28,7 +28,7 @@ public class RightRedMid extends LinearOpMode {
 
         bot = new Robot(hardwareMap, telemetry);
         SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap);
-        Pose2d start = new Pose2d(15, -61, Math.toRadians(270));
+        Pose2d start = new Pose2d(9, -61, Math.toRadians(270));
         drive.setPoseEstimate(start);
         //initCam();
 
@@ -39,12 +39,17 @@ public class RightRedMid extends LinearOpMode {
 //                    // This example will run 50% of the way through the path, plus 2.1 inches
 //                    // The offset can be left at zero but is useful for making slight adjustments to the timing
 //                })
-
-                .addDisplacementMarker(5, () -> {
+                .addDisplacementMarker(() -> {
                     bot.setVirtualFourBarState(virtualFourBarState.init);
                     bot.setVirtualFourBarPosition(virtualFourBarState.init, virtualFourBarExtensionState.extending);
                 })
-                .addDisplacementMarker(10, () -> {
+                .lineToConstantHeading(new Vector2d(15, -61))
+
+//                .addDisplacementMarker(5, () -> {
+//                    bot.setVirtualFourBarState(virtualFourBarState.init);
+//                    bot.setVirtualFourBarPosition(virtualFourBarState.init, virtualFourBarExtensionState.extending);
+//                })
+                .addDisplacementMarker( () -> {
                     bot.setWristPosition(wristState.downOuttaking);
                     bot.setWristState(wristState.downOuttaking);
                 })
@@ -55,32 +60,33 @@ public class RightRedMid extends LinearOpMode {
                 })
 
                 .waitSeconds(2)
-                .lineToConstantHeading(new Vector2d(15, -38.75))
-
+                .lineToConstantHeading(new Vector2d(15, -37))
                 .addDisplacementMarker(() -> {
                     bot.setClawPosition(clawState.leftClose);
                     bot.setClawState(clawState.leftClose);
                 })
+                .lineToConstantHeading(new Vector2d(15, -40))
 
                 .waitSeconds(1)
-//                .lineToLinearHeading(new Pose2d(62, -36, Math.toRadians(180)))
-////                .addDisplacementMarker(45, () -> {
-////                    bot.setVirtualFourBarPosition(virtualFourBarState.outtaking, virtualFourBarExtensionState.extending);
-////                    bot.setVirtualFourBarState(virtualFourBarState.outtaking);
-////                })
-////                .addDisplacementMarker(67, () -> {
-////                    bot.setClawPosition(clawState.rightOpen);
-////                    bot.setClawState(clawState.rightOpen);
-////                })
-//                .waitSeconds(.5)
-//                .lineToConstantHeading(new Vector2d(48, -36))
+
+            .lineToLinearHeading(new Pose2d(60.25 ,-39, Math.toRadians(180)))
+                .addDisplacementMarker(45, () -> {
+                    bot.setVirtualFourBarPosition(virtualFourBarState.outtaking, virtualFourBarExtensionState.extending);
+                   bot.setVirtualFourBarState(virtualFourBarState.outtaking);
+
+                   bot.outtakeSlide.setPosition(300);
+              })
+               .addDisplacementMarker(() -> {
+                    bot.setClawPosition(clawState.rightClose);
+                    bot.setClawState(clawState.rightClose);
+                })
+                .waitSeconds(.5)
+                .lineToConstantHeading(new Vector2d(48, -36))
 //                .waitSeconds(.5)
 //                .lineToConstantHeading(new Vector2d(48, -58))
 //                .waitSeconds(.5)
 //                .lineToConstantHeading(new Vector2d(65, -58))
-//
-//
-//
+
                 .build();
         waitForStart();
         if(isStopRequested()) return;
