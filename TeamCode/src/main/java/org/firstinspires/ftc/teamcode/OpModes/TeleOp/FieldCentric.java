@@ -46,8 +46,8 @@ public class FieldCentric extends OpMode {
         bot.setVirtualFourBarPosition(virtualFourBarState.init, virtualFourBarExtensionState.extending);
         bot.setVirtualFourBarState(virtualFourBarState.init);
 
-       // bot.setIntakeSlidePosition(intakeSlidesState.STATION, extensionState.extending);
-       // bot.setIntakeSlideState(intakeSlidesState.STATION);
+       bot.setIntakeSlidePosition(intakeSlidesState.STATION, extensionState.extending);
+       bot.setIntakeSlideState(intakeSlidesState.STATION);
 
         bot.setClawPosition(clawState.close);
         bot.setClawState(clawState.close);
