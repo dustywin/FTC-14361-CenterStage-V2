@@ -46,8 +46,8 @@ public class FieldCentric extends OpMode {
         bot.setVirtualFourBarPosition(virtualFourBarState.init, virtualFourBarExtensionState.extending);
         bot.setVirtualFourBarState(virtualFourBarState.init);
 
-       bot.setIntakeSlidePosition(intakeSlidesState.STATION, extensionState.extending);
-       bot.setIntakeSlideState(intakeSlidesState.STATION);
+        // bot.setIntakeSlidePosition(intakeSlidesState.STATION, extensionState.extending);
+        // bot.setIntakeSlideState(intakeSlidesState.STATION);
 
         bot.setClawPosition(clawState.close);
         bot.setClawState(clawState.close);
@@ -67,9 +67,9 @@ public class FieldCentric extends OpMode {
         telemetry.addLine("Total Runtime: " + getRuntime() + " seconds.");
         telemetry.addLine("Left Slide Position: " + bot.getOuttakeLeftSlidePosition() + " ticks");
         telemetry.addLine("Right Slide Position: " + bot.getOuttakeRightSlidePosition() + " ticks");
-        telemetry.addLine("Intake Slide Position" + bot.getIntakeSlidePosition());
-        telemetry.addLine("Intake Slide Count " + intakeSlideCountAdd);
-        telemetry.addLine("Intake Slide Subtract Count " + intakeSlideCountSubstract);
+//        telemetry.addLine("Intake Slide Position" + bot.getIntakeSlidePosition());
+//        telemetry.addLine("Intake Slide Count " + intakeSlideCountAdd);
+//        telemetry.addLine("Intake Slide Subtract Count " + intakeSlideCountSubstract);
 
         telemetry.addLine("Wrist Position: " + bot.wrist.getWristPosition());
         telemetry.addLine("State of V4B: init / " + bot.virtualFourBar.getvirtualFourBarExtensionState());
@@ -80,7 +80,7 @@ public class FieldCentric extends OpMode {
         telemetry.addLine("Left V4B Position: " + bot.virtualFourBar.getV4BLeftPosition() + " ticks.");
 
         telemetry.addLine("Left V4B Position: " + (1 - bot.virtualFourBar.getV4BLeftPosition() / 360) + " decimal.");
-        telemetry.addLine("Intake Slide Encoder Tick Count " + intakeSlideCountSubstract);
+        //telemetry.addLine("Intake Slide Encoder Tick Count " + intakeSlideCountSubstract);
         telemetry.update();
 
         driver.readButtons();
@@ -106,32 +106,32 @@ public class FieldCentric extends OpMode {
             bot.driveTrain.setSlowDownMotorPower();
         }
 
-        if (driver.wasJustPressed(GamepadKeys.Button.LEFT_BUMPER)) {
-            if (bot.getvirtualFourBarState().equals(virtualFourBarState.intaking)) {
-                bot.setIntakeSlidePosition(intakeSlidesState.STATION, extensionState.extending);
-                bot.setIntakeSlideState(intakeSlidesState.STATION);
-            } else {
-                bot.setIntakeSlideState(intakeSlidesState.HIGHIN);
-                bot.setIntakeSlidePosition(intakeSlidesState.HIGHIN, extensionState.extending);
-            }
-
-        }
-
-        if (driver.wasJustPressed(GamepadKeys.Button.LEFT_STICK_BUTTON)) {
-            if (bot.getvirtualFourBarState().equals(virtualFourBarState.intaking)) {
-                bot.setIntakeSlidePosition(intakeSlidesState.STATION, extensionState.extending);
-                bot.setIntakeSlideState(intakeSlidesState.STATION);
-            } else {
-                bot.setIntakeSlideState(intakeSlidesState.MEDIUMIN);
-                bot.setIntakeSlidePosition(intakeSlidesState.MEDIUMIN, extensionState.extending);
-            }
-        }
-
-        if (driver.wasJustPressed(GamepadKeys.Button.RIGHT_BUMPER)) {
-            bot.setIntakeSlidePosition(intakeSlidesState.STATION, extensionState.extending);
-            bot.setIntakeSlideState(intakeSlidesState.STATION);
-        }
-
+//        if (driver.wasJustPressed(GamepadKeys.Button.LEFT_BUMPER)) {
+//            if (bot.getvirtualFourBarState().equals(virtualFourBarState.intaking)) {
+//                bot.setIntakeSlidePosition(intakeSlidesState.STATION, extensionState.extending);
+//                bot.setIntakeSlideState(intakeSlidesState.STATION);
+//            } else {
+//                bot.setIntakeSlideState(intakeSlidesState.HIGHIN);
+//                bot.setIntakeSlidePosition(intakeSlidesState.HIGHIN, extensionState.extending);
+//            }
+//
+//        }
+//
+//        if (driver.wasJustPressed(GamepadKeys.Button.LEFT_STICK_BUTTON)) {
+//            if (bot.getvirtualFourBarState().equals(virtualFourBarState.intaking)) {
+//                bot.setIntakeSlidePosition(intakeSlidesState.STATION, extensionState.extending);
+//                bot.setIntakeSlideState(intakeSlidesState.STATION);
+//            } else {
+//                bot.setIntakeSlideState(intakeSlidesState.MEDIUMIN);
+//                bot.setIntakeSlidePosition(intakeSlidesState.MEDIUMIN, extensionState.extending);
+//            }
+//        }
+//
+//        if (driver.wasJustPressed(GamepadKeys.Button.RIGHT_BUMPER)) {
+//            bot.setIntakeSlidePosition(intakeSlidesState.STATION, extensionState.extending);
+//            bot.setIntakeSlideState(intakeSlidesState.STATION);
+//        }
+//
         if (driver.wasJustPressed(GamepadKeys.Button.A)) {
             if (bot.getActiveIntakeState() != null && (bot.getActiveIntakeState().equals(activeIntakeState.active))) {
                 bot.setActiveIntakePosition(activeIntakeState.inactive);
@@ -151,15 +151,15 @@ public class FieldCentric extends OpMode {
                 bot.setActiveIntakeState(activeIntakeState.activeReverse);
             }
         }
-
-        if (driver.wasJustPressed(GamepadKeys.Button.X)) {
-            bot.intakeSlide.forceThatJawn();
-        }
-
-        if (driver.wasJustPressed(GamepadKeys.Button.RIGHT_STICK_BUTTON)) {
-            intakeSlideCountSubstract -= 5;
-            bot.intakeSlide.setPosition(intakeSlide.retracted + intakeSlideCountSubstract);
-        }
+//
+//        if (driver.wasJustPressed(GamepadKeys.Button.X)) {
+//            bot.intakeSlide.forceThatJawn();
+//        }
+//
+//        if (driver.wasJustPressed(GamepadKeys.Button.RIGHT_STICK_BUTTON)) {
+//            intakeSlideCountSubstract -= 5;
+//            bot.intakeSlide.setPosition(intakeSlide.retracted + intakeSlideCountSubstract);
+//        }
 
 
         if (driver.wasJustPressed(GamepadKeys.Button.DPAD_DOWN)) {
@@ -213,13 +213,10 @@ public class FieldCentric extends OpMode {
 
         }
 
-        if (operator.wasJustPressed(GamepadKeys.Button.B)) {
-
-            intakeSlideCountAdd += 5;
-            bot.intakeSlide.setPosition(intakeSlide.retracted + intakeSlideCountAdd);
-
-        }
-
+//        if (operator.wasJustPressed(GamepadKeys.Button.B)) {
+//            intakeSlideCountAdd += 5;
+//            bot.intakeSlide.setPosition(intakeSlide.retracted + intakeSlideCountAdd);
+//        }
 
         if (operator.wasJustPressed(GamepadKeys.Button.Y)) {
             bot.setWristState(wristState.downOuttaking);

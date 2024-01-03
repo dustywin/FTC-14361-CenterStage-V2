@@ -70,7 +70,7 @@ public class VirtualFourBar
                 rightVirtualFourBar.setPosition(autoDropRight);
 
                 virtualFourBarExtension = virtualFourBarExtensionState.station;
-        break;
+                break;
             default:
                 leftVirtualFourBar.setPosition(initLeft);
                 rightVirtualFourBar.setPosition(initRight);

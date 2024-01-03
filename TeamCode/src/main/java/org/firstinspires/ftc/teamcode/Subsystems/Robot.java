@@ -16,7 +16,7 @@ import org.firstinspires.ftc.teamcode.Commands.activeIntakeState;
 
 
 public class Robot {
-    public IntakeSlide intakeSlide;
+    //public IntakeSlide intakeSlide;
     public OuttakeSlide outtakeSlide;
     public Mecanum driveTrain;
     public Wrist wrist;
@@ -45,34 +45,34 @@ public class Robot {
         wrist = new Wrist(hardwareMap);
         virtualFourBar = new VirtualFourBar(hardwareMap);
         outtakeSlide = new OuttakeSlide(hardwareMap);
-        intakeSlide = new IntakeSlide(hardwareMap);
+        //intakeSlide = new IntakeSlide(hardwareMap);
         activeIntake = new ActiveIntake(hardwareMap);
         drone = new Drone(hardwareMap);
     }
 
-    public void setIntakeSlidePosition(intakeSlidesState intakeSlidesState, extensionState extensionState)
-    {
-        intakeSlide.setPosition(extensionState,intakeSlidesState);
-    }
-    public void setIntakeSlidePosition(int pos)
-    {
-        intakeSlide.setPosition(pos);
-    }
-    public intakeSlidesState getIntakeSlideState()
-    {
-        return intakeSlidesState;
-    }
-
-    public void setIntakeSlideState(intakeSlidesState intakeSlidesState)
-    {
-        this.intakeSlidesState = intakeSlidesState;
-    }
-
-    public double getIntakeSlidePosition()
-    {
-        return intakeSlide.getIntakeSlidePosition();
-    }
-
+//    public void setIntakeSlidePosition(intakeSlidesState intakeSlidesState, extensionState extensionState)
+//    {
+//        intakeSlide.setPosition(extensionState,intakeSlidesState);
+//    }
+//    public void setIntakeSlidePosition(int pos)
+//    {
+//        intakeSlide.setPosition(pos);
+//    }
+//    public intakeSlidesState getIntakeSlideState()
+//    {
+//        return intakeSlidesState;
+//    }
+//
+//    public void setIntakeSlideState(intakeSlidesState intakeSlidesState)
+//    {
+//        this.intakeSlidesState = intakeSlidesState;
+//    }
+//
+//    public double getIntakeSlidePosition()
+//    {
+//        return intakeSlide.getIntakeSlidePosition();
+//    }
+//
     public void setOuttakeSlidePosition(outtakeSlidesState outtakeSlidesState, extensionState extensionState)
     {
         outtakeSlide.setOuttakeSlidePosition(extensionState,outtakeSlidesState);
@@ -245,10 +245,10 @@ public class Robot {
         drone.launch();
     }
 
-    public void setInBrake()
-    {
-        intakeSlide.setBrakeMode();
-    }
+//    public void setInBrake()
+//    {
+//        intakeSlide.setBrakeMode();
+//    }
 }
 
 

@@ -40,7 +40,7 @@ public class LeftRed extends LinearOpMode {
         SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap);
 
         Pose2d startPose = new Pose2d(-38, -61, Math.toRadians(270));
-        bot.setInBrake();
+        //bot.setInBrake();
 
         initCam();
 

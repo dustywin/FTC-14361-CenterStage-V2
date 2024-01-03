@@ -22,7 +22,7 @@ public class RightTapeRB extends LinearOpMode
     {
         SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap);
         bot = new Robot(hardwareMap, telemetry);
-        bot.setInBrake();
+        //bot.setInBrake();
 
         drive.setPoseEstimate(startPose);
 
