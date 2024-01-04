@@ -53,8 +53,8 @@ import static org.firstinspires.ftc.teamcode.OpModes.Autonomous.drive.DriveConst
  */
 @Config
 public class SampleMecanumDrive extends MecanumDrive {
-    public static PIDCoefficients TRANSLATIONAL_PID = new PIDCoefficients(.8, 0, 0);
-    public static PIDCoefficients HEADING_PID = new PIDCoefficients(.88, 0, 0);
+    public static PIDCoefficients TRANSLATIONAL_PID = new PIDCoefficients(0, 0, 0);
+    public static PIDCoefficients HEADING_PID = new PIDCoefficients(0, 0, 0);
 
     public static double LATERAL_MULTIPLIER =1.10111111111111111;
 
@@ -307,13 +307,11 @@ public class SampleMecanumDrive extends MecanumDrive {
     }
 
     @Override
-//    public double getRawExternalHeading() {
-//        return imu.getAngularOrientation().firstAngle;
-//    }
-
     public double getRawExternalHeading() {
-        return 0;
+        return imu.getAngularOrientation().firstAngle;
     }
+
+
 
     @Override
 //    public Double getExternalHeadingVelocity() {
@@ -345,7 +343,7 @@ public class SampleMecanumDrive extends MecanumDrive {
         // Rotate about the z axis is the default assuming your REV Hub/Control Hub is laying
         // flat on a surface
 
-        return (double) -imu.getAngularVelocity().yRotationRate;
+        return (double) -imu.getAngularVelocity().zRotationRate;
     }
 
     public static TrajectoryVelocityConstraint getVelocityConstraint(double maxVel, double maxAngularVel, double trackWidth) {
