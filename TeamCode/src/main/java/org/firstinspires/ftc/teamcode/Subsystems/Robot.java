@@ -3,17 +3,16 @@ package org.firstinspires.ftc.teamcode.Subsystems;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
+import org.firstinspires.ftc.teamcode.Commands.armExtensionState;
 import org.firstinspires.ftc.teamcode.Commands.clawState;
 import org.firstinspires.ftc.teamcode.Commands.extensionState;
-import org.firstinspires.ftc.teamcode.Commands.intakeSlidesState;
+import org.firstinspires.ftc.teamcode.Commands.linkageState;
 import org.firstinspires.ftc.teamcode.Commands.outtakeSlidesState;
 import org.firstinspires.ftc.teamcode.Commands.slowDownState;
-import org.firstinspires.ftc.teamcode.Commands.virtualFourBarExtensionState;
 import org.firstinspires.ftc.teamcode.Commands.wristState;
-import org.firstinspires.ftc.teamcode.Commands.virtualFourBarState;
+import org.firstinspires.ftc.teamcode.Commands.armState;
 import org.firstinspires.ftc.teamcode.Commands.activeIntakeState;
-
-
+import org.firstinspires.ftc.teamcode.util.robotConstants;
 
 public class Robot {
     //public IntakeSlide intakeSlide;
@@ -21,18 +20,19 @@ public class Robot {
     public Mecanum driveTrain;
     public Wrist wrist;
     public Claw claw;
-    public VirtualFourBar virtualFourBar;
+    public Arm arm;
     public Drone drone;
-    public intakeSlidesState intakeSlidesState;
     public outtakeSlidesState outtakeSlidesState;
     public wristState wristState;
     public clawState clawState, leftclawState, rightclawState;
-    public virtualFourBarState virtualFourBarState;
-    public virtualFourBarExtensionState virtualFourBarExtensionState;
+    public armState armState;
+    public armExtensionState armExtensionState;
     public extensionState extensionState;
     public ActiveIntake activeIntake;
     public activeIntakeState activeIntakeState;
     public slowDownState slowDownState;
+    public Linkage linkage;
+    public linkageState linkageState;
 
     Telemetry telemetry;
 
@@ -43,12 +43,14 @@ public class Robot {
         driveTrain = new Mecanum(hardwareMap);
         claw = new Claw(hardwareMap);
         wrist = new Wrist(hardwareMap);
-        virtualFourBar = new VirtualFourBar(hardwareMap);
+        arm = new Arm(hardwareMap);
         outtakeSlide = new OuttakeSlide(hardwareMap);
         //intakeSlide = new IntakeSlide(hardwareMap);
         activeIntake = new ActiveIntake(hardwareMap);
         drone = new Drone(hardwareMap);
     }
+
+    // ---------------------------- IntakeSlide ---------------------------- //
 
 //    public void setIntakeSlidePosition(intakeSlidesState intakeSlidesState, extensionState extensionState)
 //    {
@@ -72,7 +74,25 @@ public class Robot {
 //    {
 //        return intakeSlide.getIntakeSlidePosition();
 //    }
+
+//    public void setExtensionState(extensionState extensionState)
+//    {
+//        this.extensionState = extensionState;
+//    }
 //
+//    public extensionState getExtensionState()
+//
+//    {
+//        return extensionState;
+//    }
+
+//    public void setInBrake()
+//    {
+//        intakeSlide.setBrakeMode();
+//    }
+
+    // ---------------------------- OuttakeSlide ---------------------------- //
+
     public void setOuttakeSlidePosition(outtakeSlidesState outtakeSlidesState, extensionState extensionState)
     {
         outtakeSlide.setOuttakeSlidePosition(extensionState,outtakeSlidesState);
@@ -88,18 +108,6 @@ public class Robot {
         this.outtakeSlidesState = outtakeSlidesState;
     }
 
-    public void setExtensionState(extensionState extensionState)
-
-    {
-        this.extensionState = extensionState;
-    }
-
-    public extensionState getExtensionState()
-
-    {
-        return extensionState;
-    }
-
     public double getOuttakeLeftSlidePosition()
     {
         return outtakeSlide.getLeftOuttakeSlideMotorPosition();
@@ -109,6 +117,8 @@ public class Robot {
     {
         return outtakeSlide.getRightOuttakeSlideMotorPosition();
     }
+
+    // ---------------------------- Wrist ---------------------------- //
 
     public void setWristPosition(wristState wristState)
     {
@@ -130,30 +140,34 @@ public class Robot {
         return wrist.getWristPosition();
     }
 
-    public void setVirtualFourBarPosition(virtualFourBarState virtualFourBarState, virtualFourBarExtensionState virtualFourBarExtensionState)
+    // ---------------------------- Arm ---------------------------- //
+
+    public void setArmPosition(armState armState, armExtensionState armExtensionState)
     {
-        virtualFourBar.setVirtualFourBarPosition(virtualFourBarState, virtualFourBarExtensionState);
+        arm.setArmPosition(armState, armExtensionState);
     }
 
-    public void setVirtualFourBarState(virtualFourBarState virtualFourBarState)
+    public void setArmState(armState armState)
     {
-        this.virtualFourBarState = virtualFourBarState;
+        this.armState = armState;
     }
 
-    public virtualFourBarState getvirtualFourBarState()
+    public armState getArmState()
     {
-        return virtualFourBarState;
+        return armState;
     }
 
-    public virtualFourBarExtensionState getvirtualFourBarExtensionState()
+    public armExtensionState getArmExtensionState()
     {
-        return virtualFourBarExtensionState;
+        return armExtensionState;
     }
 
-    public void setVirtualFourBarExtensionState(virtualFourBarExtensionState virtualFourBarExtensionState)
+    public void setArmExtensionState(armExtensionState armExtensionState)
     {
-        this.virtualFourBarExtensionState = virtualFourBarExtensionState;
+        this.armExtensionState = armExtensionState;
     }
+
+    // ---------------------------- Claw ---------------------------- //
 
     public void setClawPosition(clawState clawState)
     {
@@ -210,6 +224,8 @@ public class Robot {
         return rightclawState;
     }
 
+    // ---------------------------- ActiveIntake ---------------------------- //
+
     public void setActiveIntakePosition(activeIntakeState activeIntakeState)
     {
         activeIntake.setActiveIntakePosition(activeIntakeState);
@@ -225,6 +241,8 @@ public class Robot {
         this.activeIntakeState = activeIntakeState;
     }
 
+    // ---------------------------- SlowDown ---------------------------- //
+
     public slowDownState getSlowDownState()
     {
         return slowDownState;
@@ -234,6 +252,8 @@ public class Robot {
     {
         this.slowDownState = slowDownState;
     }
+
+    // ---------------------------- Drone ---------------------------- //
 
     public void setDrone()
     {
@@ -245,10 +265,27 @@ public class Robot {
         drone.launch();
     }
 
-//    public void setInBrake()
-//    {
-//        intakeSlide.setBrakeMode();
-//    }
+    // ---------------------------- Linkage ---------------------------- //
+
+    public void setHighLinkagePosition(linkageState linkageState)
+    {
+        linkage.setLinkagePosition(linkageState);
+    }
+
+    public void setLinkageState(linkageState linkageState)
+    {
+        this.linkageState = linkageState;
+    }
+
+    public linkageState getLinkageState()
+    {
+        return this.linkageState;
+    }
+
+    public void getLinkagePosition()
+    {
+        linkage.getLinkagePosition();
+    }
 }
 
 

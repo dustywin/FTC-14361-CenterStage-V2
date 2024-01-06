@@ -101,4 +101,12 @@ public class robotConstants
         public static double intakingLeftAuton = 0.5;
         public static double intakingRightAuton = 0.6;
     }
+
+    public static class linkage
+    {
+        public static double highPosition = 0;
+        public static double mediumPosition = 0;
+        public static double lowPosition = 0;
+
+    }
 }

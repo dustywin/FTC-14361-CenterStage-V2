@@ -6,12 +6,11 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import org.firstinspires.ftc.teamcode.Commands.clawState;
-import org.firstinspires.ftc.teamcode.Commands.virtualFourBarExtensionState;
-import org.firstinspires.ftc.teamcode.Commands.virtualFourBarState;
+import org.firstinspires.ftc.teamcode.Commands.armExtensionState;
+import org.firstinspires.ftc.teamcode.Commands.armState;
 import org.firstinspires.ftc.teamcode.Commands.wristState;
 import org.firstinspires.ftc.teamcode.OpModes.Autonomous.drive.SampleMecanumDrive;
 import org.firstinspires.ftc.teamcode.OpModes.Autonomous.trajectorysequence.TrajectorySequence;
-import org.firstinspires.ftc.teamcode.Subsystems.HSVBlueDetection;
 import org.firstinspires.ftc.teamcode.Subsystems.HSVRedDetection;
 
 import org.firstinspires.ftc.teamcode.Subsystems.Robot;
@@ -38,12 +37,12 @@ public class RightRedMid extends LinearOpMode {
 
                 })
                 .addDisplacementMarker(5, () -> {
-                    bot.setVirtualFourBarState(virtualFourBarState.init);
-                    bot.setVirtualFourBarPosition(virtualFourBarState.init, virtualFourBarExtensionState.extending);
+                    bot.setArmState(armState.init);
+                    bot.setArmPosition(armState.init, armExtensionState.extending);
                 })
                 .addDisplacementMarker(15, () -> {
-                    bot.setVirtualFourBarPosition(virtualFourBarState.autoDrop, virtualFourBarExtensionState.extending);
-            bot.setVirtualFourBarState(virtualFourBarState.autoDrop);
+                    bot.setArmPosition(armState.autoDrop, armExtensionState.extending);
+            bot.setArmState(armState.autoDrop);
 
                     bot.setWristPosition(wristState.downOuttaking);
                     bot.setWristState(wristState.downOuttaking);
@@ -84,8 +83,8 @@ public class RightRedMid extends LinearOpMode {
         if(isStopRequested()) return;
 
    //     bot.intakeSlide.setPosition(50);
-        bot.setVirtualFourBarState(virtualFourBarState.intaking);
-        bot.setVirtualFourBarPosition(virtualFourBarState.intaking, virtualFourBarExtensionState.extending);
+        bot.setArmState(armState.intaking);
+        bot.setArmPosition(armState.intaking, armExtensionState.extending);
         bot.setWristPosition(wristState.downIntaking);
         bot.setWristState(wristState.downIntaking);
         bot.setClawPosition(clawState.open);

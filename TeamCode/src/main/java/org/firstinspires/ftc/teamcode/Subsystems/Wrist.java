@@ -15,9 +15,9 @@ public class Wrist
     double minAngle = 0, maxAngle= 360;
     public Wrist(HardwareMap hardwareMap)
     {
-
         servo = new SimpleServo(hardwareMap, "wristServo", minAngle, maxAngle, AngleUnit.DEGREES);
     }
+
     public void setWristPosition(wristState wristState)
     {
         switch(wristState)
