@@ -40,9 +40,4 @@ public class Linkage
     {
         return linkageServo.getPosition();
     }
-
-    public void getLinkageState()
-    {
-
-    }
 }

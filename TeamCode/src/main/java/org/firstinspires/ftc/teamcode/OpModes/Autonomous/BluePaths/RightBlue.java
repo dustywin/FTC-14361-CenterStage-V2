@@ -7,8 +7,8 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
 import org.firstinspires.ftc.teamcode.Commands.extensionState;
-import org.firstinspires.ftc.teamcode.Commands.intakeSlidesState;
-import org.firstinspires.ftc.teamcode.Commands.virtualFourBarExtensionState;
+//import org.firstinspires.ftc.teamcode.Commands.intakeSlidesState;
+import org.firstinspires.ftc.teamcode.Commands.armExtensionState;
 import org.firstinspires.ftc.teamcode.Subsystems.HSVBlueDetection;
 import org.firstinspires.ftc.teamcode.Subsystems.Robot;
 import org.firstinspires.ftc.teamcode.OpModes.Autonomous.drive.SampleMecanumDrive;

@@ -23,11 +23,11 @@ public class robotConstants
         public static int LOWLEFT = -450;
         public static int LOWRIGHT = 450;
 
-
         public static int AUTOLOWLEFT = -100;
         public static int AUTOLOWRIGHT = 100;
-        public static int GROUNDLEFT = 0;
-        public static int GROUNDRIGHT = 0;
+
+        public static int GROUNDLEFT = -57;
+        public static int GROUNDRIGHT = 57;
     }
 
     public static class intakeSlide
@@ -75,8 +75,9 @@ public class robotConstants
 
     public static class Wrist
     {
-        public static double downOuttaking = .81;
-        public static double downIntaking = .145;
+        public static double outtaking = .81;
+        public static double intaking = .145;
+        public static double init = .100;
     }
 
     public static class virtualFourBar

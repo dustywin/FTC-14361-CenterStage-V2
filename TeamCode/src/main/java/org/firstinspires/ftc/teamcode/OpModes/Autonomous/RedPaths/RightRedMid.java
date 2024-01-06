@@ -44,8 +44,8 @@ public class RightRedMid extends LinearOpMode {
                     bot.setArmPosition(armState.autoDrop, armExtensionState.extending);
             bot.setArmState(armState.autoDrop);
 
-                    bot.setWristPosition(wristState.downOuttaking);
-                    bot.setWristState(wristState.downOuttaking);
+                    bot.setWristPosition(wristState.outtaking);
+                    bot.setWristState(wristState.outtaking);
                 })
                 .addDisplacementMarker(22, () -> {
                     bot.setClawPosition(clawState.leftClose);
@@ -85,8 +85,8 @@ public class RightRedMid extends LinearOpMode {
    //     bot.intakeSlide.setPosition(50);
         bot.setArmState(armState.intaking);
         bot.setArmPosition(armState.intaking, armExtensionState.extending);
-        bot.setWristPosition(wristState.downIntaking);
-        bot.setWristState(wristState.downIntaking);
+        bot.setWristPosition(wristState.intaking);
+        bot.setWristState(wristState.intaking);
         bot.setClawPosition(clawState.open);
         bot.setClawState(clawState.open);
 

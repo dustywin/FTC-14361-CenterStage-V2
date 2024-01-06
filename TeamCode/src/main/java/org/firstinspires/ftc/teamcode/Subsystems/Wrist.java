@@ -11,30 +11,33 @@ import org.firstinspires.ftc.teamcode.util.robotConstants;
 
 public class Wrist
 {
-    private ServoEx servo;
+    private ServoEx wristServo;
     double minAngle = 0, maxAngle= 360;
     public Wrist(HardwareMap hardwareMap)
     {
-        servo = new SimpleServo(hardwareMap, "wristServo", minAngle, maxAngle, AngleUnit.DEGREES);
+        wristServo = new SimpleServo(hardwareMap, "wristServo", minAngle, maxAngle, AngleUnit.DEGREES);
     }
 
     public void setWristPosition(wristState wristState)
     {
         switch(wristState)
         {
-            case downIntaking:
-                servo.setPosition(robotConstants.Wrist.downIntaking);
+            case intaking:
+                wristServo.setPosition(robotConstants.Wrist.intaking);
                 break;
-            case downOuttaking:
-                servo.setPosition(robotConstants.Wrist.downOuttaking);
+            case init:
+                wristServo.setPosition(robotConstants.Wrist.init);
+                break;
+            case outtaking:
+                wristServo.setPosition(robotConstants.Wrist.outtaking);
                 break;
             default:
-                servo.setPosition(robotConstants.Wrist.downIntaking);
+                wristServo.setPosition(robotConstants.Wrist.intaking);
         }
     }
     public double getWristPosition()
     {
-        return servo.getPosition();
+        return wristServo.getPosition();
     }
 
 }
