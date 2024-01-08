@@ -26,12 +26,14 @@ public class Robot {
     public wristState wristState;
     public clawState clawState, leftclawState, rightclawState;
     public armState armState;
+
     public armExtensionState armExtensionState;
+
     public extensionState extensionState;
     public ActiveIntake activeIntake;
     public activeIntakeState activeIntakeState;
     public slowDownState slowDownState;
-    public Linkage linkage;
+//    public Linkage linkage;
     public linkageState linkageState;
 
     Telemetry telemetry;
@@ -267,25 +269,25 @@ public class Robot {
 
     // ---------------------------- Linkage ---------------------------- //
 
-    public void setHighLinkagePosition(linkageState linkageState)
-    {
-        linkage.setLinkagePosition(linkageState);
-    }
-
-    public void setLinkageState(linkageState linkageState)
-    {
-        this.linkageState = linkageState;
-    }
-
-    public linkageState getLinkageState()
-    {
-        return this.linkageState;
-    }
-
-    public void getLinkagePosition()
-    {
-        linkage.getLinkagePosition();
-    }
+//    public void setHighLinkagePosition(linkageState linkageState)
+//    {
+//        linkage.setLinkagePosition(linkageState);
+//    }
+//
+//    public void setLinkageState(linkageState linkageState)
+//    {
+//        this.linkageState = linkageState;
+//    }
+//
+//    public linkageState getLinkageState()
+//    {
+//        return this.linkageState;
+//    }
+//
+//    public void getLinkagePosition()
+//    {
+//        linkage.getLinkagePosition();
+//    }
 }
 
 

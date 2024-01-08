@@ -1,16 +1,16 @@
 package org.firstinspires.ftc.teamcode.Subsystems;
 
 
-import static org.firstinspires.ftc.teamcode.util.robotConstants.virtualFourBar.autoDropLeft;
-import static org.firstinspires.ftc.teamcode.util.robotConstants.virtualFourBar.autoDropRight;
-import static org.firstinspires.ftc.teamcode.util.robotConstants.virtualFourBar.initLeft;
-import static org.firstinspires.ftc.teamcode.util.robotConstants.virtualFourBar.initRight;
-import static org.firstinspires.ftc.teamcode.util.robotConstants.virtualFourBar.intakingLeft;
-import static org.firstinspires.ftc.teamcode.util.robotConstants.virtualFourBar.intakingRight;
-import static org.firstinspires.ftc.teamcode.util.robotConstants.virtualFourBar.outtakingDownLeft;
-import static org.firstinspires.ftc.teamcode.util.robotConstants.virtualFourBar.outtakingDownRight;
-import static org.firstinspires.ftc.teamcode.util.robotConstants.virtualFourBar.outtakingLeft;
-import static org.firstinspires.ftc.teamcode.util.robotConstants.virtualFourBar.outtakingRight;
+import static org.firstinspires.ftc.teamcode.util.robotConstants.arm.autoDropLeft;
+import static org.firstinspires.ftc.teamcode.util.robotConstants.arm.autoDropRight;
+import static org.firstinspires.ftc.teamcode.util.robotConstants.arm.initLeft;
+import static org.firstinspires.ftc.teamcode.util.robotConstants.arm.initRight;
+import static org.firstinspires.ftc.teamcode.util.robotConstants.arm.intakingLeft;
+import static org.firstinspires.ftc.teamcode.util.robotConstants.arm.intakingRight;
+import static org.firstinspires.ftc.teamcode.util.robotConstants.arm.outtakingDownLeft;
+import static org.firstinspires.ftc.teamcode.util.robotConstants.arm.outtakingDownRight;
+import static org.firstinspires.ftc.teamcode.util.robotConstants.arm.outtakingLeft;
+import static org.firstinspires.ftc.teamcode.util.robotConstants.arm.outtakingRight;
 
 import com.arcrobotics.ftclib.hardware.ServoEx;
 import com.arcrobotics.ftclib.hardware.SimpleServo;

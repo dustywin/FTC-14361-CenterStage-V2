@@ -10,7 +10,6 @@ import org.firstinspires.ftc.teamcode.Commands.armExtensionState;
 import org.firstinspires.ftc.teamcode.Commands.armState;
 import org.firstinspires.ftc.teamcode.Commands.wristState;
 import org.firstinspires.ftc.teamcode.OpModes.Autonomous.drive.SampleMecanumDrive;
-import org.firstinspires.ftc.teamcode.OpModes.Autonomous.trajectorysequence.TrajectorySequence;
 import org.firstinspires.ftc.teamcode.Subsystems.HSVRedDetection;
 
 import org.firstinspires.ftc.teamcode.Subsystems.Robot;

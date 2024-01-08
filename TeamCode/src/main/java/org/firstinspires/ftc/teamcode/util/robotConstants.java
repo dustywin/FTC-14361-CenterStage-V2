@@ -17,8 +17,8 @@ public class robotConstants
         public static int HIGHLEFT = -1210;
         public static int HIGHRIGHT = 1210;
 
-        public static int MEDIUMLEFT = -900;
-        public static int MEDIUMRIGHT = 900;
+        public static int MEDIUMLEFT = -950;
+        public static int MEDIUMRIGHT = 950;
 
         public static int LOWLEFT = -450;
         public static int LOWRIGHT = 450;
@@ -80,7 +80,7 @@ public class robotConstants
         public static double init = .100;
     }
 
-    public static class virtualFourBar
+    public static class arm
     {
         public static double intakingLeft = 0.01;
 
@@ -98,16 +98,13 @@ public class robotConstants
 
         public static double autoDropLeft = .57;
         public static double autoDropRight = .15;
-
-        public static double intakingLeftAuton = 0.5;
-        public static double intakingRightAuton = 0.6;
     }
-
-    public static class linkage
-    {
-        public static double highPosition = 0;
-        public static double mediumPosition = 0;
-        public static double lowPosition = 0;
-
-    }
+//
+//    public static class linkage
+//    {
+//        public static double highPosition = 0;
+//        public static double mediumPosition = 0;
+//        public static double lowPosition = 0;
+//
+//    }
 }

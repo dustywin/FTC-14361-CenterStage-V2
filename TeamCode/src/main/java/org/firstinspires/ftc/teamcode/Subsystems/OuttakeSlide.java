@@ -113,6 +113,7 @@ public class OuttakeSlide
     {
         return rightouttakeSlide.getCurrentPosition();
     }
+
     public void setPosition(int pos) {
         leftouttakeSlide.setTargetPosition(-pos);
         rightouttakeSlide.setTargetPosition(pos);
@@ -123,5 +124,10 @@ public class OuttakeSlide
         leftouttakeSlide.setPower(power);
         rightouttakeSlide.setPower(power);
     }
-}
 
+    public void resetZero()
+    {
+        leftouttakeSlide.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        rightouttakeSlide.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+    }
+}
